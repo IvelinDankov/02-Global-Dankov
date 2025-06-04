@@ -1,0 +1,64 @@
+:root {
+  --primary-dark-green: #3f6050;
+  --light-green: #569e7b;
+  --dark-grey: #333;
+  --dim-gray: #666;
+  --light-gray: #bbb;
+  --soft-gray: #f4f4f4;
+  --white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Arimo", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  /* font-family: serif; */
+  font-size: 1.6rem;
+  letter-spacing: normal;
+  line-height: 1.4;
+}
+
+.container {
+  max-width: 135rem;
+  margin: 0 auto;
+  /* height: 100vh; */
+}
+
+.heading-1 {
+  font-size: 6.4rem;
+  font-weight: bold;
+}
+.heading-2 {
+  font-size: 4.8rem;
+  font-weight: bold;
+}
+.heading-3 {
+  font-size: 3.2rem;
+  font-weight: bold;
+}
+.heading-4 {
+  font-size: 2.8rem;
+  font-weight: bold;
+}
+.heading-5 {
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+.heading-6 {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+p {
+  font-size: 2rem;
+  font-weight: normal;
+}
