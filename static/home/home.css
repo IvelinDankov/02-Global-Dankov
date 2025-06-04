@@ -1,6 +1,7 @@
 .hero {
   color: var(--white);
   position: relative;
+  margin-bottom: 14rem;
 }
 
 .hero-container {
@@ -8,7 +9,7 @@
   background-image: url("../images/home/hero-img.png");
   background-position: center center;
   background-size: cover;
-  padding: 0 2rem;
+  padding: 0 4rem;
 }
 
 .logo {
@@ -80,4 +81,33 @@
   top: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+}
+
+/* WELCOME SECTION */
+
+.welcome-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 12rem;
+}
+
+.welcome-content {
+  width: 70rem;
+}
+.heading-2 {
+}
+.welcome-title {
+}
+.welcome-link {
+}
+
+.welcome-image-box {
+  width: 70rem;
+}
+
+.welcome-image {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+  display: block;
 }
