@@ -1,16 +1,23 @@
 .hero {
   color: var(--white);
+  position: relative;
 }
 
 .hero-container {
   height: 100vh;
   background-image: url("../images/home/hero-img.png");
+  background-position: center center;
+  background-size: cover;
   padding: 0 2rem;
 }
 
 .logo {
   /* display: inline-block; */
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--white);
+  text-decoration: none;
 }
 
 .header {
@@ -26,20 +33,51 @@
 }
 
 .navigation-list {
-  list-style: none;
   display: flex;
   justify-content: center;
   gap: 2rem;
 }
 
 .navigation-item {
+  list-style: none;
 }
 
 .navigation-item a {
+  text-decoration: none;
+  color: var(--white);
+  padding-bottom: 1px;
+  transition: all 0.3s;
+  position: relative;
+}
+.navigation-item a:hover::after,
+.navigation-item a.active::after {
+  content: "";
+  height: 2px;
+  width: 40%;
+  /* display: block; */
+  background-color: var(--white);
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+  bottom: -2px;
+  z-index: 10;
+  border-radius: 50rem;
 }
 
 .header-icons {
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+.header-icons > * {
+  cursor: pointer;
+}
+
+.header-heading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
