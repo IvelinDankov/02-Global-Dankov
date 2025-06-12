@@ -6,7 +6,7 @@
 
 .hero-container {
   height: 100vh;
-  background-image: url("../images/home/hero-img.png");
+  background-image: url("/static/images/home/hero-img.png");
   background-position: center center;
   background-size: cover;
   padding: 0 4rem;
@@ -89,6 +89,7 @@
   display: flex;
   justify-content: space-between;
   gap: 12rem;
+  padding-bottom: 14rem;
 }
 
 .welcome-content {
@@ -110,4 +111,54 @@
   object-fit: cover;
   height: 100%;
   display: block;
+}
+
+/* media queries */
+
+@media (max-width: 562.5em) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media (max-width: 452.5em) {
+  html {
+    font-size: 45%;
+  }
+
+  .hero-container {
+    /* padding: 2rem 0; */
+  }
+}
+
+/* SECTION WHY US */
+.section-why-us {
+  padding: 14rem 0;
+  background-color: var(--primary-dark-green);
+  color: var(--white);
+}
+.why-us-container {
+  padding: 0 4rem;
+}
+
+.why-us-heading {
+  width: 50%;
+  margin-bottom: 3rem;
+}
+.why-us-item-heading {
+  margin-bottom: 2rem;
+}
+
+.why-us-list {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  list-style: none;
+}
+.why-us-item {
+}
+
+ion-icon {
+  width: 4rem;
+  height: 4rem;
 }
