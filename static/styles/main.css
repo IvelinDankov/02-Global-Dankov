@@ -29,14 +29,14 @@ body {
 }
 
 .container {
-  max-width: 135rem;
+  max-width: 192rem;
   margin: 0 auto;
   /* padding-bottom: 14rem; */
   /* height: 100vh; */
 }
 
 section {
-  max-width: 135rem;
+  max-width: 192rem;
   margin: 0 auto;
   padding: 0 4rem;
 }
