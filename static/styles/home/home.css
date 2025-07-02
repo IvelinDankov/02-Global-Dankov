@@ -299,3 +299,144 @@ ion-icon {
 }
 
 /* CTA SECTION */
+.section-cta {
+}
+.cta-container {
+  padding: 0 4rem 14rem 4rem;
+  display: flex;
+}
+.cta-image {
+  width: 100%;
+  flex: 1 0 50%;
+  object-fit: cover;
+  text-align: center;
+  display: block;
+}
+.cta-content {
+  flex: 1 0 50%;
+
+  background-color: var(--primary-dark-green);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 14rem;
+  gap: 3.8rem;
+}
+.cta-logo-image {
+  width: 20rem;
+  height: 20rem;
+}
+.cta-heading {
+  font-weight: bold;
+}
+.cta-text {
+  line-height: 1.6;
+}
+.cta-btn {
+  align-self: start;
+  padding: 2rem 6rem;
+  cursor: pointer;
+  border-radius: 50rem;
+  background-color: var(--white);
+  color: var(--primary-dark-green);
+  font-weight: bold;
+  text-decoration: none;
+  display: block;
+}
+.cta-btn:hover {
+  background-color: var(--soft-gray);
+}
+/* SECTION INSTAGRAM */
+.insta-container {
+  padding: 0 4rem 14rem 4rem;
+}
+.insta-heading {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+.image-box {
+  display: flex;
+  justify-content: space-between;
+}
+.insta-image {
+  width: 40rem;
+  height: 40rem;
+  display: block;
+  object-fit: cover;
+}
+
+.insta-image:nth-child(even) {
+  margin-top: 8rem;
+}
+/* FOOTER */
+.footer {
+  width: 100%;
+}
+
+.footer-image-box {
+  width: 100%;
+  background-image: url("../../images/home/footer-image.png");
+  background-position: center center;
+  height: 50rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--white);
+}
+
+.footer-btn {
+  margin: 0 auto;
+  margin-top: 4rem;
+  width: fit-content;
+}
+.footer-image-content {
+}
+.footer-heading {
+}
+/* footer content */
+.footer-content {
+  width: 100%;
+  padding: 10rem 4rem 5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-logo {
+  text-transform: capitalize;
+  color: var(--dark-gray);
+  font-size: 3rem;
+}
+.footer-logo-icon {
+  color: var(--light-green);
+}
+
+.footer-heading-6 {
+  color: var(--light-green);
+  margin-bottom: 3rem;
+  font-weight: bold;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.footer-link,
+address,
+.footer-mail {
+  text-decoration: none;
+  color: var(--dim-gray);
+}
+
+.footer-mail {
+  color: var(--primary-dark-green);
+}
+
+/* copy */
+.footer-copy {
+  margin-bottom: 5rem;
+  color: var(--dim-gray);
+}
