@@ -1,12 +1,11 @@
-.industrie {
+.product {
   color: var(--white);
   /* position: relative; */
-  margin-bottom: 14rem;
 }
 
-.industrie-container {
+.product-container {
   height: 100vh;
-  background-image: url("/static/images/industrie/Industrie-main.png");
+  background-image: url("/static/images/product/Product-main-image.png");
   background-position: center center;
   background-size: cover;
   padding: 0 4rem;
@@ -84,78 +83,57 @@
   text-align: center;
 }
 
-/* INDUSTRIE */
-.status-industrie-section {
-  background-color: var(--primary-dark-green);
-  color: var(--white);
-  margin-bottom: 14rem;
+/* PRODUCTS */
+.section-products {
+  margin: 0;
+  padding-top: 14rem;
+  background-color: var(--soft-gray);
 }
-.status-container {
-  padding: 14rem 0;
+.products-container {
+}
+.products-heading-box {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   gap: 5rem;
-}
-.status-heading-box {
-  flex: 1;
-}
-.status-heading {
-  color: var(--white);
-}
-.status-content-box {
-  flex: 1;
-}
-.status-text {
-  color: var(--white);
-  font-size: 1.6rem;
   margin-bottom: 5rem;
 }
-.status-list {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  gap: 2rem;
+.products-heading {
 }
-.status-item {
-  flex: 1 0 45%;
+.products-filter-box {
   display: flex;
+  gap: 2.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-button {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
   gap: 1rem;
-  flex-direction: column;
 }
 
-.status-list > .status-item + span:first-child {
-  font-size: 2.4rem;
-  font-weight: 600;
-  color: var(--white);
-}
-
-.status-list > .status-item + span:nth-child(2) {
-  width: 100%;
-  display: block;
-  height: 0.5px;
-  background-color: var(--white);
-}
-
-.status-list > .status-item + span:last-child {
+label {
+  color: var(--dark-gray);
   font-size: 1.2rem;
 }
-/* IMAGES */
 
-.section-featured-industries {
+select {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: var(--white);
+  color: var(--dark-gray);
+  font-size: 1rem;
 }
-.featured-industrie-container {
-}
-.featured-industrie-heading {
-  margin-bottom: 5rem;
-}
-.featured-industrie-box {
-  display: grid;
-  gap: 5rem;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-.featured-industrie-item {
-}
-.featured-industrie-image {
-  width: 100%;
-}
-.featured-industrie-title {
+
+[name="search-outline"] {
+  color: var(--light-green);
+  font-size: 1.2rem;
+  cursor: pointer;
 }
