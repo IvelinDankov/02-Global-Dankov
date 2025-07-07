@@ -1,0 +1,125 @@
+.product-details {
+  color: var(--white);
+  /* position: relative; */
+}
+
+.product-details-container {
+  height: 100vh;
+  background-image: url("/static/images/product-details/Product-details-main-image.png");
+  background-position: center center;
+  background-size: cover;
+  padding: 0 4rem;
+}
+
+.logo {
+  /* display: inline-block; */
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.header {
+  padding-top: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navigation {
+  width: 100%;
+}
+
+.navigation-list {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.navigation-item {
+  list-style: none;
+}
+
+.navigation-item a {
+  text-decoration: none;
+  color: var(--white);
+  padding-bottom: 1px;
+  transition: all 0.3s;
+  position: relative;
+}
+.navigation-item a:hover::after,
+.navigation-item a.active::after {
+  content: "";
+  height: 2px;
+  width: 40%;
+  /* display: block; */
+  background-color: var(--white);
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+  bottom: -2px;
+  z-index: 10;
+  border-radius: 50rem;
+}
+
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-icons > * {
+  cursor: pointer;
+}
+
+.header-heading {
+  color: var(--white);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* PRODUCT DESCRIPTION DETAILS */
+
+.section-product-description {
+  padding: 14rem;
+  margin-bottom: 14rem;
+  background-color: var(--soft-gray);
+}
+
+.product-description-container {
+}
+
+.product-description-content-box {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.product-description {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rem;
+}
+.product-description-image {
+  width: 100%;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 1rem 2rem;
+  width: 50%;
+  background-color: var(--light-green);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 50rem;
+  transition: all 0.3s;
+  border: none;
+  align-self: start;
+}
