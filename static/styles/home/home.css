@@ -76,6 +76,7 @@
 }
 
 .header-heading {
+  color: var(--white);
   position: absolute;
   left: 50%;
   top: 50%;
@@ -90,6 +91,7 @@
   justify-content: space-between;
   gap: 12rem;
   padding-bottom: 14rem;
+  align-items: center;
 }
 
 .welcome-content {
@@ -131,29 +133,32 @@
   }
 }
 
-/* SECTION WHY US */
-.section-why-us {
+/* SECTION WHY US HOME */
+.section-why-us-home {
   padding: 14rem 0;
   background-color: var(--primary-dark-green);
   color: var(--white);
 }
-.why-us-container {
+.why-us-home-container {
   padding: 0 4rem;
 }
 
-.why-us-heading {
+.why-us-home-heading {
   width: 50%;
+  color: var(--white);
   margin-bottom: 3rem;
 }
-.why-us-item-heading {
+.why-us-home-item-heading {
   margin-bottom: 2rem;
+  color: var(--white);
 }
 
-.why-us-list {
+.why-us-home-list {
   display: flex;
   justify-content: space-between;
   gap: 2rem;
   list-style: none;
+  color: var(--white);
 }
 .why-us-item {
 }
@@ -161,6 +166,11 @@
 ion-icon {
   width: 4rem;
   height: 4rem;
+}
+.why-us-home-text {
+  color: var(--white);
+  font-size: 1.6rem;
+  line-height: 1.6;
 }
 
 /* HOME-PRODUCT-SECTION */
@@ -328,9 +338,12 @@ ion-icon {
   height: 20rem;
 }
 .cta-heading {
+  color: var(--white);
   font-weight: bold;
 }
 .cta-text {
+  color: var(--white);
+
   line-height: 1.6;
 }
 .cta-btn {
@@ -394,6 +407,7 @@ ion-icon {
 .footer-image-content {
 }
 .footer-heading {
+  color: var(--white);
 }
 /* footer content */
 .footer-content {
