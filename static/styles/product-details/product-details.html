@@ -1,27 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet" />
 
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
     <link rel="stylesheet" href="/static/styles/style.css" />
 
     <title>Product</title>
   </head>
+
   <body>
     <div class="product-details product-details-container container">
       <header class="header">
@@ -57,11 +51,8 @@
       <div class="container product-description-container">
         <div class="product-description">
           <div class="product-description-image-box">
-            <img
-              class="product-description-image"
-              src="/static/images/product-details/product-details-image.png"
-              alt="product image"
-            />
+            <img class="product-description-image" src="/static/images/product-details/product-details-image.png"
+              alt="product image" />
           </div>
           <div class="product-description-content-box">
             <h3 class="product-description-heading">Product Name 250g</h3>
@@ -84,19 +75,64 @@
             </p>
             <p class="product-decription-quantity">
               <label for="quantity">Quantity:</label>
-              <input
-                type="number"
-                id="quantity"
-                name="quantity"
-                min="1"
-                max="100"
-                value="1"
-              />
+              <input type="number" id="quantity" name="quantity" min="1" max="100" value="1" />
             </p>
             <button class="btn btn-primary">Add to Cart</button>
           </div>
         </div>
       </div>
     </section>
+
+    <section class="section product-info-section">
+      <div class="container product-info-container">
+
+        <h2 class="heading-2 product-info-heading">Product Information</h2>
+        <div class="product-info-accordion">
+          <div class="item">
+            <header class="item-header">
+
+              <p class="text">Product Description</p>
+              <ion-icon class="icon" name="add-outline"></ion-icon>
+            </header>
+            <div class="hidden-box">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus voluptate amet suscipit voluptatum
+                aliquid nisi tempora, voluptatibus alias consequatur ratione, dolores sunt voluptas minus repudiandae
+                asperiores est nemo corrupti delectus.
+              </p>
+            </div>
+          </div>
+          <div class="item">
+            <header class="item-header">
+
+              <p class="text">Product Description</p>
+              <ion-icon class="icon" name="add-outline"></ion-icon>
+            </header>
+            <div class="hidden-box">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus voluptate amet suscipit voluptatum
+                aliquid nisi tempora, voluptatibus alias consequatur ratione, dolores sunt voluptas minus repudiandae
+                asperiores est nemo corrupti delectus.
+              </p>
+            </div>
+          </div>
+          <div class="item">
+            <header class="item-header">
+
+              <p class="text">Product Description</p>
+              <ion-icon class="icon" name="add-outline"></ion-icon>
+            </header>
+            <div class="hidden-box">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus voluptate amet suscipit voluptatum
+                aliquid nisi tempora, voluptatibus alias consequatur ratione, dolores sunt voluptas minus repudiandae
+                asperiores est nemo corrupti delectus.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </body>
+
 </html>
