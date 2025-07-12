@@ -133,6 +133,7 @@
 .product-info-accordion {
   width: 70rem;
   margin: 0 auto;
+  margin-bottom: 14rem;
 }
 .item {
 }
@@ -154,8 +155,29 @@
   height: 2.4rem;
 }
 .hidden-box {
+  display: none;
 }
 .hidden-box p {
   line-height: 1.6;
   margin-bottom: 2.4rem;
+}
+
+/* Product Carousel */
+.section-product-carousel {
+  padding: 14rem 0;
+  background-color: var(--soft-gray);
+}
+.product-carousel-container {
+}
+
+.product-carousel-heading {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.product-carousel-list {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
