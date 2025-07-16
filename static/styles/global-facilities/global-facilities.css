@@ -1,0 +1,120 @@
+.global {
+  color: var(--white);
+  /* position: relative; */
+  /* margin-bottom: 14rem; */
+}
+
+.global-container {
+  height: 100vh;
+  background-image: url("/static/images/global/global-facilities-hero-image.png");
+  background-position: center center;
+  background-size: cover;
+  padding: 0 4rem;
+}
+
+.logo {
+  /* display: inline-block; */
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.header {
+  padding-top: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navigation {
+  width: 100%;
+}
+
+.navigation-list {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.navigation-item {
+  list-style: none;
+}
+
+.navigation-item a {
+  text-decoration: none;
+  color: var(--white);
+  padding-bottom: 1px;
+  transition: all 0.3s;
+  position: relative;
+}
+.navigation-item a:hover::after,
+.navigation-item a.active::after {
+  content: "";
+  height: 2px;
+  width: 40%;
+  /* display: block; */
+  background-color: var(--white);
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+  bottom: -2px;
+  z-index: 10;
+  border-radius: 50rem;
+}
+
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-icons > * {
+  cursor: pointer;
+}
+
+.header-heading {
+  color: var(--white);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* map container */
+.section-map {
+  background-color: var(--primary-dark-green);
+  padding: 14rem 0;
+  margin-bottom: 14rem;
+}
+
+.map-container {
+}
+
+.map-heading {
+  text-align: center;
+  color: var(--white);
+}
+
+.image-container {
+  width: 60%;
+  margin: 0 auto;
+  padding: 5rem 0;
+}
+
+.map-image {
+  width: 100%;
+}
+
+/* CONTACT */
+
+.section-contact {
+  margin-bottom: 14rem;
+}
+
+.contact-heading {
+  margin-bottom: 7rem;
+}
