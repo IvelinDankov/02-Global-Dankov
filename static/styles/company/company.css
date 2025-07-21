@@ -1,12 +1,11 @@
-.global {
+.company-hero {
   color: var(--white);
   /* position: relative; */
-  /* margin-bottom: 14rem; */
 }
 
-.global-container {
+.company-hero-container {
   height: 100vh;
-  background-image: url("/static/images/global/global-facilities-hero-image.png");
+  background-image: url("/static/images/company/company-hero-image.png");
   background-position: center center;
   background-size: cover;
   padding: 0 4rem;
@@ -84,96 +83,51 @@
   text-align: center;
 }
 
-/* map container */
-.section-map {
+/* STATUS */
+
+.section-company {
   background-color: var(--primary-dark-green);
-  padding: 14rem 0;
+}
+.company-container {
+  padding: 14rem 4rem;
   margin-bottom: 14rem;
+  display: flex;
+  gap: 20rem;
 }
-
-.map-container {
+.company-left {
+  flex: 1;
 }
-
-.map-heading {
-  text-align: center;
+.company-heading,
+.company-description,
+.company-stats > p,
+.company-stats > span {
   color: var(--white);
 }
 
-.image-container {
-  width: 60%;
-  margin: 0 auto;
-  padding: 5rem 0;
+.company-heading {
 }
-
-.map-image {
-  width: 100%;
-}
-
-/* CONTACT */
-
-.section-contact {
-  margin-bottom: 14rem;
-}
-
-.contact-heading {
-  margin-bottom: 7rem;
-}
-
-/* LOCATION */
-
-.locations {
-}
-.location-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  align-items: center;
-  gap: 5rem;
-  padding: 0 4rem;
-}
-.location-item {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 2rem;
-}
-
-[name="location-outline"] {
-  grid-row: span 2;
-  color: var(--light-green);
-}
-.location-description {
-}
-
-/* CONTENT */
-
-.content-container {
-  display: flex;
-  gap: 35rem;
-  margin-bottom: 14rem;
-}
-.content-image-box {
+.company-right {
   flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 7rem;
 }
-.content-image {
+.company-description {
+  font-size: 3rem;
+  grid-column: 1 / -1;
+}
+.company-stats {
+}
+.company-stats span {
+  display: block;
   width: 100%;
-  height: auto;
-}
-.content-text-box {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  height: 1px;
+  background-color: var(--light-green);
+  margin: 2rem 0;
 }
 
-.content-heading {
-  margin-bottom: 4rem;
-}
-
-.content-text {
-  margin-bottom: 2rem;
-}
-
-.content-contact-link {
-  color: var(--light-green);
-  text-decoration: none;
+.company-stats-number {
+  font-size: 6.4rem;
   font-weight: bold;
+  color: var(--light-green);
 }
