@@ -115,24 +115,6 @@
   display: block;
 }
 
-/* media queries */
-
-@media (max-width: 562.5em) {
-  html {
-    font-size: 50%;
-  }
-}
-
-@media (max-width: 452.5em) {
-  html {
-    font-size: 45%;
-  }
-
-  .hero-container {
-    /* padding: 2rem 0; */
-  }
-}
-
 /* SECTION WHY US HOME */
 .section-why-us-home {
   padding: 14rem 0;
@@ -373,8 +355,8 @@ ion-icon {
   justify-content: space-between;
 }
 .insta-image {
-  width: 40rem;
-  height: 40rem;
+  width: 25rem;
+  height: 25rem;
   display: block;
   object-fit: cover;
 }
@@ -453,4 +435,75 @@ address,
 .footer-copy {
   margin-bottom: 5rem;
   color: var(--dim-gray);
+}
+
+/* media queries */
+@media (max-width: 62.5em) { 
+  .review-content {
+    flex: 1 0 50%;
+    padding: 0rem 5rem;
+  }
+ }
+
+
+@media (max-width: 58.75em) {
+  html {
+    font-size: 50%;
+  }
+
+  .review-container{
+    gap: 3.5rem;
+  }
+
+  .review-content {
+	display: flex;
+	gap: 4rem;
+	flex-direction: column;
+	justify-content: center;
+	padding: 0 5rem 0 10rem;
+}
+
+   .review-image {
+    width: 20rem;
+    height: 20rem;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 47.5em) {
+  html {
+    font-size: 40%;
+  }
+  .ionicon {
+    width: 90%;
+    height: 90%;
+  }
+  .hero-container {
+    height: 80vh;
+  }
+
+  .review-container{
+    gap: 1.5rem;
+  }
+
+  .review-image {
+    width: 100%;
+    height: 30rem;
+  }
+
+  .review-content {
+    padding: 0 2rem;
+  }
+}
+
+@media (max-width: 42.5em) {
+  html {
+    font-size: 35%;
+  }
+
+  .why-us-home-heading {
+    width: 100%;
+  }
+
+  .
 }

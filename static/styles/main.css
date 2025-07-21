@@ -76,3 +76,15 @@ p {
   font-weight: normal;
   color: var(--dark-grey);
 }
+
+@media (max-width: 58.75em) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media (max-width: 47.5em) {
+  html {
+    font-size: 45%;
+  }
+}

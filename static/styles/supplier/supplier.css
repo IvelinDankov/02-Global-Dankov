@@ -124,7 +124,8 @@
 .supplier-form select {
   padding: 1rem;
   width: 100%;
-  border: none;
+  outline: none;
+  border: 0px;
   background-color: var(--primary-dark-green);
   color: var(--white);
   border-bottom: 1px solid var(--white);
