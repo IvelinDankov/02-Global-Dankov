@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+
+    <link rel="stylesheet" href="/static/styles/style.css" />
+
+    <title>Supplier</title>
+  </head>
+  <body>
+    <div class="contact contact-container container">
+      <header class="header">
+        <a href="/" class="logo">
+          <ion-icon name="earth-outline"></ion-icon><span>Dankov</span>
+          <span>Global</span>
+        </a>
+        <nav class="navigation">
+          <ul class="navigation-list">
+            <li class="navigation-item"><a class="active" href="/">Home</a></li>
+            <li class="navigation-item">
+              <a href="../why-dankov/why-dankov.html">Why Thomas</a>
+            </li>
+            <li class="navigation-item">
+              <a href="/industries">Industries</a>
+            </li>
+            <li class="navigation-item"><a href="/products">Products</a></li>
+            <li class="navigation-item">
+              <a href="/global">Global Facilities</a>
+            </li>
+            <li class="navigation-item"><a href="/company">Company</a></li>
+          </ul>
+        </nav>
+        <p class="header-icons">
+          <ion-icon name="cart-outline"></ion-icon>
+          <ion-icon name="search-outline"></ion-icon>
+        </p>
+      </header>
+      <h1 class="heading-1 header-heading">
+        Let’s Grow Together. <br />
+        Become a Supplier
+      </h1>
+    </div>
+
+    <section class="section section-supplier">
+      <div class="container supplier-container">
+        <h2 class="heading-2 supplier-heading">
+          Interested in Becoming a Supplier?
+        </h2>
+
+        <p class="supplier-text">
+          Get in touch with us using the form below, and we'll respond as soon
+          as possible.
+        </p>
+        <form action="" class="supplier-form">
+          <div class="form-group">
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder="Full Name"
+            />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="Email"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              id="phone"
+              name="phone"
+              required
+              placeholder="Phone Number"
+            />
+            <input
+              type="text"
+              id="company"
+              name="company"
+              required
+              placeholder="Company Name"
+            />
+          </div>
+
+          <div class="form-group">
+            <select name="industry" id="industry">
+              <option value="">Select Industry</option>
+              <option value="manufacturing">Manufacturing</option>
+              <option value="retail">Retail</option>
+              <option value="technology">Technology</option>
+              <option value="healthcare">Healthcare</option>
+            </select>
+            <input
+              type="text"
+              id="website"
+              name="website"
+              required
+              placeholder="Website URL"
+            />
+          </div>
+
+          <div class="form-group">
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              required
+              placeholder="Message"
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn submit-btn">Submit</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="section section-company-content">
+      <div class="container company-content-container">
+        <div class="company-content-text-box">
+          <h2 class="heading-2 company-content-heading">
+            Strong Dedication to Quality and Commitment
+          </h2>
+
+          <p class="company-content-text">
+            At Dankov Global, we pride ourselves on our strong dedication to
+            quality and commitment to excellence. Our suppliers play a crucial
+            role in helping us maintain the highest standards in our products
+            and services.
+          </p>
+          <p class="company-content-text">
+            We believe that strong partnerships with our suppliers are key to
+            achieving our goals and delivering exceptional value to our
+            customers.
+          </p>
+
+          <a class="company-content-contact-link" href="#">Contact Us &rarr;</a>
+        </div>
+        <div class="company-content-image-box">
+          <img
+            src="/static/images/supplier/Supplier-man-image.png"
+            alt="a women with lettuce bag"
+            class="company-content-image"
+          />
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
