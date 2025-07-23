@@ -1,0 +1,285 @@
+// @import url("../public/styles/main.css");
+
+@import url("../public/styles/home/home.css");
+@import url("../public/styles/why-dankov/why-dankov.css");
+@import url("../public/styles/industrie/industrie.css");
+@import url("../public/styles/product/product.css");
+@import url("../public/styles/product-details/product-details.css");
+@import url("../public/styles/global-facilities/global-facilities.css");
+@import url("../public/styles/company/company.css");
+
+:root {
+  --primary-dark-green: #3f6050;
+  --light-green: #569e7b;
+  --dark-grey: #333;
+  --dim-gray: #666;
+  --light-gray: #bbb;
+  --soft-gray: #f4f4f4;
+  --white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Arimo", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  /* font-family: serif; */
+  font-size: 1.6rem;
+  letter-spacing: normal;
+  line-height: 1.4;
+}
+
+.container {
+  max-width: 192rem;
+  margin: 0 auto;
+  /* padding-bottom: 14rem; */
+  /* height: 100vh; */
+}
+
+section {
+  max-width: 192rem;
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
+.heading-1 {
+  font-size: 6.4rem;
+  font-weight: bold;
+  color: var(--dark-grey);
+}
+.heading-2 {
+  font-size: 4.8rem;
+  font-weight: bold;
+  color: var(--dark-grey);
+}
+.heading-3 {
+  font-size: 3.2rem;
+  font-weight: bold;
+  color: var(--dark-grey);
+}
+.heading-4 {
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: var(--dark-grey);
+}
+.heading-5 {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: var(--dark-grey);
+}
+.heading-6 {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--dark-grey);
+}
+p {
+  font-size: 2rem;
+  font-weight: normal;
+  color: var(--dark-grey);
+}
+
+.cta-btn {
+  align-self: start;
+  padding: 2rem 6rem;
+  cursor: pointer;
+  border-radius: 50rem;
+  background-color: var(--white);
+  color: var(--primary-dark-green);
+  font-weight: bold;
+  text-decoration: none;
+  display: block;
+}
+.cta-btn:hover {
+  background-color: var(--soft-gray);
+}
+
+ion-icon {
+  width: 4rem;
+  height: 4rem;
+}
+
+/* media queries */
+/* 1000px */
+@media (max-width: 62.5em) {
+  .review-content {
+    flex: 1 0 50%;
+    padding: 0 !important;
+  }
+}
+
+/* 940px */
+@media (max-width: 58.75em) {
+  html {
+    font-size: 50%;
+  }
+
+  .review-container {
+    gap: 3.5rem;
+  }
+
+  .review-content {
+    display: flex;
+    gap: 4rem;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 5rem 0 10rem;
+  }
+
+  .review-image {
+  }
+}
+
+/* 850px */
+@media (max-width: 53.125em) {
+  .heading-1 {
+    font-size: 4.8rem;
+  }
+
+  .heading-2 {
+    font-size: 3.2rem;
+  }
+
+  .heading-4 {
+    font-size: 2.4rem;
+  }
+
+  .hero-container {
+    height: 80vh;
+  }
+
+  .hero {
+    margin-bottom: 10rem;
+  }
+
+  .welcome-section {
+    padding-bottom: 10rem;
+  }
+
+  .section-why-us-home {
+    padding: 10rem 0;
+  }
+
+  .why-us-home-heading {
+    width: 80%;
+  }
+
+  .home-product-contaier {
+    padding: 10rem 4rem;
+  }
+
+  .home-product-section {
+    padding-bottom: 10rem;
+  }
+
+  .home-product-list {
+    justify-content: space-around;
+  }
+
+  .review-container {
+    padding: 0 4rem 10rem 4rem;
+  }
+
+  .review-text {
+    font-size: 2rem;
+  }
+
+  .cta-container {
+    padding: 0 4rem 10rem 4rem;
+  }
+
+  .cta-content {
+    padding: 5rem;
+  }
+
+  .cta-logo-image {
+    width: 10rem;
+    height: 10rem;
+  }
+
+  .cta-heading {
+    font-size: 2.4rem;
+  }
+
+  .cta-text {
+    font-size: 1.6rem;
+  }
+
+  .cta-btn {
+    padding: 1.5rem 4rem;
+  }
+
+  .insta-container {
+    padding: 0 4rem 10rem 4rem;
+  }
+
+  .insta-image {
+    width: 100%;
+    height: 21.3rem;
+  }
+}
+
+/* 760px */
+@media (max-width: 47.5em) {
+  html {
+    font-size: 40%;
+  }
+  .ionicon {
+  }
+  .hero-container {
+    height: 80vh;
+  }
+
+  .review-container {
+    gap: 1.5rem;
+    flex-direction: column;
+  }
+
+  .review-image-box {
+    width: 80%;
+    margin: auto;
+  }
+
+  .review-image {
+    text-align: center;
+    width: 80%;
+    height: 50%;
+  }
+
+  .review-content {
+    padding: 0 2rem;
+  }
+
+  .cta-content {
+    padding: 7rem;
+  }
+}
+
+/* 680px */
+@media (max-width: 42.5em) {
+  html {
+    font-size: 35%;
+  }
+
+  .why-us-home-heading {
+    width: 100%;
+  }
+
+  .review-image {
+    width: 100%;
+    height: 40rem;
+    object-fit: cover;
+  }
+}
+
+/* 450px */
+@media (max-width: 28.125em) {
+}

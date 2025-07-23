@@ -1,0 +1,42 @@
+.why {
+  color: var(--white);
+  /* position: relative; */
+  margin-bottom: 14rem;
+}
+
+.why-container {
+  height: 100vh;
+  background-image: url("/static/images/why/why-hero-image.png");
+  background-position: center center;
+  background-size: cover;
+  padding: 0 4rem;
+  margin-bottom: 14rem;
+}
+
+.section-why-us {
+  padding: 0 4rem 14rem 4rem;
+  background-color: var(--white);
+}
+
+.why-us-heading {
+  color: var(--dark-grey);
+  margin-bottom: 5rem;
+}
+
+.features-icon {
+  width: 4rem;
+  height: 4rem;
+  margin-right: 2rem;
+  color: var(--light-green);
+}
+
+.why-us-features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 5rem;
+}
+
+.why-us-feature {
+  width: 30%;
+}

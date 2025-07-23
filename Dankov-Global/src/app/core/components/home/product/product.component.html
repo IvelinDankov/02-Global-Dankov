@@ -1,0 +1,29 @@
+<section class="section home-product-section">
+  <div class="container home-product-contaier">
+    <h2 class="heading-2 home-product-heading">
+      Fresh Organic Supply Direct From <br />
+      Farmer to Home
+    </h2>
+
+    <ul class="home-product-list">
+      @for (product of products; track product.id) {
+
+      <li class="home-product-item">
+        <button class="product-like-icon" type="button">
+          <ion-icon name="heart-outline"></ion-icon>
+        </button>
+        <img src="{{product.imageUrl}}" alt="{{product.name}}" class="home-product-image" />
+        <button class="product-button">
+          <ion-icon class="product-shop-icon" name="cash-outline"></ion-icon>
+        </button>
+        <div class="home-product-content">
+          <p class="product-title">{{product.name}} 250gm</p>
+          <p class="product-price"> {{product.price.toFixed(2)}} €</p>
+        </div>
+      </li>
+      }
+
+    </ul>
+    <a href="#" class="home-all-products"> view all products</a>
+  </div>
+</section>

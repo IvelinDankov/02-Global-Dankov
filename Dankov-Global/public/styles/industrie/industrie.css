@@ -1,0 +1,161 @@
+.industrie {
+  color: var(--white);
+  /* position: relative; */
+  margin-bottom: 14rem;
+}
+
+.industrie-container {
+  height: 100vh;
+  background-image: url("/static/images/industrie/Industrie-main.png");
+  background-position: center center;
+  background-size: cover;
+  padding: 0 4rem;
+}
+
+.logo {
+  /* display: inline-block; */
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.header {
+  padding-top: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navigation {
+  width: 100%;
+}
+
+.navigation-list {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.navigation-item {
+  list-style: none;
+}
+
+.navigation-item a {
+  text-decoration: none;
+  color: var(--white);
+  padding-bottom: 1px;
+  transition: all 0.3s;
+  position: relative;
+}
+.navigation-item a:hover::after,
+.navigation-item a.active::after {
+  content: "";
+  height: 2px;
+  width: 40%;
+  /* display: block; */
+  background-color: var(--white);
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+  bottom: -2px;
+  z-index: 10;
+  border-radius: 50rem;
+}
+
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-icons > * {
+  cursor: pointer;
+}
+
+.header-heading {
+  color: var(--white);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* INDUSTRIE */
+.status-industrie-section {
+  background-color: var(--primary-dark-green);
+  color: var(--white);
+  margin-bottom: 14rem;
+}
+.status-container {
+  padding: 14rem 0;
+  display: flex;
+  gap: 5rem;
+}
+.status-heading-box {
+  flex: 1;
+}
+.status-heading {
+  color: var(--white);
+}
+.status-content-box {
+  flex: 1;
+}
+.status-text {
+  color: var(--white);
+  font-size: 1.6rem;
+  margin-bottom: 5rem;
+}
+.status-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  gap: 2rem;
+}
+.status-item {
+  flex: 1 0 45%;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.status-list > .status-item + span:first-child {
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.status-list > .status-item + span:nth-child(2) {
+  width: 100%;
+  display: block;
+  height: 0.5px;
+  background-color: var(--white);
+}
+
+.status-list > .status-item + span:last-child {
+  font-size: 1.2rem;
+}
+/* IMAGES */
+
+.section-featured-industries {
+}
+.featured-industrie-container {
+}
+.featured-industrie-heading {
+  margin-bottom: 5rem;
+}
+.featured-industrie-box {
+  display: grid;
+  gap: 5rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+.featured-industrie-item {
+}
+.featured-industrie-image {
+  width: 100%;
+}
+.featured-industrie-title {
+}

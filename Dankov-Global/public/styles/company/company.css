@@ -1,0 +1,133 @@
+.company-hero {
+  color: var(--white);
+  /* position: relative; */
+}
+
+.company-hero-container {
+  height: 100vh;
+  background-image: url("/static/images/company/company-hero-image.png");
+  background-position: center center;
+  background-size: cover;
+  padding: 0 4rem;
+}
+
+.logo {
+  /* display: inline-block; */
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.header {
+  padding-top: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navigation {
+  width: 100%;
+}
+
+.navigation-list {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.navigation-item {
+  list-style: none;
+}
+
+.navigation-item a {
+  text-decoration: none;
+  color: var(--white);
+  padding-bottom: 1px;
+  transition: all 0.3s;
+  position: relative;
+}
+.navigation-item a:hover::after,
+.navigation-item a.active::after {
+  content: "";
+  height: 2px;
+  width: 40%;
+  /* display: block; */
+  background-color: var(--white);
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+  bottom: -2px;
+  z-index: 10;
+  border-radius: 50rem;
+}
+
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-icons > * {
+  cursor: pointer;
+}
+
+.header-heading {
+  color: var(--white);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* STATUS */
+
+.section-company {
+  background-color: var(--primary-dark-green);
+}
+.company-container {
+  padding: 14rem 4rem;
+  margin-bottom: 14rem;
+  display: flex;
+  gap: 20rem;
+}
+.company-left {
+  flex: 1;
+}
+.company-heading,
+.company-description,
+.company-stats > p,
+.company-stats > span {
+  color: var(--white);
+}
+
+.company-heading {
+}
+.company-right {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 7rem;
+}
+.company-description {
+  font-size: 3rem;
+  grid-column: 1 / -1;
+}
+.company-stats {
+}
+.company-stats span {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: var(--light-green);
+  margin: 2rem 0;
+}
+
+.company-stats-number {
+  font-size: 6.4rem;
+  font-weight: bold;
+  color: var(--light-green);
+}
