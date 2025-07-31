@@ -1,4 +1,4 @@
-<div class="hero hero-container container">
+<div [class]="containerClass" [ngStyle]="{'background-image': headerBg}">
   <header class="header">
     <a routerLink="/" class="logo">
       <ion-icon name="earth-outline"></ion-icon><span>Dankov</span>
@@ -6,14 +6,15 @@
     </a>
     <nav class="navigation">
       <ul class="navigation-list">
-        <li class="navigation-item"><a class="active" routerLink="/">Home</a></li>
+        <li class="navigation-item"><a routerLink="/home" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">Home</a></li>
         <li class="navigation-item">
-          <a href="../why-dankov/why-dankov.html">Why Thomas</a>
+          <a routerLink="/why-dankov" routerLinkActive="active">Why Thomas</a>
         </li>
         <li class="navigation-item">
-          <a href="/industries">Industries</a>
+          <a routerLink="/industries" routerLinkActive="active">Industries</a>
         </li>
-        <li class="navigation-item"><a href="/products">Products</a></li>
+        <li class="navigation-item"><a routerLink="/products" routerLinkActive="active">Products</a></li>
         <li class="navigation-item">
           <a href="/global">Global Facilities</a>
         </li>
@@ -26,6 +27,6 @@
     </p>
   </header>
   <h1 class="heading-1 header-heading">
-    Your Global Partner. Creating a Better World
+    {{headertitle}}
   </h1>
 </div>

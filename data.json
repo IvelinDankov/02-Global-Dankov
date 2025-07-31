@@ -1,34 +1,74 @@
 [
   {
     "name": "Chinese Cabbage",
-    "price": 20,
+    "price": 10.5,
     "description": "Fresh and organic Chinese cabbage, perfect for salads and stir-fries.",
-    "imageUrl": "/home/product-1.png",
+    "imageUrl": "/images/home/product-1.png",
     "category": "Vegetables",
-    "stock": 20
+    "stock": 200,
+    "weight": 250
   },
   {
-    "name": "Chinese Cabbage",
-    "price": 20,
+    "name": "Bananas",
+    "price": 2,
     "description": "Fresh and organic Chinese cabbage, perfect for salads and stir-fries.",
-    "imageUrl": "/home/product-1.png",
-    "category": "Vegetables",
-    "stock": 20
+    "imageUrl": "/images/product/banana.png",
+    "category": "Fruits",
+    "stock": 1000,
+    "weight": 500
   },
   {
-    "name": "Broccoli",
-    "price": 17,
+    "name": "Red Tomato",
+    "price": 4.5,
     "description": "Fresh and organic broccoli, rich in vitamins and minerals.",
-    "imageUrl": "/home/product-2.png",
+    "imageUrl": "/images/product/tomatos.png",
     "category": "Vegetables",
-    "stock": 15
+    "stock": 500,
+    "weight": 250
   },
   {
-    "name": "Carrot",
-    "price": 35,
+    "name": "Red Onion",
+    "price": 3.15,
     "description": "Crunchy and sweet carrots, perfect for snacking or cooking.",
-    "imageUrl": "/home/product-3.png",
+    "imageUrl": "/images/product/red-onion.png",
     "category": "Vegetables",
-    "stock": 30
+    "stock": 3000,
+    "weight": 500
+  },
+  {
+    "name": "Fresh Lime",
+    "price": 2,
+    "description": "Crunchy and sweet carrots, perfect for snacking or cooking.",
+    "imageUrl": "/images/product/red-onion.png",
+    "category": "Vegetables",
+    "stock": 2110,
+    "weight": 500
+  },
+  {
+    "name": "White Mushrooms",
+    "price": 5.9,
+    "description": "Crunchy and sweet carrots, perfect for snacking or cooking.",
+    "imageUrl": "/images/product/white-mashrooms.png",
+    "category": "Vegetables",
+    "stock": 1125,
+    "weight": 250
+  },
+  {
+    "name": "Sweet Potatos",
+    "price": 1.5,
+    "description": "Crunchy and sweet carrots, perfect for snacking or cooking.",
+    "imageUrl": "/images/product/sweet potato.png",
+    "category": "Vegetables",
+    "stock": 3220,
+    "weight": 500
+  },
+  {
+    "name": "Yellow Apricots",
+    "price": 3.25,
+    "description": "Crunchy and sweet carrots, perfect for snacking or cooking.",
+    "imageUrl": "/images/product/yellow peaches.png",
+    "category": "Vegetables",
+    "stock": 500,
+    "weight": 250
   }
 ]

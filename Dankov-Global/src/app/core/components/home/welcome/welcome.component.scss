@@ -1,0 +1,45 @@
+/* WELCOME SECTION */
+
+.welcome-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 12rem;
+  padding-bottom: 14rem;
+  align-items: flex-start;
+}
+
+.welcome-content {
+  width: 70rem;
+}
+.heading-2 {
+}
+.welcome-title {
+}
+
+.paragraphNone {
+  display: block;
+}
+.welcome-link {
+  border: none;
+  background-color: transparent;
+  padding: 1.6px;
+  color: var(--primary-dark-green);
+  border-bottom: 1px solid currentColor;
+  transition: 0.3s all;
+  cursor: pointer;
+}
+
+.welcome-link:hover {
+  border-bottom: none;
+}
+
+.welcome-image-box {
+  width: 70rem;
+}
+
+.welcome-image {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+  display: block;
+}

@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Product } from "./models/product.model.js";
@@ -12,6 +12,14 @@ export class ProductService {
 
   getAllProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.API_URL + "/products");
+  }
+  getSortedProducts(
+    sortBy: string,
+    order: "asc" | "desc"
+  ): Observable<Product[]> {
+    const params = new HttpParams().set("sortBy", sortBy).set("order", order);
+
+    return this.http.get<Product[]>(`${this.API_URL}/products`, { params });
   }
 }
 /* 

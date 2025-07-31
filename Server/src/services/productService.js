@@ -4,4 +4,7 @@ export default {
   getAllProducts() {
     return Product.find();
   },
+  sortedProducts(sortBy, order) {
+    return Product.find().sort({ [sortBy]: order });
+  },
 };

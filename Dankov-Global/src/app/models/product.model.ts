@@ -10,4 +10,5 @@ export interface Product {
   updatedAt: Date;
   isActive: boolean;
   rating: number;
+  weight: number;
 }

@@ -17,13 +17,23 @@
           <ion-icon class="product-shop-icon" name="cash-outline"></ion-icon>
         </button>
         <div class="home-product-content">
-          <p class="product-title">{{product.name}} 250gm</p>
+          <p class="product-title">{{product.name}} {{product.weight}}gr.</p>
           <p class="product-price"> {{product.price.toFixed(2)}} €</p>
         </div>
       </li>
       }
 
+      @if (errMsg) {
+      <p class="error-message">
+        {{errMsg}}
+      </p>
+      }
+
+      @if(loading) {
+      <span class="loader"></span>
+      }
+
     </ul>
-    <a href="#" class="home-all-products"> view all products</a>
+    <a routerLink="/products" class="home-all-products"> view all products</a>
   </div>
 </section>
