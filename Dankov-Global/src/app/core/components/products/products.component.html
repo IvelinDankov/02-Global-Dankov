@@ -6,25 +6,16 @@
         Farmer to Home
       </h2>
       <div class="products-filter-box">
-        <form #form="ngForm" class="products-filter-box">
+        <form class="products-filter-box">
 
           <button class="search-button" type="button">
-            <span><ion-icon name="search-outline"></ion-icon></span>
-            <span>Search by keywords</span>
+            <span><ion-icon name="search-outline"></ion-icon></span> <input [(ngModel)]="searchTerm"
+              (input)="onSearch()" type="text" name="search" placeholder="Search products...">
           </button>
           <div class="form-group">
-            @if (order !== undefined) {
-
-            <a routerLink="./"
-              [queryParams]="{order: order === 'vegetables' ? 'fruits' : 'vegetables'}">{{order === 'vegetables' ? 'Fruits': 'Vegetables'}}</a>
-            }
-            <!-- <a routerLink="./" [queryParams]="{order: 'vegetables'}">vetables</a> -->
-
-          </div>
-          <div class="form-group">
-            <label for="">Sort by</label>
-            <select (change)="onSortChange($event)" #sort [(ngModel)]="sort" name="sort" id="sort">
-              @for (sortedItem of sortProducts; track $index) {
+            <label for="sort">Sort by</label>
+            <select (change)="onSortChange($event)" #sort [(ngModel)]="selectedSort" name="sort" id="sort">
+              @for (sortedItem of sortProducts; track sortedItem) {
               <option [value]="sortedItem.value"> {{sortedItem.label}} </option>
               }
             </select>
@@ -33,12 +24,13 @@
       </div>
     </div>
 
+
     <ul class="home-product-list">
       @if (isLoading) {
       <span class="loader"></span>
       } @else {
 
-      @for (product of products; track product.id) {
+      @for (product of filteredProducts; track product._id) {
 
       <li class="home-product-item">
         <button class="product-like-icon" type="button">
@@ -51,6 +43,9 @@
         <div class="home-product-content">
           <p class="product-title">{{product.name}} {{product.weight}}gm</p>
           <p class="product-price">{{product.price | currency}}€</p>
+          <button (click)="showDetails(product._id)" class="product-details">
+            details &#10555;
+          </button>
         </div>
       </li>
       }

@@ -17,6 +17,8 @@ export class ProductService {
     sortBy: string,
     order: "asc" | "desc"
   ): Observable<Product[]> {
+    console.log("Fetching sorted products by:", sortBy, order);
+
     const params = new HttpParams().set("sortBy", sortBy).set("order", order);
 
     return this.http.get<Product[]>(`${this.API_URL}/products`, { params });
