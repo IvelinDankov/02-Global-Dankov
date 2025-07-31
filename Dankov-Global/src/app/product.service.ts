@@ -23,6 +23,10 @@ export class ProductService {
 
     return this.http.get<Product[]>(`${this.API_URL}/products`, { params });
   }
+
+  getOne(id: string | null) {
+    return this.http.get<Product>(this.API_URL + `/products/${id}`);
+  }
 }
 /* 
   private getPostApiUrl = "http://localhost:3000/api/posts?limit={0}";

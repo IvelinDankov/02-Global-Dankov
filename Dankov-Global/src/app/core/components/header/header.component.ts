@@ -12,17 +12,10 @@ import {
   RouterLinkActive,
 } from "@angular/router";
 import { filter } from "rxjs";
-import { ContainerDirective } from "../../../directives/container.directive.js";
 
 @Component({
   selector: "app-header",
-  imports: [
-    RouterLink,
-    RouterLinkActive,
-    CommonModule,
-    NgStyle,
-    ContainerDirective,
-  ],
+  imports: [RouterLink, RouterLinkActive, CommonModule, NgStyle],
   templateUrl: "./header.component.html",
   styleUrl: "./header.component.scss",
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -43,6 +36,9 @@ export class HeaderComponent implements OnInit {
           this.containerClass = "industrie industrie-container container";
         } else if (currRoute.includes("products")) {
           this.containerClass = "product product-container container";
+        } else if (currRoute.includes(`products/:id`)) {
+          this.containerClass =
+            "product-details product-details-container container";
         } else {
           this.containerClass = "hero hero-container container";
         }
@@ -64,6 +60,10 @@ export class HeaderComponent implements OnInit {
         } else if (currRoute.includes("industries")) {
           this.headerBg = "url(/images/industrie/Industrie-main.png)";
           this.headertitle = "Industries We Serve Products";
+        } else if (/^\/products\/[^\/]+/.test(currRoute)) {
+          this.headertitle = "Fresh Premium Quality Products";
+          this.headerBg =
+            "url(/images/product-details/Product-details-main-image.png)";
         } else if (currRoute.includes("products")) {
           this.headerBg = "url(/images/product/Product-main-image.png)";
           this.headertitle = "Distribute Premium Quality Products";

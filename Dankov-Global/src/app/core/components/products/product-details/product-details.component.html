@@ -2,27 +2,20 @@
   <div class="container product-description-container">
     <div class="product-description">
       <div class="product-description-image-box">
-        <img class="product-description-image" src="/static/images/product-details/product-details-image.png"
-          alt="product image" />
+        <img class="product-description-image" src="{{product?.imageUrl}}" alt="product image" />
       </div>
       <div class="product-description-content-box">
-        <h3 class="product-description-heading">Product Name 250g</h3>
+        <h3 class="product-description-heading">{{product?.name}} {{product?.weight}}g</h3>
         <p class="availabity">
           <span>SKU: TG1528</span>
           <span>Availability: In Stock</span>
         </p>
         <p class="product-description-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-          enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat
-          nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-          sunt in culpa qui officia deserunt mollit anim id est laborum.
+          {{product?.description}}
         </p>
         <p class="product-decription-price">
-          <span>€4.50</span>
-          <span>$2.50</span>
+          <span>{{product?.price | currency: 'EUR'}}</span>
+          <sup style="text-decoration: line-through "> {{productDiscount | currency: 'EUR'}} </sup>
         </p>
         <p class="product-decription-quantity">
           <label for="quantity">Quantity:</label>

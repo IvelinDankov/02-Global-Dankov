@@ -7,4 +7,7 @@ export default {
   sortedProducts(sortBy, order) {
     return Product.find().sort({ [sortBy]: order });
   },
+  getOne(id) {
+    return Product.findById(id);
+  },
 };
