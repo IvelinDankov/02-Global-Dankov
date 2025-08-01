@@ -109,6 +109,15 @@
   transition: all 0.3s;
   border: none;
   align-self: start;
+
+  &:hover {
+    background-color: var(--primary-dark-green);
+  }
+}
+
+.availabity {
+  display: flex;
+  justify-content: space-between;
 }
 
 /* accordion */

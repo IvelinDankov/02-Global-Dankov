@@ -9,10 +9,11 @@ import { ActivatedRoute } from "@angular/router";
 import { Product } from "../../../models/product.model.js";
 import { CurrencyPipe } from "@angular/common";
 import { ProductService } from "../../../core/services/product.service.js";
+import { PriceDirective } from "../../../directives/price.directive.js";
 
 @Component({
   selector: "app-product-details",
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe, PriceDirective],
   templateUrl: "./product-details.component.html",
   styleUrl: "./product-details.component.scss",
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

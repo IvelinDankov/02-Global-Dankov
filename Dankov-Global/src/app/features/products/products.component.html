@@ -42,7 +42,7 @@
         </button>
         <div class="home-product-content">
           <p class="product-title">{{product.name}} {{product.weight}}gm</p>
-          <p class="product-price">{{product.price | currency}}€</p>
+          <p appPrice class="product-price">{{product.price | currency: 'EUR'}}</p>
           <a [routerLink]="['/products', product._id]" class="product-details">
             details &#10555;
           </a>

@@ -10,10 +10,17 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CurrencyPipe } from "@angular/common";
 import { Router, RouterLink } from "@angular/router";
 import { ProductService } from "../../core/services/product.service.js";
+import { PriceDirective } from "../../directives/price.directive.js";
 
 @Component({
   selector: "app-products",
-  imports: [ReactiveFormsModule, FormsModule, CurrencyPipe, RouterLink],
+  imports: [
+    ReactiveFormsModule,
+    FormsModule,
+    CurrencyPipe,
+    RouterLink,
+    PriceDirective,
+  ],
   templateUrl: "./products.component.html",
   styleUrl: "./products.component.scss",
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

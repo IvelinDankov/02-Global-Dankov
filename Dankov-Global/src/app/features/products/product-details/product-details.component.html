@@ -14,8 +14,8 @@
           {{product?.description}}
         </p>
         <p class="product-decription-price">
-          <span>{{product?.price | currency: 'EUR'}}</span>
-          <sup style="text-decoration: line-through "> {{productDiscount | currency: 'EUR'}} </sup>
+          <span appPrice>{{product?.price | currency: 'EUR'}}</span>
+          <sup style="text-decoration: line-through"> {{productDiscount | currency: 'EUR'}} </sup>
         </p>
         <p class="product-decription-quantity">
           <label for="quantity">Quantity:</label>
