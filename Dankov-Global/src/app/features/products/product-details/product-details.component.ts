@@ -3,13 +3,12 @@ import {
   CUSTOM_ELEMENTS_SCHEMA,
   DestroyRef,
   inject,
-  input,
   OnInit,
 } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
-import { ProductService } from "../../../../product.service.js";
-import { Product } from "../../../../models/product.model.js";
+import { ActivatedRoute } from "@angular/router";
+import { Product } from "../../../models/product.model.js";
 import { CurrencyPipe } from "@angular/common";
+import { ProductService } from "../../../core/services/product.service.js";
 
 @Component({
   selector: "app-product-details",
@@ -26,7 +25,9 @@ export class ProductDetailsComponent implements OnInit {
   product: Product | undefined;
   productDiscount: number = 0;
 
-  productId = input.required<string>();
+  showProductDescrition: boolean = false;
+  showRefundDescrition: boolean = false;
+  showShippingDescrition: boolean = false;
 
   constructor() {}
 
@@ -44,5 +45,22 @@ export class ProductDetailsComponent implements OnInit {
     });
 
     this.destroyRef.onDestroy(() => subscription.unsubscribe());
+  }
+
+  showDescrition(): void {
+    this.showProductDescrition = !this.showProductDescrition;
+    this.showRefundDescrition = false;
+    this.showShippingDescrition = false;
+  }
+  showRefund() {
+    this.showProductDescrition = false;
+    this.showRefundDescrition = !this.showRefundDescrition;
+    this.showShippingDescrition = false;
+  }
+
+  showShippingInfo() {
+    this.showProductDescrition = false;
+    this.showRefundDescrition = false;
+    this.showShippingDescrition = !this.showShippingDescrition;
   }
 }

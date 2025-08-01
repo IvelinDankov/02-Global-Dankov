@@ -4,9 +4,10 @@ import {
   inject,
   OnInit,
 } from "@angular/core";
-import { ProductService } from "../../../../product.service.js";
-import { Product } from "../../../../models/product.model.js";
+
 import { RouterLink } from "@angular/router";
+import { Product } from "../../../models/product.model.js";
+import { ProductService } from "../../../core/services/product.service.js";
 
 @Component({
   selector: "app-product",

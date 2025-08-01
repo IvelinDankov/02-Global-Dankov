@@ -133,6 +133,18 @@
   border-bottom: 2px solid var(--light-gray);
   cursor: pointer;
 }
+.show-item-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 2.4rem 0;
+  margin-bottom: 2.4rem;
+  border-bottom: 2px solid var(--light-gray);
+  cursor: pointer;
+}
+
+.show-item-header > * {
+  color: var(--light-green);
+}
 .text {
   font-size: 2.4rem;
   font-weight: 600;
@@ -142,7 +154,7 @@
   height: 2.4rem;
 }
 .hidden-box {
-  display: none;
+  display: block;
 }
 .hidden-box p {
   line-height: 1.6;

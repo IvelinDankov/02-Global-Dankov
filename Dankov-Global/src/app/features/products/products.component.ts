@@ -4,11 +4,12 @@ import {
   inject,
   OnInit,
 } from "@angular/core";
-import { ProductService } from "../../../product.service.js";
-import { Product } from "../../../models/product.model.js";
+
+import { Product } from "../../models/product.model.js";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CurrencyPipe } from "@angular/common";
 import { Router, RouterLink } from "@angular/router";
+import { ProductService } from "../../core/services/product.service.js";
 
 @Component({
   selector: "app-products",
@@ -49,9 +50,9 @@ export class ProductsComponent implements OnInit {
         this.filteredProducts = [...this.products];
       },
 
-      error: (error) => {
+      error: (err) => {
         this.isLoading = false;
-        console.error(error);
+        console.error(err);
         this.errorMsg = "Feild to load Products!";
       },
     });

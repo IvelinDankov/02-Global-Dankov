@@ -4,11 +4,11 @@ import {
   inject,
   OnInit,
 } from "@angular/core";
-import { ProductService } from "./product.service.js";
 import { Product } from "./models/product.model.js";
-import { HeaderComponent } from "./core/components/header/header.component";
+import { HeaderComponent } from "./shared/components/header/header.component.js";
 import { RouterOutlet } from "@angular/router";
-import { FooterComponent } from "./core/components/footer/footer.component";
+import { FooterComponent } from "./shared/components/footer/footer.component.js";
+import { ProductService } from "./core/services/product.service.js";
 
 @Component({
   selector: "app-root",

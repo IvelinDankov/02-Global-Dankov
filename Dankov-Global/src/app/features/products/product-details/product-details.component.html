@@ -33,11 +33,16 @@
     <h2 class="heading-2 product-info-heading">Product Information</h2>
     <div class="product-info-accordion">
       <div class="item">
-        <header class="item-header">
-
+        <header (click)="showDescrition()" [class]="showProductDescrition ? 'show-item-header' : 'item-header'">
           <p class="text">Product Description</p>
+          @if (showProductDescrition) {
+
+          <ion-icon class="icon" name="remove-outline"></ion-icon>
+          } @else {
           <ion-icon class="icon" name="add-outline"></ion-icon>
+          }
         </header>
+        @if (showProductDescrition) {
         <div class="hidden-box">
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus voluptate amet suscipit voluptatum
@@ -45,13 +50,22 @@
             asperiores est nemo corrupti delectus.
           </p>
         </div>
+
+        }
       </div>
       <div class="item">
-        <header class="item-header">
+        <header (click)="showRefund()" [class]="showRefundDescrition ? 'show-item-header': 'item-header'">
 
           <p class="text">Refund & Return Policy</p>
+          @if (showRefundDescrition) {
+
+          <ion-icon class="icon" name="remove-outline"></ion-icon>
+          } @else {
           <ion-icon class="icon" name="add-outline"></ion-icon>
+
+          }
         </header>
+        @if (showRefundDescrition) {
         <div class="hidden-box">
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus voluptate amet suscipit voluptatum
@@ -59,13 +73,23 @@
             asperiores est nemo corrupti delectus.
           </p>
         </div>
+
+        }
       </div>
       <div class="item">
-        <header class="item-header">
+        <header (click)="showShippingInfo()" [class]="showShippingDescrition ? 'show-item-header':  'item-header'">
 
           <p class="text">Shipping info</p>
+          @if (showShippingDescrition) {
+
+          <ion-icon class="icon" name="remove-outline"></ion-icon>
+          } @else {
           <ion-icon class="icon" name="add-outline"></ion-icon>
+
+          }
         </header>
+        @if (showShippingDescrition) {
+
         <div class="hidden-box">
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus voluptate amet suscipit voluptatum
@@ -73,6 +97,7 @@
             asperiores est nemo corrupti delectus.
           </p>
         </div>
+        }
       </div>
     </div>
   </div>
