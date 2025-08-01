@@ -8,11 +8,11 @@ import { ProductService } from "../../../product.service.js";
 import { Product } from "../../../models/product.model.js";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CurrencyPipe } from "@angular/common";
-import { Router } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
 
 @Component({
   selector: "app-products",
-  imports: [ReactiveFormsModule, FormsModule, CurrencyPipe],
+  imports: [ReactiveFormsModule, FormsModule, CurrencyPipe, RouterLink],
   templateUrl: "./products.component.html",
   styleUrl: "./products.component.scss",
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

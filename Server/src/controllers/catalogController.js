@@ -3,7 +3,7 @@ import productService from "../services/productService.js";
 
 const productController = Router();
 
-productController.get("/products", async (req, res) => {
+productController.get("/", async (req, res) => {
   const sortBy = req.query.sortBy;
   const order = req.query.order === "asc" ? 1 : -1;
 
@@ -16,7 +16,7 @@ productController.get("/products", async (req, res) => {
   }
 });
 
-productController.get("/products/:id", async (req, res) => {
+productController.get("/:id", async (req, res) => {
   const id = req.params.id;
   try {
     const product = await productService.getOne(id);

@@ -5,6 +5,6 @@ import productController from "./controllers/catalogController.js";
 const router = Router();
 
 router.use("/", homeController);
-router.use(productController);
+router.use("/products", productController);
 
 export default router;

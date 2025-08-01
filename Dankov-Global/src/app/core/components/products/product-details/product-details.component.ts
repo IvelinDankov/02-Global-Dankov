@@ -1,7 +1,9 @@
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
+  DestroyRef,
   inject,
+  input,
   OnInit,
 } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -20,16 +22,18 @@ export class ProductDetailsComponent implements OnInit {
   private route = inject(ActivatedRoute);
   // readonly productId: string | null;
   private productService = inject(ProductService);
-  productId!: string;
+  private destroyRef = inject(DestroyRef);
   product: Product | undefined;
   productDiscount: number = 0;
+
+  productId = input.required<string>();
 
   constructor() {}
 
   ngOnInit(): void {
-    this.productId = this.route.snapshot.paramMap.get("id") || "";
+    const id = this.route.snapshot.paramMap.get("id");
 
-    this.productService.getOne(this.productId).subscribe({
+    const subscription = this.productService.getOne(id).subscribe({
       next: (value) => {
         this.product = value;
         this.productDiscount = this.product.price / 0.8;
@@ -38,5 +42,7 @@ export class ProductDetailsComponent implements OnInit {
         console.log("Error fetching Product", err);
       },
     });
+
+    this.destroyRef.onDestroy(() => subscription.unsubscribe());
   }
 }

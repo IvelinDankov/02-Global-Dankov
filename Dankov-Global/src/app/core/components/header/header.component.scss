@@ -1,19 +1,29 @@
-.hero {
+.hero-container,
+.why-container {
   color: var(--white);
-  /* position: relative; */
-  margin-bottom: 14rem;
-}
-
-.hero-container {
-  height: 100vh;
-  // background-image: url("/images/home/hero-img.png");
   background-position: center center;
   background-size: cover;
   padding: 0 4rem;
+
+  margin-bottom: 14rem;
 }
 
-.industrie-container {
+.industrie-container,
+.product-details-container,
+.product-container {
+  color: var(--white);
+  background-position: center center;
+  background-size: cover;
+  padding: 0 4rem;
   margin-bottom: 0;
+}
+
+.hero,
+.industrie,
+.product-details,
+.product,
+.why {
+  height: 100vh;
 }
 
 .logo {
