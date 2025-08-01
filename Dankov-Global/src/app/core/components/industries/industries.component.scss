@@ -6,7 +6,7 @@
 
 .industrie-container {
   height: 100vh;
-  background-image: url("/static/images/industrie/Industrie-main.png");
+  /*   background-image: url("/static/images/industrie/Industrie-main.png"); */
   background-position: center center;
   background-size: cover;
   padding: 0 4rem;
@@ -69,8 +69,8 @@
 }
 /* IMAGES */
 
-.section-featured-industries {
-}
+/* .section-featured-industries {
+} */
 .featured-industrie-container {
   margin-bottom: 14rem;
 }
@@ -82,10 +82,10 @@
   gap: 5rem;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
-.featured-industrie-item {
-}
+/* .featured-industrie-item {
+} */
 .featured-industrie-image {
   width: 100%;
 }
-.featured-industrie-title {
-}
+/* .featured-industrie-title {
+} */
