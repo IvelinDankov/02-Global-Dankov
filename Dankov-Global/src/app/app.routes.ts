@@ -44,6 +44,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: "company",
+    loadComponent: () =>
+      import("./features/company/company.component.js").then(
+        (c) => c.CompanyComponent
+      ),
+  },
+  {
     path: "**",
     component: HomeComponent,
   },

@@ -58,6 +58,10 @@ export class HeaderComponent implements OnInit {
         } else if (currRoute.includes("global-facilities")) {
           this.headerBg = "url(/images/facillities/Facilities-hero.png)";
           this.headertitle = "20+ Locations Around the World Since 1999";
+        } else if (currRoute.includes("company")) {
+          this.headerBg = "url(/images/company/company-hero-image.png)";
+          this.headertitle = "Read the Story About Our Company";
+          this.containerClass = "company-hero company-hero-container container";
         } else {
           this.containerClass = "hero hero-container container";
         }
