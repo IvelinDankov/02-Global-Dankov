@@ -1,4 +1,5 @@
 import { Routes } from "@angular/router";
+import { HomeComponent } from "./features/home/home.component.js";
 
 export const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -34,5 +35,16 @@ export const routes: Routes = [
       import(
         "./features/products/product-details/product-details.component.js"
       ).then((c) => c.ProductDetailsComponent),
+  },
+  {
+    path: "global-facilities",
+    loadComponent: () =>
+      import("./features/facilities/facilities.component.js").then(
+        (c) => c.FacilitiesComponent
+      ),
+  },
+  {
+    path: "**",
+    component: HomeComponent,
   },
 ];

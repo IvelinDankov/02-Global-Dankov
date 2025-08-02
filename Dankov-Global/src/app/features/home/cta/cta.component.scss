@@ -1,0 +1,52 @@
+/* CTA SECTION */
+/* .section-cta {
+} */
+.cta-container {
+  padding: 0 4rem 14rem 4rem;
+  display: flex;
+}
+.cta-image {
+  width: 100%;
+  flex: 1 0 50%;
+  object-fit: cover;
+  text-align: center;
+  display: block;
+}
+.cta-content {
+  flex: 1 0 50%;
+
+  background-color: var(--primary-dark-green);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 14rem;
+  gap: 3.8rem;
+}
+.cta-logo-image {
+  width: 20rem;
+  height: 20rem;
+}
+.cta-heading {
+  color: var(--white);
+  font-weight: bold;
+}
+.cta-text {
+  color: var(--white);
+
+  line-height: 1.6;
+}
+.cta-btn {
+  align-self: start;
+  padding: 2rem 6rem;
+  cursor: pointer;
+  border-radius: 50rem;
+  background-color: var(--white);
+  color: var(--primary-dark-green);
+  font-weight: bold;
+  text-decoration: none;
+  display: block;
+}
+.cta-btn:hover {
+  background-color: var(--soft-gray);
+}

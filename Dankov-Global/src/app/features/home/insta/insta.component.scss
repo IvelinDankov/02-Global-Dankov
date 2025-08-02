@@ -1,0 +1,22 @@
+/* SECTION INSTAGRAM */
+.insta-container {
+  padding: 0 4rem 14rem 4rem;
+}
+.insta-heading {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+.image-box {
+  display: flex;
+  justify-content: space-between;
+}
+.insta-image {
+  width: 25rem;
+  height: 25rem;
+  display: block;
+  object-fit: cover;
+}
+
+.insta-image:nth-child(even) {
+  margin-top: 8rem;
+}

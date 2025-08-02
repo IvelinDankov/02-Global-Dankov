@@ -131,6 +131,12 @@ select {
   background-color: transparent;
   border: none;
   cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    transform: scale(1.15);
+    color: red;
+  }
 }
 
 .home-product-image {
@@ -146,22 +152,27 @@ select {
 
 .product-button {
   border: none;
-  width: 100%;
+  width: 0;
   height: 7rem;
   background-color: var(--light-green);
   text-align: center;
   position: absolute;
   left: 0;
+  will-change: transform;
   bottom: 9.2rem;
-  z-index: -1;
-  opacity: 0;
+  z-index: 0;
+  transition: all 0.4s;
+  overflow: hidden;
   cursor: pointer;
+
+  &:hover::after {
+    transform: translate(0, 0);
+  }
 }
 
 .home-product-item:hover .product-like-icon,
 .home-product-item:hover .product-button {
-  opacity: 1;
-  z-index: 10;
+  will-change: transform;
 }
 
 .product-shop-icon {
@@ -182,9 +193,7 @@ select {
 
 .product-details {
   text-transform: capitalize;
-  border: none;
   background-color: transparent;
-  cursor: pointer;
   text-align: center;
   color: var(--light-green);
   display: flex;
@@ -193,9 +202,12 @@ select {
   position: absolute;
   bottom: 0;
   text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: 0.2s;
 
   &:hover {
     border-bottom: 1px solid currentColor;
+    transform: scale(1.05);
   }
 }
 

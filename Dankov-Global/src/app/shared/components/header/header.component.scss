@@ -10,7 +10,8 @@
 
 .industrie-container,
 .product-details-container,
-.product-container {
+.product-container,
+.global-container {
   color: var(--white);
   background-position: center center;
   background-size: cover;
@@ -22,7 +23,8 @@
 .industrie,
 .product-details,
 .product,
-.why {
+.why,
+.global {
   height: 100vh;
 }
 
