@@ -3,12 +3,55 @@
     <div class="product-description">
       <div class="product-description-image-box">
         <img class="product-description-image" src="{{product?.imageUrl}}" alt="{{product?.name}}" />
+
+        @if (!isEditing) {
+
         <div class="actions-btn">
           <button (click)="onRemoveItem()" type="button">del <ion-icon name="trash-outline"></ion-icon> </button>
-          <button type="button">edit <ion-icon name="create-outline"></ion-icon></button>
+          <button (click)="onEditItem()" type="button">edit <ion-icon name="create-outline"></ion-icon></button>
         </div>
+        }
       </div>
       <div class="product-description-content-box">
+
+
+        <!-- EDIT MODE -->
+
+        <!-- export interface Product {
+  _id: string;
+  name: string;
+  description: string;
+  price: number;
+  imageUrl: string;
+  category: string;
+  stock: number;
+  createdAt: Date;
+  updatedAt: Date;
+  isActive: boolean;
+  rating: number;
+  weight: number;
+} -->
+
+        @if (isEditing) {
+        <h5>This is edit mode</h5>
+        <form [formGroup]="productForm" class="edit-form" (onSubmit)="handleEdit()">
+
+          <input type="text" name="name" placeholder="Product Name..." formControlName="name">
+          <textarea rows="8" cols="30" placeholder="Description.." formControlName="description"></textarea>
+          <input type="number" name="price" value="" placeholder="Price.." formControlName="price">
+          <input type="text" name="imageUrl" value="" placeholder="Image Url...http://" formControlName="imageUrl">
+          <select name="category" formControlName="category">
+            <option value="vegetables">vegetable</option>
+            <option value="fruits">fruit</option>
+          </select>
+          <input type="number" name="Stock" value="" placeholder="stock" formControlName="stock">
+          <input type="number" name="weight" value="" placeholder="weight" formControlName="weight">
+
+          <button class="btn">
+            Edit Product
+          </button>
+        </form>
+        } @else {
         <h3 class="product-description-heading">{{product?.name}} {{product?.weight}}</h3>
         <p class="availabity">
           <span>SKU: TG1528</span>
@@ -26,7 +69,11 @@
           <input type="number" id="quantity" name="quantity" min="1" max="100" value="1" />
         </p>
         <button class="btn btn-primary">Add to Cart</button>
+        }
       </div>
+
+
+
     </div>
   </div>
 </section>

@@ -10,10 +10,17 @@ import { Product } from "../../../models/product.model.js";
 import { CurrencyPipe } from "@angular/common";
 import { ProductService } from "../../../core/services/product.service.js";
 import { PriceDirective } from "../../../directives/price.directive.js";
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from "@angular/forms";
 
 @Component({
   selector: "app-product-details",
-  imports: [CurrencyPipe, PriceDirective],
+  imports: [CurrencyPipe, PriceDirective, ReactiveFormsModule],
   templateUrl: "./product-details.component.html",
   styleUrl: "./product-details.component.scss",
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -31,7 +38,36 @@ export class ProductDetailsComponent implements OnInit {
   showRefundDescrition: boolean = false;
   showShippingDescrition: boolean = false;
 
-  constructor() {}
+  isEditing: boolean = false;
+
+  private formBuilder = inject(FormBuilder);
+
+  productForm: FormGroup;
+
+  constructor() {
+    this.productForm = this.formBuilder.group({
+      name: ["", [Validators.required, Validators.minLength(4)]],
+      description: ["", Validators.minLength(10)],
+      price: ["", [Validators.required, Validators.min(0)]],
+      imageUrl: [
+        "",
+        [
+          Validators.required,
+          Validators.pattern(
+            /https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|svg|webp)(\?.*)?$/
+          ),
+        ],
+      ],
+      category: ["", Validators.required],
+      stock: ["", Validators.required],
+      isActive: [""],
+      rating: ["0"],
+      weight: [
+        "",
+        [Validators.required, Validators.min(0), Validators.max(100)],
+      ],
+    });
+  }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get("id");
@@ -68,7 +104,7 @@ export class ProductDetailsComponent implements OnInit {
 
   onRemoveItem(): void {
     const id = this.route.snapshot.paramMap.get("id");
-    alert("Are you sure? Do you realy want to delete this Product?");
+    // alert("Are you sure? Do you realy want to delete this Product?");
 
     this.productService.removeItem(id).subscribe({
       next: () => console.log("Deleted!"),
@@ -78,4 +114,189 @@ export class ProductDetailsComponent implements OnInit {
     });
     this.router.navigate(["/products"]);
   }
+
+  onEditItem() {
+    const id = this.route.snapshot.paramMap.get("id");
+    const subscription = this.productService.getOne(id).subscribe({
+      next: (value) => {
+        this.product = value;
+      },
+    });
+    this.productForm.patchValue({
+      name: this.product?.name,
+      description: this.product?.description,
+      price: this.product?.price,
+      imageUrl: this.product?.imageUrl,
+      category: this.product?.category,
+      stock: this.product?.stock,
+      weight: this.product?.weight,
+    });
+    this.isEditing = true;
+
+    this.destroyRef.onDestroy(() => subscription.unsubscribe());
+  }
+
+  /* Validation´s  */
+
+  get name(): AbstractControl<any | any> | null {
+    return this.productForm.get("name");
+  }
+  get description(): AbstractControl<any, any> | null {
+    return this.productForm.get("description");
+  }
+  get price(): AbstractControl<any, any> | null {
+    return this.productForm.get("price");
+  }
+  get imageUrl(): AbstractControl<any, any> | null {
+    return this.productForm.get("imageUrl");
+  }
+  get category(): AbstractControl<any, any> | null {
+    return this.productForm.get("category");
+  }
+  get stock(): AbstractControl<any, any> | null {
+    return this.productForm.get("stock");
+  }
+  get isActive(): AbstractControl<any, any> | null {
+    return this.productForm.get("isActive");
+  }
+  get rating(): AbstractControl<any, any> | null {
+    return this.productForm.get("rating");
+  }
+  get weight(): AbstractControl<any, any> | null {
+    return this.productForm.get("weight");
+  }
+  /* Errors */
+  get nameError(): boolean {
+    return (
+      (this.name?.invalid && (this.name.touched || this.name.dirty)) || false
+    );
+  }
+  get descriptionError(): boolean {
+    return (
+      (this.description?.invalid &&
+        (this.description.touched || this.description.dirty)) ||
+      false
+    );
+  }
+  get priceError(): boolean {
+    return (
+      (this.price?.invalid && (this.price.touched || this.price.dirty)) || false
+    );
+  }
+  get imageUrlError(): boolean {
+    return (
+      (this.imageUrl?.invalid &&
+        (this.imageUrl.touched || this.imageUrl.dirty)) ||
+      false
+    );
+  }
+  get categoryError(): boolean {
+    return (
+      (this.category?.invalid &&
+        (this.category.touched || this.category.dirty)) ||
+      false
+    );
+  }
+  get stockError(): boolean {
+    return (
+      (this.stock?.invalid && (this.stock.touched || this.stock.dirty)) || false
+    );
+  }
+  get isActiveError(): boolean {
+    return (
+      (this.isActive?.invalid &&
+        (this.isActive.touched || this.isActive.dirty)) ||
+      false
+    );
+  }
+  get ratingError(): boolean {
+    return (
+      (this.rating?.invalid && (this.rating.touched || this.rating.dirty)) ||
+      false
+    );
+  }
+  get weightError(): boolean {
+    return (
+      (this.weight?.invalid && (this.weight.touched || this.weight.dirty)) ||
+      false
+    );
+  }
+  /* MSG */
+  get nameErrorMsg(): string {
+    if (this.name?.errors?.["required"]) {
+      return "Name is required!";
+    }
+    if (this.name?.errors?.["minlenght"]) {
+      return "Name must be at least 4 characters long!";
+    }
+    return "";
+  }
+  get descriptionErrorMsg(): string {
+    if (this.description?.errors?.["minlength"]) {
+      return "Description min length must be 10 charachters!";
+    }
+    return "";
+  }
+
+  /*          export interface Product {
+  _id: string;
+  name: string;
+  description: string;
+  price: number;
+  imageUrl: string;
+  category: string;
+  stock: number;
+  createdAt: Date;
+  updatedAt: Date;
+  isActive: boolean;
+  rating: number;
+  weight: number;
+}  */
+  get priceErrorMsg(): string {
+    if (this.price?.errors?.["required"]) {
+      return "Price is required!";
+    }
+    if (this.price?.errors?.["min"]) {
+      return "Price min value must be positive number!";
+    }
+    return "";
+  }
+  get imageUrlErrorMsg(): string {
+    if (this.imageUrl?.errors?.["required"]) {
+      return "ImageUrl is required!";
+    }
+    if (this.imageUrl?.errors?.["pattern"]) {
+      return "ImageUrl is not valid!";
+    }
+    return "";
+  }
+  get categoryErrorMsg(): string {
+    if (this.category?.errors?.["required"]) {
+      return "Category is required!";
+    }
+
+    return "";
+  }
+  get stockErrorMsg(): string {
+    if (this.stock?.errors?.["required"]) {
+      return "Stock is required!";
+    }
+
+    return "";
+  }
+  get weightErrorMsg(): string {
+    if (this.weight?.errors?.["required"]) {
+      return "weight is required!";
+    }
+    if (this.weight?.errors?.["min"]) {
+      return "Weight must be a positive number!";
+    }
+    if (this.weight?.errors?.["max"]) {
+      return "Weight must be maximal 100!";
+    }
+
+    return "";
+  }
+
+  handleEdit(): void {}
 }
