@@ -70,5 +70,14 @@
     "category": "Vegetables",
     "stock": 500,
     "weight": 250
+  },
+  {
+    "name": "Yellow Apricot",
+    "price": 3.26,
+    "description": "Crunchy and sweet carrots, perfect for snacking or cooking.",
+    "imageUrl": "/images/product/yellow peaches.png",
+    "category": "Vegetables",
+    "stock": 500,
+    "weight": 250
   }
 ]

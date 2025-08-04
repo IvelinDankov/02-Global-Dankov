@@ -10,4 +10,7 @@ export default {
   getOne(id) {
     return Product.findById(id);
   },
+  remove(id) {
+    return Product.findByIdAndDelete(id);
+  },
 };

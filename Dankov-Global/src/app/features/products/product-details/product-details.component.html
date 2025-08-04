@@ -3,6 +3,10 @@
     <div class="product-description">
       <div class="product-description-image-box">
         <img class="product-description-image" src="{{product?.imageUrl}}" alt="{{product?.name}}" />
+        <div class="actions-btn">
+          <button (click)="onRemoveItem()" type="button">del <ion-icon name="trash-outline"></ion-icon> </button>
+          <button type="button">edit <ion-icon name="create-outline"></ion-icon></button>
+        </div>
       </div>
       <div class="product-description-content-box">
         <h3 class="product-description-heading">{{product?.name}} {{product?.weight}}</h3>

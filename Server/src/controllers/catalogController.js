@@ -26,5 +26,15 @@ productController.get("/:id", async (req, res) => {
     res.status(500).json({ message: "Error fetching product", error: err });
   }
 });
+productController.delete("/delete/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    const product = await productService.remove(id);
+    if (!product) {
+    }
+  } catch (err) {
+    res.status(404).json({ message: "Could not delete Product", error: err });
+  }
+});
 
 export default productController;

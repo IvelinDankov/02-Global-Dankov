@@ -5,7 +5,7 @@ import {
   inject,
   OnInit,
 } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Product } from "../../../models/product.model.js";
 import { CurrencyPipe } from "@angular/common";
 import { ProductService } from "../../../core/services/product.service.js";
@@ -20,6 +20,7 @@ import { PriceDirective } from "../../../directives/price.directive.js";
 })
 export class ProductDetailsComponent implements OnInit {
   private route = inject(ActivatedRoute);
+  private router = inject(Router);
   // readonly productId: string | null;
   private productService = inject(ProductService);
   private destroyRef = inject(DestroyRef);
@@ -63,5 +64,18 @@ export class ProductDetailsComponent implements OnInit {
     this.showProductDescrition = false;
     this.showRefundDescrition = false;
     this.showShippingDescrition = !this.showShippingDescrition;
+  }
+
+  onRemoveItem(): void {
+    const id = this.route.snapshot.paramMap.get("id");
+    alert("Are you sure? Do you realy want to delete this Product?");
+
+    this.productService.removeItem(id).subscribe({
+      next: () => console.log("Deleted!"),
+      error: (err) => {
+        console.log("Could not delete Product", err);
+      },
+    });
+    this.router.navigate(["/products"]);
   }
 }

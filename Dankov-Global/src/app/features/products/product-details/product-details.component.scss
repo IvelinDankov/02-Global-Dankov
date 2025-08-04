@@ -98,6 +98,48 @@
   width: 100%;
 }
 
+// Actions
+.actions-btn {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+}
+
+.actions-btn button {
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:nth-child(1) {
+    color: var(--error);
+  }
+  &:nth-child(2) {
+    color: var(--edit);
+  }
+}
+
+.product-decription-quantity {
+  display: flex;
+  gap: 10rem;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.product-decription-quantity input[name="quantity"] {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid var(--light-green);
+  padding: 0.8rem 1rem;
+  background-color: transparent;
+  text-align: center;
+  color: var(--primary-dark-green);
+  font-weight: bold;
+}
+
 .btn-primary {
   display: inline-block;
   padding: 1rem 2rem;
@@ -109,6 +151,7 @@
   transition: all 0.3s;
   border: none;
   align-self: start;
+  cursor: pointer;
 
   &:hover {
     background-color: var(--primary-dark-green);

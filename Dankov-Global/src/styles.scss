@@ -16,6 +16,9 @@
   --light-gray: #bbb;
   --soft-gray: #f4f4f4;
   --white: #ffffff;
+
+  --error: #ff8787;
+  --edit: #4dabf7;
 }
 
 * {
@@ -113,6 +116,11 @@ ion-icon {
     flex: 1 0 50%;
     padding: 0 !important;
   }
+
+  // in Product Details page
+  .product-description {
+    gap: 10rem !important;
+  }
 }
 
 /* 940px */
@@ -131,9 +139,6 @@ ion-icon {
     flex-direction: column;
     justify-content: center;
     padding: 0 5rem 0 10rem;
-  }
-
-  .review-image {
   }
 }
 
@@ -231,8 +236,7 @@ ion-icon {
   html {
     font-size: 40%;
   }
-  .ionicon {
-  }
+
   .hero-container {
     height: 80vh;
   }

@@ -27,6 +27,10 @@ export class ProductService {
   getOne(id: string | null) {
     return this.http.get<Product>(this.API_URL + `/products/${id}`);
   }
+
+  removeItem(id: string | null) {
+    return this.http.delete<Product>(this.API_URL + `/products/delete/${id}`);
+  }
 }
 /* 
   private getPostApiUrl = "http://localhost:3000/api/posts?limit={0}";
