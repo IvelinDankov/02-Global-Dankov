@@ -37,4 +37,21 @@ productController.delete("/delete/:id", async (req, res) => {
   }
 });
 
+productController.put("/edit/:id", async (req, res) => {
+  const id = req.params.id;
+  const updatedProduct = req.body;
+
+  // const product = req;
+
+  // console.log(`ProductId: ${id} ProductBody ${product}`);
+
+  try {
+    const product = await productService.updateProduct(id, updatedProduct);
+
+    res.status(200).json(product);
+  } catch (err) {
+    res.status(500).json({ message: "Error fetching product", error: err });
+  }
+});
+
 export default productController;

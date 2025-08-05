@@ -40,6 +40,8 @@ export class ProductDetailsComponent implements OnInit {
 
   isEditing: boolean = false;
 
+  productCategory: string[] = ["vegetables", "fruits"];
+
   private formBuilder = inject(FormBuilder);
 
   productForm: FormGroup;
@@ -49,22 +51,14 @@ export class ProductDetailsComponent implements OnInit {
       name: ["", [Validators.required, Validators.minLength(4)]],
       description: ["", Validators.minLength(10)],
       price: ["", [Validators.required, Validators.min(0)]],
-      imageUrl: [
-        "",
-        [
-          Validators.required,
-          Validators.pattern(
-            /https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|svg|webp)(\?.*)?$/
-          ),
-        ],
-      ],
+      imageUrl: ["", [Validators.required]],
       category: ["", Validators.required],
       stock: ["", Validators.required],
       isActive: [""],
       rating: ["0"],
       weight: [
         "",
-        [Validators.required, Validators.min(0), Validators.max(100)],
+        [Validators.required, Validators.min(0), Validators.max(1000)],
       ],
     });
   }
@@ -226,7 +220,7 @@ export class ProductDetailsComponent implements OnInit {
     if (this.name?.errors?.["required"]) {
       return "Name is required!";
     }
-    if (this.name?.errors?.["minlenght"]) {
+    if (this.name?.errors?.["minlength"]) {
       return "Name must be at least 4 characters long!";
     }
     return "";
@@ -238,20 +232,6 @@ export class ProductDetailsComponent implements OnInit {
     return "";
   }
 
-  /*          export interface Product {
-  _id: string;
-  name: string;
-  description: string;
-  price: number;
-  imageUrl: string;
-  category: string;
-  stock: number;
-  createdAt: Date;
-  updatedAt: Date;
-  isActive: boolean;
-  rating: number;
-  weight: number;
-}  */
   get priceErrorMsg(): string {
     if (this.price?.errors?.["required"]) {
       return "Price is required!";
@@ -298,5 +278,56 @@ export class ProductDetailsComponent implements OnInit {
     return "";
   }
 
-  handleEdit(): void {}
+  /*          export interface Product {
+  _id: string;
+  name: string;
+  description: string;
+  price: number;
+  imageUrl: string;
+  category: string;
+  stock: number;
+  createdAt: Date;
+  updatedAt: Date;
+  isActive: boolean;
+  rating: number;
+  weight: number;
+}  */
+
+  handleEdit(): void {
+    const {
+      name,
+      description,
+      price,
+      imageUrl,
+      category,
+      stock,
+      isActive,
+      rating,
+      weight,
+    } = this.productForm.value;
+
+    const product = <Product>{
+      ...this.product,
+      name,
+      description,
+      price,
+      imageUrl,
+      category,
+      stock,
+      isActive: true,
+      rating: 0,
+      weight,
+    };
+
+    const subscription = this.productService
+      .update(product)
+      .subscribe((response) => console.log(response));
+
+    this.isEditing = false;
+    this.productForm.reset();
+
+    this.router.navigate([`/products/${product._id}`]);
+
+    this.destroyRef.onDestroy(() => subscription.unsubscribe());
+  }
 }

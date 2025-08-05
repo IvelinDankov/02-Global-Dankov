@@ -13,4 +13,7 @@ export default {
   remove(id) {
     return Product.findByIdAndDelete(id);
   },
+  updateProduct(id, newProduct) {
+    return Product.findByIdAndUpdate(id, newProduct);
+  },
 };

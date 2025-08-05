@@ -34,20 +34,55 @@
 
         @if (isEditing) {
         <h5>This is edit mode</h5>
-        <form [formGroup]="productForm" class="edit-form" (onSubmit)="handleEdit()">
+        <form [formGroup]="productForm" class="edit-form" (ngSubmit)="handleEdit()">
 
           <input type="text" name="name" placeholder="Product Name..." formControlName="name">
+          @if (nameError) {
+          <p class="error">
+            {{nameErrorMsg}}
+          </p>
+          }
           <textarea rows="8" cols="30" placeholder="Description.." formControlName="description"></textarea>
+          @if (descriptionError) {
+          <p class="error">
+            {{descriptionErrorMsg}}
+          </p>
+          }
           <input type="number" name="price" value="" placeholder="Price.." formControlName="price">
+          @if (priceError) {
+          <p class="error">
+            {{priceErrorMsg}}
+          </p>
+          }
           <input type="text" name="imageUrl" value="" placeholder="Image Url...http://" formControlName="imageUrl">
-          <select name="category" formControlName="category">
-            <option value="vegetables">vegetable</option>
-            <option value="fruits">fruit</option>
-          </select>
-          <input type="number" name="Stock" value="" placeholder="stock" formControlName="stock">
-          <input type="number" name="weight" value="" placeholder="weight" formControlName="weight">
+          @if (imageUrlError) {
+          <p class="error">
+            {{imageUrlErrorMsg}}
+          </p>
+          }
 
-          <button class="btn">
+          <select name="category" formControlName="category">
+            @for (category of productCategory; track category) {
+
+            <option value="{{category}}">{{category}}</option>
+            }
+
+          </select>
+          @if (categoryError) {
+          <p class="error">
+            {{categoryErrorMsg}}
+          </p>
+          }
+          <input type="number" name="Stock" value="" placeholder="stock" formControlName="stock">
+
+          <input type="number" name="weight" value="" placeholder="weight" formControlName="weight">
+          @if (weightError) {
+          <p class="error">
+            {{weightErrorMsg}}
+          </p>
+          }
+
+          <button [disabled]="productForm.invalid" type="submit" class="btn">
             Edit Product
           </button>
         </form>

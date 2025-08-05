@@ -31,6 +31,14 @@ export class ProductService {
   removeItem(id: string | null) {
     return this.http.delete<Product>(this.API_URL + `/products/delete/${id}`);
   }
+
+  update(product: Product) {
+    return this.http.put<Product>(
+      `${this.API_URL}/products/edit/${product._id}`,
+
+      product
+    );
+  }
 }
 /* 
   private getPostApiUrl = "http://localhost:3000/api/posts?limit={0}";
