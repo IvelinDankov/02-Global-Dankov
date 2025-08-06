@@ -55,7 +55,7 @@ export class ProductDetailsComponent implements OnInit {
       category: ["", Validators.required],
       stock: ["", Validators.required],
       isActive: [""],
-      rating: ["0"],
+      rating: [""],
       weight: [
         "",
         [Validators.required, Validators.min(0), Validators.max(1000)],
@@ -123,6 +123,7 @@ export class ProductDetailsComponent implements OnInit {
       imageUrl: this.product?.imageUrl,
       category: this.product?.category,
       stock: this.product?.stock,
+      rating: this.product?.rating,
       weight: this.product?.weight,
     });
     this.isEditing = true;
@@ -149,9 +150,6 @@ export class ProductDetailsComponent implements OnInit {
   }
   get stock(): AbstractControl<any, any> | null {
     return this.productForm.get("stock");
-  }
-  get isActive(): AbstractControl<any, any> | null {
-    return this.productForm.get("isActive");
   }
   get rating(): AbstractControl<any, any> | null {
     return this.productForm.get("rating");
@@ -194,13 +192,6 @@ export class ProductDetailsComponent implements OnInit {
   get stockError(): boolean {
     return (
       (this.stock?.invalid && (this.stock.touched || this.stock.dirty)) || false
-    );
-  }
-  get isActiveError(): boolean {
-    return (
-      (this.isActive?.invalid &&
-        (this.isActive.touched || this.isActive.dirty)) ||
-      false
     );
   }
   get ratingError(): boolean {
@@ -266,7 +257,7 @@ export class ProductDetailsComponent implements OnInit {
   }
   get weightErrorMsg(): string {
     if (this.weight?.errors?.["required"]) {
-      return "weight is required!";
+      return "Weight is required!";
     }
     if (this.weight?.errors?.["min"]) {
       return "Weight must be a positive number!";
@@ -301,7 +292,6 @@ export class ProductDetailsComponent implements OnInit {
       imageUrl,
       category,
       stock,
-      isActive,
       rating,
       weight,
     } = this.productForm.value;
@@ -314,8 +304,7 @@ export class ProductDetailsComponent implements OnInit {
       imageUrl,
       category,
       stock,
-      isActive: true,
-      rating: 0,
+      rating,
       weight,
     };
 
@@ -329,5 +318,11 @@ export class ProductDetailsComponent implements OnInit {
     this.router.navigate([`/products/${product._id}`]);
 
     this.destroyRef.onDestroy(() => subscription.unsubscribe());
+  }
+
+  handleCancel(): void {
+    this.isEditing = false;
+    this.productForm.reset();
+    this.router.navigate([`/products`]);
   }
 }

@@ -8,7 +8,6 @@ export interface Product {
   stock: number;
   createdAt: Date;
   updatedAt: Date;
-  isActive: boolean;
   rating: number;
   weight: number;
 }

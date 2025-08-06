@@ -86,7 +86,7 @@
   justify-content: center;
   flex-direction: column;
   gap: 2rem;
-  padding: 2rem;
+  // padding: 2rem;
 }
 
 .product-description {
@@ -140,17 +140,17 @@
   font-weight: bold;
 }
 
-.btn-primary {
+.btn-primary.add-to-card {
   display: inline-block;
+  width: max-content;
   padding: 1rem 2rem;
-  width: 50%;
   background-color: var(--light-green);
   color: var(--white);
   text-decoration: none;
   border-radius: 50rem;
   transition: all 0.3s;
   border: none;
-  align-self: start;
+  align-self: flex-end;
   cursor: pointer;
 
   &:hover {
@@ -304,4 +304,87 @@
 .product-price {
   font-weight: bold;
   color: var(--light-green);
+}
+// edit page
+
+.edit-form {
+  background-color: var(--primary-dark-green);
+
+  padding: 1.5rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.edit-form input,
+.edit-form textarea,
+.edit-form select,
+.edit-form button {
+  padding: 1.2rem 2rem;
+  width: 70%;
+  // background-color: var(--primary-dark-green);
+  border: none;
+  border-bottom: 2px solid var(--light-green);
+}
+
+.edit-form input:focus,
+.edit-form textarea:focus,
+.edit-form select:focus {
+  background-color: var(--accend-green);
+  outline: none;
+  border-bottom: 2px solid var(--primary-dark-green);
+}
+
+.form-group {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  & label {
+    color: var(--light-green);
+  }
+}
+
+.edit-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+
+  & button {
+    // flex: 1 0 50%;
+    width: max-content;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+  & > .back {
+    border: none;
+  }
+}
+
+.error {
+  border-bottom: 2px solid var(--error);
+  flex: 1 0 100%;
+  color: var(--error);
+  font-size: 1.2rem;
+  font-weight: 300;
+  padding-top: 0.5rem;
+}
+
+.error-input {
+  border-left: 2px solid var(--error);
+}
+
+/* Media queries */
+// 1250px 78.128em
+@media (max-width: 78.125em) {
+  .product-description {
+    gap: 5rem;
+  }
+}
+
+@media (max-width: 62.5em) {
+  .product-description {
+    grid-template-columns: 1fr;
+  }
 }
