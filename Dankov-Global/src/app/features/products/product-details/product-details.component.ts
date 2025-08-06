@@ -54,7 +54,6 @@ export class ProductDetailsComponent implements OnInit {
       imageUrl: ["", [Validators.required]],
       category: ["", Validators.required],
       stock: ["", Validators.required],
-      isActive: [""],
       rating: [""],
       weight: [
         "",
@@ -310,12 +309,16 @@ export class ProductDetailsComponent implements OnInit {
 
     const subscription = this.productService
       .update(product)
-      .subscribe((response) => console.log(response));
+      .subscribe((response) => {
+        this.product = response;
+
+        console.log(response);
+      });
 
     this.isEditing = false;
     this.productForm.reset();
 
-    this.router.navigate([`/products/${product._id}`]);
+    this.router.navigate([`/products`]);
 
     this.destroyRef.onDestroy(() => subscription.unsubscribe());
   }

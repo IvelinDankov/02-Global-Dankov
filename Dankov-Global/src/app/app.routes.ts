@@ -37,6 +37,13 @@ export const routes: Routes = [
       ).then((c) => c.ProductDetailsComponent),
   },
   {
+    path: "create",
+    loadComponent: () =>
+      import(
+        "./features/products/create-product/create-product.component.js"
+      ).then((c) => c.CreateProductComponent),
+  },
+  {
     path: "global-facilities",
     loadComponent: () =>
       import("./features/facilities/facilities.component.js").then(

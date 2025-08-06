@@ -39,6 +39,10 @@ export class ProductService {
       product
     );
   }
+
+  create(product: Product) {
+    return this.http.post<Product>(`${this.API_URL}/create`, product);
+  }
 }
 /* 
   private getPostApiUrl = "http://localhost:3000/api/posts?limit={0}";

@@ -16,4 +16,7 @@ export default {
   updateProduct(id, newProduct) {
     return Product.findByIdAndUpdate(id, newProduct);
   },
+  createProduct(product) {
+    return Product.create(product);
+  },
 };

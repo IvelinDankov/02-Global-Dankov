@@ -1,0 +1,101 @@
+<section class="section section-product-description">
+  <div class="container product-description-container">
+    <div class="product-description">
+      <div class="product-description-image-box">
+        <img class="product-description-image" src="/images/create/create-page-image.png" alt="sunflower image." />
+      </div>
+
+
+      <div class="product-description-content-box">
+        <form [formGroup]="createForm" (ngSubmit)="onCreateProduct()" class="edit-form">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" placeholder="Product Name..." formControlName="name">
+            @if (nameError) {
+            <p class="error">
+              {{nameErrorMsg}}
+            </p>
+            }
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" rows="8" cols="30" placeholder="Description.."
+              formControlName="description"></textarea>
+            @if (descriptionError) {
+            <p class="error">
+              {{descriptionErrorMsg}}
+            </p>
+            }
+          </div>
+          <div class="form-group">
+            <label for="price">Price</label>
+            <input id="price" type="number" name="price" value="" placeholder="Price.." step="0.01"
+              formControlName="price">
+            @if (priceError) {
+            <p class="error">
+              {{priceErrorMsg}}
+            </p>
+            }
+          </div>
+          <div class="form-group">
+            <label for="imageUrl">Image</label>
+            <input id="image" type="text" name="imageUrl" value="" placeholder="Image Url...http://"
+              formControlName="imageUrl">
+            @if (imageUrlError) {
+            <p class="error">
+              {{imageUrlErrorMsg}}
+            </p>
+            }
+          </div>
+
+          <div class="form-group">
+            <label for="category">Category</label>
+            <select id="category" name="category" formControlName="category">
+              @for (category of productCategory; track category) {
+
+              <option value="{{category}}">{{category}}</option>
+              }
+
+            </select>
+            @if (categoryError) {
+            <p class="error">
+              {{categoryErrorMsg}}
+            </p>
+            }
+          </div>
+          <div class="form-group">
+            <label for="stock">Stock</label>
+            <input id="stock" type="number" name="Stock" value="" placeholder="stock" formControlName="stock">
+
+          </div>
+          <div class="form-group">
+            <label for="rating">Rating</label>
+            <input id="rating" type="number" name="rating" formControlName="rating" value="1" min="1" max="5"
+              placeholder="rating" readonly>
+
+          </div>
+          <div class="form-group">
+            <label for="weight">Weight</label>
+            <input id="weight" type="number" name="weight" value="" placeholder="weight" formControlName="weight"
+              step="0.01">
+            @if (weightError) {
+            <p class="error">
+              {{weightErrorMsg}}
+            </p>
+            }
+          </div>
+
+          <div class="edit-actions">
+            <button class="back">Cancel</button>
+            <button [disabled]="createForm.invalid" type="submit" class="btn">
+              Create Product
+            </button>
+
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
