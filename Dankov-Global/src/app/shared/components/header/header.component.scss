@@ -93,6 +93,31 @@
   gap: 1rem;
 }
 
+.sign-up {
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+  transition: all 0.3s;
+
+  & ion-icon {
+    height: 2rem;
+    width: 2rem;
+  }
+
+  & span {
+    flex: 1 0 100%;
+    width: 100%;
+  }
+
+  &:hover {
+    color: var(--light-gray);
+  }
+}
+
 .header-icons > * {
   cursor: pointer;
   color: var(--white);
@@ -105,4 +130,125 @@
   top: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+}
+
+.sign-up-container {
+  background-image: none;
+
+  & .logo {
+    /* display: inline-block; */
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--dark-grey);
+    text-decoration: none;
+    transition: all 0.3s;
+    &:hover {
+      color: var(--light-gray);
+    }
+  }
+
+  & .header {
+    padding: 0 4rem;
+    padding-top: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  & .navigation {
+    width: 100%;
+  }
+
+  & .navigation-list {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  & .navigation-item {
+    list-style: none;
+  }
+
+  & .navigation-item a {
+    text-decoration: none;
+    color: var(--dark-grey);
+    padding-bottom: 1px;
+    transition: all 0.3s;
+    position: relative;
+  }
+  & .navigation-item a:hover::after,
+  & .navigation-item a.active::after {
+    content: "";
+    height: 2px;
+    width: 40%;
+    /* display: block; */
+    background-color: var(--light-green);
+    position: absolute;
+    right: 50%;
+    transform: translateX(50%);
+    bottom: -2px;
+    z-index: 10;
+    border-radius: 50rem;
+  }
+
+  & .header-icons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    & a,
+    & ion-icon {
+      color: var(--dark-grey);
+
+      &:active {
+        color: var(--light-green);
+      }
+    }
+  }
+
+  & .sign-up {
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: max-content;
+    transition: all 0.3s;
+
+    & ion-icon {
+      height: 2rem;
+      width: 2rem;
+    }
+
+    & span {
+      flex: 1 0 100%;
+      width: 100%;
+    }
+
+    &:hover {
+      color: var(--light-gray);
+    }
+  }
+
+  & .header-icons > * {
+    cursor: pointer;
+    color: var(--white);
+  }
+
+  & .header-heading {
+    color: var(--white);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  & .header nav ul li a {
+    color: var(--dark-grey);
+    // color: var(--dark-grey);
+  }
 }

@@ -1,0 +1,23 @@
+<div class="form-container">
+  <h2 class="heading-2 form-title">Login</h2>
+  <form class="login-form">
+    <div class="form-group" id="name-group" style="display: none;">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required />
+    </div>
+
+    <button type="submit" class="btn submit-btn">Login</button>
+  </form>
+
+  <a routerLink="/register" class="register-link" id="switch-mode">Don't have an account? Register</a>
+</div>

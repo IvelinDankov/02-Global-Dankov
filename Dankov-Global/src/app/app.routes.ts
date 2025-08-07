@@ -58,6 +58,20 @@ export const routes: Routes = [
       ),
   },
   {
+    path: "sign-up",
+    loadComponent: () =>
+      import("./features/auth/sign-up/sign-up.component.js").then(
+        (c) => c.SignUpComponent
+      ),
+  },
+  {
+    path: "register",
+    loadComponent: () =>
+      import("./features/auth/register/register.component.js").then(
+        (c) => c.RegisterComponent
+      ),
+  },
+  {
     path: "**",
     component: HomeComponent,
   },
