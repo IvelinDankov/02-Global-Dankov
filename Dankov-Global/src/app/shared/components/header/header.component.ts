@@ -12,6 +12,7 @@ import {
   RouterLinkActive,
 } from "@angular/router";
 import { filter } from "rxjs";
+import { AuthService } from "../../../core/services/auth.service.js";
 
 @Component({
   selector: "app-header",
@@ -25,7 +26,10 @@ export class HeaderComponent implements OnInit {
   headertitle: string = "";
   containerClass: string = "hero hero-container container";
 
+  private authService = inject(AuthService);
   private router = inject(Router);
+  readonly isLoggedIn = this.authService._isLoggedIn;
+  readonly currentUser = this.authService._currentUser;
 
   ngOnInit(): void {
     this.router.events
@@ -77,5 +81,9 @@ export class HeaderComponent implements OnInit {
           this.containerClass = "hero hero-container container";
         }
       });
+  }
+
+  logout(): void {
+    this.authService.logout();
   }
 }

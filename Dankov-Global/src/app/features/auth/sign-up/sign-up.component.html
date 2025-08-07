@@ -1,6 +1,6 @@
 <div class="form-container">
   <h2 class="heading-2 form-title">Login</h2>
-  <form class="login-form">
+  <form [formGroup]="loginForm" class="login-form">
     <div class="form-group" id="name-group" style="display: none;">
       <label for="name">Full Name</label>
       <input type="text" id="name" name="name" />

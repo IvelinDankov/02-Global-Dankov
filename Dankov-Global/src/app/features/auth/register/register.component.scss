@@ -13,6 +13,7 @@
 }
 
 .register-form {
+  width: 50rem;
   display: flex;
   flex-direction: column;
   border: 1px solid #000;
@@ -24,9 +25,22 @@
   & .form-group {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 1.4rem;
     margin-bottom: 2.6rem;
+
+    .error {
+      border-bottom: 2px solid var(--error);
+      flex: 1 0 100%;
+      color: var(--error);
+      font-size: 1.2rem;
+      font-weight: 300;
+      padding-top: 0.5rem;
+    }
+
+    .error-input {
+      border-left: 2px solid var(--error);
+    }
   }
 
   & .submit-btn {
@@ -41,10 +55,12 @@
   }
 
   & label {
+    flex: 1 0 48%;
     color: var(--light-green);
   }
 
   & input {
+    flex: 1 0 48%;
     padding: 1.2rem 2rem;
   }
 

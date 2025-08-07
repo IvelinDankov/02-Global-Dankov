@@ -24,11 +24,20 @@
       </ul>
     </nav>
     <p class="header-icons">
+      @if (isLoggedIn()) {
+      <a href="" class="user-profile">
+        {{currentUser().username}}
+
+      </a>
+      <button (click)="logout()" type="button">logout</button>
+      } @else {
+
 
       <a routerLink="/sign-up" routerLinkActive="router-link-active" class="sign-up">
         <ion-icon name="person-add-outline"></ion-icon>
-        <!-- <span>sign up</span> -->
       </a>
+      }
+      <!-- <span>sign up</span> -->
 
       <ion-icon name="cart-outline"></ion-icon>
       <ion-icon name="search-outline"></ion-icon>

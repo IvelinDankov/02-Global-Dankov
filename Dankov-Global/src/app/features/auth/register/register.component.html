@@ -1,26 +1,53 @@
 <div class="form-container">
   <h2 class="heading-2 form-title">Register</h2>
-  <form class="register-form">
+  <form [formGroup]="registerForm" class="register-form" (ngSubmit)="onSubmit()">
     <div class="form-group" id="name-group">
       <label for="username">Username</label>
-      <input type="text" id="username" name="username" />
+      <input [class.error-input]="usernameError" type="text" id="username" name="username" formControlName="username" />
+
+      @if (usernameError) {
+      <p class="error">
+        {{usernameErrorMsg}}
+      </p>
+      }
+
     </div>
 
     <div class="form-group">
       <label for="email">Email</label>
-      <input type="email" id="email" name="email" required />
+      <input [class.error-input]="emailError" type="email" id="email" name="email" required formControlName="email" />
+
+      @if (emailError) {
+      <p class="error">
+        {{emailErrorMsg}}
+      </p>
+      }
     </div>
 
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" required />
-    </div>
-    <div class="form-group">
-      <label for="rePassword">Re-Password</label>
-      <input type="password" id="rePassword" name="rePassword" required />
+    <div [formGroup]="passwords">
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" required formControlName="password" />
+
+        @if (passwordsError) {
+        <p class="error">
+          {{passwordErrorMsg}}
+        </p>
+        }
+      </div>
+      <div class="form-group">
+        <label for="rePassword">Re-Password</label>
+        <input type="password" id="rePassword" required formControlName="rePassword" />
+        @if (passwordsError) {
+        <p class="error">
+          {{rePasswordErrorMsg}}
+        </p>
+        }
+      </div>
     </div>
 
-    <button type="submit" class="btn submit-btn">Register</button>
+    <button [disabled]="registerForm.invalid" type="submit" class="btn submit-btn">Register</button>
   </form>
 
   <a routerLink="/sign-up" class="login-link" id="switch-mode">Don't have an account? Login</a>
