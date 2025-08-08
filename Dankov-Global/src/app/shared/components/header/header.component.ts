@@ -84,6 +84,11 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(): void {
-    this.authService.logout();
+    this.authService.logout().subscribe({
+      next: (res) => console.log(res),
+      error: (err) => {
+        console.log("Could not logout", err.message);
+      },
+    });
   }
 }

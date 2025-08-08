@@ -15,7 +15,7 @@ userController.post("/register", async (req, res) => {
 
     const token = await userService.login(email, password);
 
-    res.cookie("auth", token);
+    res.cookie("auth", token, { httpOnly: true });
 
     res
       .status(200)
@@ -41,6 +41,10 @@ userController.post("/login", async (req, res) => {
       .status(500)
       .json({ message: "Something went wrong", error: err.message });
   }
+});
+
+userController.post("/logout", (req, res) => {
+  res.clearCookie("auth").status(200).json({ message: "Logged out" });
 });
 
 export default userController;

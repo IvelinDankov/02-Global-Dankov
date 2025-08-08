@@ -39,26 +39,33 @@ export class AuthService {
     email: string,
     password: string,
     rePassword: string
-  ): Observable<User> {
+  ): Observable<AuthResponse> {
     return this.http
-      .post<User>(`${this.apiUrl}/register`, {
-        username,
-        email,
-        password,
-        rePassword,
-      })
+      .post<AuthResponse>(
+        `${this.apiUrl}/register`,
+        {
+          username,
+          email,
+          password,
+          rePassword,
+        },
+        { withCredentials: true }
+      )
       .pipe(
-        map((user) => <User>user),
-        tap((user) => {
-          this._currentUser.set(user);
+        tap((res) => {
+          this._currentUser.set(res.user);
           this._isLoggedIn.set(true);
-          localStorage.setItem("currentUser", JSON.stringify(user));
+          localStorage.setItem("currentUser", JSON.stringify(res.user));
         })
       );
   }
   login(email: string, password: string): Observable<AuthResponse> {
     return this.http
-      .post<AuthResponse>(`${this.apiUrl}/login`, { email, password })
+      .post<AuthResponse>(
+        `${this.apiUrl}/login`,
+        { email, password },
+        { withCredentials: true }
+      )
       .pipe(
         tap((res) => {
           this._currentUser.set(res.user);
@@ -68,10 +75,15 @@ export class AuthService {
       );
   }
 
-  logout() {
-    this.http.delete(`${this.apiUrl}/logout`);
-    this._currentUser.set(null);
-    this._isLoggedIn.set(false);
-    localStorage.removeItem("currentUser");
+  logout(): Observable<any> {
+    return this.http
+      .post(`${this.apiUrl}/logout`, {}, { withCredentials: true })
+      .pipe(
+        tap(() => {
+          this._currentUser.set(null);
+          this._isLoggedIn.set(false);
+          localStorage.removeItem("currentUser");
+        })
+      );
   }
 }
