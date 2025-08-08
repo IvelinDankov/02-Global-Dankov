@@ -77,6 +77,10 @@ export class HeaderComponent implements OnInit {
           this.containerClass = "sign-up-container container";
           this.headerBg = "";
           this.headertitle = "";
+        } else if (currRoute.includes("not-found")) {
+          this.containerClass = "sign-up-container";
+          this.headerBg = "";
+          this.headertitle = "";
         } else {
           this.containerClass = "hero hero-container container";
         }

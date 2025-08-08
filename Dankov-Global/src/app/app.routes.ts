@@ -1,5 +1,7 @@
 import { Routes } from "@angular/router";
 import { HomeComponent } from "./features/home/home.component.js";
+import { NotFoundComponent } from "./shared/components/not-found/not-found.component.js";
+// import { PageNotFound } from "./shared/components/not-found/not-found.component.js";
 
 export const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -72,7 +74,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: "not-found",
+
+    component: NotFoundComponent,
+  },
+  {
     path: "**",
-    component: HomeComponent,
+
+    redirectTo: "not-found",
   },
 ];
