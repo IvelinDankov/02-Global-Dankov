@@ -2,6 +2,7 @@ import express from "express";
 import router from "./routes.js";
 import mongoose from "mongoose";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 
 const app = express();
 const PORT = 3000;
@@ -17,6 +18,7 @@ async function main() {
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 app.use(router);
 

@@ -26,7 +26,7 @@
     <p class="header-icons">
       @if (isLoggedIn()) {
       <a href="" class="user-profile">
-        {{currentUser().username}}
+        {{currentUser()?.username}}
 
       </a>
       <button (click)="logout()" type="button">logout</button>
