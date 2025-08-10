@@ -10,7 +10,12 @@ import {
   provideClientHydration,
   withEventReplay,
 } from "@angular/platform-browser";
-import { provideHttpClient, withFetch } from "@angular/common/http";
+import {
+  provideHttpClient,
+  withFetch,
+  withInterceptors,
+} from "@angular/common/http";
+import { errorInterceptorInterceptor } from "./core/interceptors/error-interceptor.interceptor.js";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -21,6 +26,6 @@ export const appConfig: ApplicationConfig = {
       withInMemoryScrolling({ scrollPositionRestoration: "top" })
     ),
     provideClientHydration(withEventReplay()),
-    provideHttpClient(withFetch()),
+    provideHttpClient(withInterceptors([errorInterceptorInterceptor])),
   ],
 };

@@ -9,10 +9,16 @@ import { HeaderComponent } from "./shared/components/header/header.component.js"
 import { RouterOutlet } from "@angular/router";
 import { FooterComponent } from "./shared/components/footer/footer.component.js";
 import { ProductService } from "./core/services/product.service.js";
+import { ErrorNotificationComponent } from "./shared/components/error-notification/error-notification.component.js";
 
 @Component({
   selector: "app-root",
-  imports: [HeaderComponent, RouterOutlet, FooterComponent],
+  imports: [
+    HeaderComponent,
+    RouterOutlet,
+    FooterComponent,
+    ErrorNotificationComponent,
+  ],
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.scss",
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

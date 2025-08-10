@@ -100,7 +100,6 @@ export class ProductsComponent implements OnInit {
 
   onSearch() {
     const term = this.searchTerm.toLocaleLowerCase().trim();
-
     this.filteredProducts = this.products.filter((product) => {
       return product.name.toLowerCase().includes(term);
     });

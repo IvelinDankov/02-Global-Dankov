@@ -9,9 +9,11 @@
         <form class="products-filter-box">
 
           <button class="search-button" type="button">
-            <span><ion-icon name="search-outline"></ion-icon></span> <input [(ngModel)]="searchTerm"
-              (input)="onSearch()" type="text" name="search" placeholder="Search products...">
+            <span><ion-icon name="search-outline"></ion-icon></span>
+
           </button>
+          <input [(ngModel)]="searchTerm" (input)="onSearch()" type="text" name="search"
+            placeholder="Search products..." />
           <div class="form-group">
             <label for="sort">Sort by</label>
             <select (change)="onSortChange($event)" #sort [(ngModel)]="selectedSort" name="sort" id="sort">

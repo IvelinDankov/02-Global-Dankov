@@ -19,8 +19,11 @@
           <a routerLink="/global-facilities" routerLinkActive="active">Global Facilities</a>
         </li>
         <li class="navigation-item"><a routerLink="/company" routerLinkActive="active">Company</a></li>
+        @if (isLoggedIn()) {
+
         <li class="navigation-item"><a routerLink="/create" routerLinkActive="active">Create new Product</a>
         </li>
+        }
       </ul>
     </nav>
     <p class="header-icons">
