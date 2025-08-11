@@ -1,6 +1,8 @@
 import { Routes } from "@angular/router";
 import { HomeComponent } from "./features/home/home.component.js";
 import { NotFoundComponent } from "./shared/components/not-found/not-found.component.js";
+import { authGuardGuard } from "./core/guards/auth-guard.guard.js";
+import { noAuthGuardGuard } from "./core/guards/no-auth-guard.guard.js";
 // import { PageNotFound } from "./shared/components/not-found/not-found.component.js";
 
 export const routes: Routes = [
@@ -44,6 +46,7 @@ export const routes: Routes = [
       import(
         "./features/products/create-product/create-product.component.js"
       ).then((c) => c.CreateProductComponent),
+    canActivate: [authGuardGuard],
   },
   {
     path: "global-facilities",
@@ -65,6 +68,7 @@ export const routes: Routes = [
       import("./features/auth/sign-up/sign-up.component.js").then(
         (c) => c.SignUpComponent
       ),
+    canActivate: [noAuthGuardGuard],
   },
   {
     path: "register",
@@ -72,6 +76,7 @@ export const routes: Routes = [
       import("./features/auth/register/register.component.js").then(
         (c) => c.RegisterComponent
       ),
+    canActivate: [noAuthGuardGuard],
   },
   {
     path: "not-found",
