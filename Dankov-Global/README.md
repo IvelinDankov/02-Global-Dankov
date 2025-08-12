@@ -1,59 +1,89 @@
-# DankovGlobal
+# Table of contents.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.10.
+- Installation.
+- Setup.
+- Usage.
+- Features.
+- Technologies.
+- Contributing.
 
-## Development server
+# Installation
 
-To start a local development server, run:
+Steps
 
-```bash
-ng serve
-```
+1. Clone the repository
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+`git clone https://github.com/IvelinDankov/02-Global-Dankov.git`
 
-## Code scaffolding
+2. Install dependecies.
+   `cd Dankov-Global npm install`
+   `cd Server npm install`
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+3. Start the server.
+   `npm start`
 
-```bash
-ng generate component component-name
-```
+4. Start Angular.
+   `ng serve -o`
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+# Setup
 
-```bash
-ng generate --help
-```
+1. The frondend is build with Angular. It provides the user interface where users can view products editing own products, creating and deleting own products.
 
-## Building
+2. Services: The ProductService can communicates with the backend to fetch products, apply creating new Product, updating Product and Deleting existing one.
+   We provide UserService - the Users can register, login, logout, interact with products catalog.
 
-To build the project run:
+3. Components: We provide different components inside our Page.. like Home, Register, SignUp, Comany, Contacts, Facilities, Industries, Products, Why-dankov
 
-```bash
-ng build
-```
+# Backend (Node.js with MongoDB)
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+1. Product Schema: The backend uses Mongoose to define Product schema, including fields like name, price, description, and likes.
 
-## Running unit tests
+# Usage
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Once everything is set up:
 
-```bash
-ng test
-```
+Browse Products: Users can view a list of products on the product page.
 
-## Running end-to-end tests
+Search and Sort: Products can be filtered based on search terms or sorted by price or creation date.
 
-For end-to-end (e2e) testing, run:
+# Features
 
-```bash
-ng e2e
-```
+Search Products: Search products by name.
+Sort Products: Sort products by:
+Newest
+Oldest
+Price: Low to High
+Price: High to Low
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+# Techologies Used
 
-## Additional Resources
+Frontend:
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Angular
+- Angular Material (Optional)
+- RxJS for reactive programming
+- HTTP Client for API calls
+
+Backend:
+
+- Node.js
+- Express.js
+- MongoDB & Mongoose
+
+Authentication:
+
+- JWT (JSON Web Token) for user authentication (if implemented)
+
+# Contributing
+
+We welcome contributions to this project. Please follow the steps below to contribute:
+
+    Fork the repository.
+
+    Create a new branch for your feature (git checkout -b feature-name).
+
+    Make your changes and commit them (git commit -m 'Add feature-name').
+
+    Push to your forked repository (git push origin feature-name).
+
+    Open a pull request.

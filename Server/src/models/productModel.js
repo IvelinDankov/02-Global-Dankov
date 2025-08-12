@@ -1,5 +1,4 @@
 import { Schema, Types, model } from "mongoose";
-import User from "./userModel.js";
 
 const productSchema = new Schema({
   name: {

@@ -112,18 +112,4 @@ export class ProductsComponent implements OnInit {
     this.router.navigate([`/products/${productId}`]);
     console.log(`CurProductId: ` + productId);
   }
-
-  // onUnlike(product: Product) {
-  //   const userId = this.authService.currentUser()?._id;
-
-  //   if (!userId) {
-  //     return;
-  //   }
-
-  //   this.productService.unlike(product._id).subscribe({
-  //     next: () => {
-  //       product.like = product.like.filter((id) => id !== userId);
-  //     },
-  //   });
-  // }
 }
