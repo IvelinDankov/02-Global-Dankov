@@ -32,10 +32,12 @@
       <span class="loader"></span>
       } @else {
 
-      @for (product of filteredProducts; track product._id) {
+      @for (product of filteredProducts; track product?._id) {
 
       <li class="home-product-item">
         <button class="product-like-icon" type="button">
+
+          <span> </span>
           <ion-icon name="heart-outline"></ion-icon>
         </button>
         <img src="{{product.imageUrl}}" alt="{{product.name}}" class="home-product-image" />

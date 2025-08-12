@@ -3,13 +3,14 @@
     <div class="product-description">
       <div class="product-description-image-box">
         <img class="product-description-image" src="{{product?.imageUrl}}" alt="{{product?.name}}" />
-
+        @if (isLoggedIn() && isOwner) {
         @if (!isEditing) {
 
         <div class="actions-btn">
           <button (click)="onRemoveItem()" type="button">del <ion-icon name="trash-outline"></ion-icon> </button>
           <button (click)="onEditItem()" type="button">edit <ion-icon name="create-outline"></ion-icon></button>
         </div>
+        }
         }
       </div>
       <div class="product-description-content-box">
@@ -94,6 +95,7 @@
             }
           </div>
 
+
           <div class="edit-actions">
             <button (click)="handleCancel()" class="back">Cancel</button>
             <button [disabled]="productForm.invalid" type="submit" class="btn">
@@ -101,6 +103,7 @@
             </button>
 
           </div>
+
 
         </form>
         } @else {

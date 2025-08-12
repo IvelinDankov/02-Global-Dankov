@@ -1,9 +1,11 @@
 import { Router } from "express";
 import userService from "../services/userService.js";
+import { isAuth, isGuest } from "../middlewares/authMiddleware.js";
+import errorMsg from "../utils/errorMsg.js";
 
 const userController = Router();
 
-userController.post("/register", async (req, res) => {
+userController.post("/register", isAuth, async (req, res) => {
   const { username, email, password, rePassword } = req.body;
 
   try {
@@ -15,35 +17,44 @@ userController.post("/register", async (req, res) => {
 
     const token = await userService.login(email, password);
 
-    res.cookie("auth", token, { httpOnly: true });
+    res.user = res.cookie("auth", token, { httpOnly: true, sameSite: "lax" });
 
-    res
-      .status(200)
-      .json({ token, user: { username: user.username, email: user.email } });
+    res.status(200).json({
+      token,
+      user: {
+        _id: String(user._id),
+        username: user.username,
+        email: user.email,
+      },
+    });
   } catch (err) {
     res.status(500).json({ message: "Error fetching User", error: err });
   }
 });
 
-userController.post("/login", async (req, res) => {
+userController.post("/login", isAuth, async (req, res) => {
   const { email, password } = req.body;
 
   try {
     const { token, user } = await userService.login(email, password);
 
-    res.cookie("auth", token, { httpOnly: true });
+    res.cookie("auth", token, { httpOnly: true, sameSite: "lax" });
 
-    res
-      .status(200)
-      .json({ token, user: { username: user.username, email: user.email } });
+    res.status(200).json({
+      token,
+      user: {
+        _id: String(user._id),
+        username: user.username,
+        email: user.email,
+      },
+    });
   } catch (err) {
-    res
-      .status(500)
-      .json({ message: "Something went wrong", error: err.message });
+    const error = await errorMsg(err);
+    res.status(500).json({ error: error });
   }
 });
 
-userController.post("/logout", (req, res) => {
+userController.post("/logout", isAuth, (req, res) => {
   res.clearCookie("auth").status(200).json({ message: "Logged out" });
 });
 

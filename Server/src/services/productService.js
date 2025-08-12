@@ -16,7 +16,14 @@ export default {
   updateProduct(id, newProduct) {
     return Product.findByIdAndUpdate(id, newProduct);
   },
-  createProduct(product) {
-    return Product.create(product);
+  createProduct(product, ownerId) {
+    return Product.create({ ...product, owner: ownerId });
+  },
+  async like(productId, userId) {
+    return Product.findByIdAndUpdate(
+      productId,
+      { $addToSet: { likes: userId } },
+      { new: true }
+    );
   },
 };

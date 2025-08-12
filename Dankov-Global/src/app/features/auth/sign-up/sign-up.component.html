@@ -9,11 +9,21 @@
     <div class="form-group">
       <label for="email">Email</label>
       <input type="email" id="email" required formControlName="email" />
+      @if (emailError) {
+      <p class="error">
+        {{emailErrorMsg}}
+      </p>
+      }
     </div>
 
     <div class="form-group">
       <label for="password">Password</label>
       <input type="password" id="password" required formControlName="password" />
+      @if (passwordError) {
+      <p class="error">
+        {{passwordErrorMsg}}
+      </p>
+      }
     </div>
 
     <button [disabled]="loginForm.invalid" type="submit" class="btn submit-btn">Login</button>

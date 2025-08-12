@@ -25,23 +25,32 @@ export class ProductService {
   }
 
   getOne(id: string | null) {
-    return this.http.get<Product>(this.API_URL + `/products/${id}`);
+    return this.http.get<Product>(this.API_URL + `/products/${id}`, {
+      withCredentials: true,
+    });
   }
 
   removeItem(id: string | null) {
-    return this.http.delete<Product>(this.API_URL + `/products/delete/${id}`);
+    return this.http.delete<Product>(this.API_URL + `/products/delete/${id}`, {
+      withCredentials: true,
+    });
   }
 
   update(product: Product) {
     return this.http.put<Product>(
       `${this.API_URL}/products/edit/${product._id}`,
 
-      product
+      product,
+      {
+        withCredentials: true,
+      }
     );
   }
 
   create(product: Product) {
-    return this.http.post<Product>(`${this.API_URL}/create`, product);
+    return this.http.post<Product>(`${this.API_URL}/create`, product, {
+      withCredentials: true,
+    });
   }
 }
 /* 

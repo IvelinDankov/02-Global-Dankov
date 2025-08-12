@@ -1,4 +1,5 @@
-import { Schema, model } from "mongoose";
+import { Schema, Types, model } from "mongoose";
+import User from "./userModel.js";
 
 const productSchema = new Schema({
   name: { type: String },
@@ -11,6 +12,15 @@ const productSchema = new Schema({
   updatedAt: { type: Date, default: Date.now },
   rating: { type: Number, default: 0 },
   weight: { type: Number },
+  owner: {
+    type: Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
+  likes: {
+    type: Types.ObjectId,
+    ref: "User",
+  },
 });
 const Product = model("Product", productSchema);
 

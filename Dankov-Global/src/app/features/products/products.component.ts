@@ -11,6 +11,7 @@ import { CurrencyPipe } from "@angular/common";
 import { Router, RouterLink } from "@angular/router";
 import { ProductService } from "../../core/services/product.service.js";
 import { PriceDirective } from "../../directives/price.directive.js";
+import { AuthService } from "../../core/services/auth.service.js";
 
 @Component({
   selector: "app-products",
@@ -27,13 +28,15 @@ import { PriceDirective } from "../../directives/price.directive.js";
 })
 export class ProductsComponent implements OnInit {
   private productService = inject(ProductService);
+  private authService = inject(AuthService);
   private router = inject(Router);
   products: Product[] = [];
   filteredProducts: Product[] = [];
   isLoading: boolean = false;
   errorMsg: string = "";
-  selectedSort = "all";
-  searchTerm = "";
+  selectedSort: string = "all";
+  searchTerm: string = "";
+  isLiked: boolean = true;
 
   sortProducts: {
     label: string;
@@ -109,4 +112,18 @@ export class ProductsComponent implements OnInit {
     this.router.navigate([`/products/${productId}`]);
     console.log(`CurProductId: ` + productId);
   }
+
+  // onUnlike(product: Product) {
+  //   const userId = this.authService.currentUser()?._id;
+
+  //   if (!userId) {
+  //     return;
+  //   }
+
+  //   this.productService.unlike(product._id).subscribe({
+  //     next: () => {
+  //       product.like = product.like.filter((id) => id !== userId);
+  //     },
+  //   });
+  // }
 }

@@ -68,6 +68,7 @@ export class HeaderComponent implements OnInit {
     } else if (currRoute.includes("global-facilities")) {
       this.headerBg = "url(/images/facillities/Facilities-hero.png)";
       this.headertitle = "20+ Locations Around the World Since 1999";
+      this.containerClass = "global global-container container";
     } else if (currRoute.includes("company")) {
       this.headerBg = "url(/images/company/company-hero-image.png)";
       this.headertitle = "Read the Story About Our Company";
@@ -96,7 +97,10 @@ export class HeaderComponent implements OnInit {
 
   logout(): void {
     this.authService.logout().subscribe({
-      next: (res) => console.log(res),
+      next: (res) => {
+        this.router.navigate(["/sign-up"]);
+        console.log(res);
+      },
       error: (err) => {
         console.log("Error loggin out", err.message);
       },

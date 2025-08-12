@@ -1,11 +1,12 @@
 import { HttpClient } from "@angular/common/http";
-import { inject, Injectable, signal } from "@angular/core";
+import { Injectable, signal } from "@angular/core";
 import { User } from "../../models/user.model.js";
-import { map, Observable, tap } from "rxjs";
+import { Observable, tap } from "rxjs";
 
 export interface AuthResponse {
   token: string;
   user: {
+    _id: string;
     username: string;
     email: string;
   };

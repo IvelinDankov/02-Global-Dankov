@@ -95,6 +95,11 @@
 
 .user-profile {
   color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.2rem;
+  text-align: center;
 }
 
 .sign-up {
@@ -108,8 +113,8 @@
   transition: all 0.3s;
 
   & ion-icon {
-    height: 2rem;
-    width: 2rem;
+    height: 3rem;
+    width: 3rem;
   }
 
   & span {
@@ -223,8 +228,8 @@
     transition: all 0.3s;
 
     & ion-icon {
-      height: 2rem;
-      width: 2rem;
+      height: 3rem;
+      width: 3rem;
     }
 
     & span {
@@ -255,4 +260,9 @@
     color: var(--dark-grey);
     // color: var(--dark-grey);
   }
+}
+
+.logout-btn {
+  border: none;
+  background-color: transparent;
 }

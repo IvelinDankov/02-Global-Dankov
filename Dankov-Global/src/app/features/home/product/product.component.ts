@@ -28,7 +28,7 @@ export class ProductComponent implements OnInit {
     this.productService.getAllProducts().subscribe({
       next: (products: Product[]) => {
         this.loading = false;
-        this.products = products;
+        this.products = products.slice(0, 8);
       },
       error: (error) => {
         this.loading = false;

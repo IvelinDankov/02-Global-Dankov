@@ -26,13 +26,14 @@
         }
       </ul>
     </nav>
-    <p class="header-icons">
+    <div class="header-icons">
       @if (isLoggedIn()) {
       <a href="" class="user-profile">
+        <ion-icon name="person-circle-outline"></ion-icon>
         {{currentUser()?.username}}
 
       </a>
-      <button (click)="logout()" type="button">logout</button>
+
       } @else {
 
 
@@ -40,11 +41,18 @@
         <ion-icon name="person-add-outline"></ion-icon>
       </a>
       }
-      <!-- <span>sign up</span> -->
-
       <ion-icon name="cart-outline"></ion-icon>
       <ion-icon name="search-outline"></ion-icon>
-    </p>
+
+      @if (isLoggedIn()) {
+      <button class="logout-btn" (click)="logout()" type="button">
+        <ion-icon name="log-out-outline"></ion-icon>
+        <span>logout</span>
+      </button>
+      }
+      <!-- <span>sign up</span> -->
+
+    </div>
   </header>
   <h1 class="heading-1 header-heading">
     {{headertitle}}

@@ -17,6 +17,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from "@angular/forms";
+import { AuthService } from "../../../core/services/auth.service.js";
 
 @Component({
   selector: "app-product-details",
@@ -30,15 +31,19 @@ export class ProductDetailsComponent implements OnInit {
   private router = inject(Router);
   // readonly productId: string | null;
   private productService = inject(ProductService);
+  private authService = inject(AuthService);
   private destroyRef = inject(DestroyRef);
   product: Product | undefined;
   productDiscount: number = 0;
+  currentUserId: string | undefined = undefined;
+  isOwner: boolean = false;
 
   showProductDescrition: boolean = false;
   showRefundDescrition: boolean = false;
   showShippingDescrition: boolean = false;
 
   isEditing: boolean = false;
+  isLoggedIn = this.authService._isLoggedIn;
 
   productCategory: string[] = ["vegetables", "fruits"];
 
@@ -65,10 +70,13 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get("id");
 
+    const userId = this.authService._currentUser()?._id;
+
     const subscription = this.productService.getOne(id).subscribe({
       next: (value) => {
         this.product = value;
         this.productDiscount = this.product.price / 0.8;
+        this.isOwner = userId === this.product?.owner;
       },
       error: (err) => {
         console.log("Error fetching Product", err);

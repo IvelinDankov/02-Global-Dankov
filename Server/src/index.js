@@ -27,6 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 // app.use(authMiddleware);
 
+
 app.use(router);
 
 app.listen(PORT, () =>
