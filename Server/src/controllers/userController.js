@@ -28,7 +28,8 @@ userController.post("/register", isAuth, async (req, res) => {
       },
     });
   } catch (err) {
-    res.status(500).json({ message: "Error fetching User", error: err });
+    const error = await errorMsg(err);
+    res.status(500).json({ message: error, error: error });
   }
 });
 
@@ -50,7 +51,7 @@ userController.post("/login", isAuth, async (req, res) => {
     });
   } catch (err) {
     const error = await errorMsg(err);
-    res.status(500).json({ error: error });
+    res.status(500).json({ message: error, error: error });
   }
 });
 

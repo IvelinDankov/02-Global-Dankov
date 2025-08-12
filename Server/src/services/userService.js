@@ -21,7 +21,7 @@ export default {
     const user = await User.findOne({ email });
 
     if (!user) {
-      return "User does not exist!";
+      throw new Error("Unknown user, Please change User!");
     }
 
     const isValid = await bcrypt.compare(password, user.password);
