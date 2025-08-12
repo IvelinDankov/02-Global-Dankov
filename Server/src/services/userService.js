@@ -9,7 +9,7 @@ export default {
     const userExist = await User.exists({ email: email });
 
     if (userExist) {
-      throw new Error("User Already Exist.");
+      throw new Error("User already exist. Please try with another!");
     }
 
     const user = { username, email, password };
@@ -21,13 +21,13 @@ export default {
     const user = await User.findOne({ email });
 
     if (!user) {
-      throw new Error("Unknown user, Please change User!");
+      throw new Error("Wrong user or Password. Please try again!");
     }
 
     const isValid = await bcrypt.compare(password, user.password);
 
     if (!isValid) {
-      throw new Error("Password is not valid!");
+      throw new Error("Wrong user or Password. Please try again!");
     }
 
     const payload = {

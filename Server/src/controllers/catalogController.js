@@ -2,6 +2,7 @@ import { Router } from "express";
 import productService from "../services/productService.js";
 import { authMiddleware } from "../middlewares/authMiddleware.js";
 import Product from "../models/productModel.js";
+import errorMsg from "../utils/errorMsg.js";
 
 const productController = Router();
 
@@ -14,7 +15,8 @@ productController.get("/", async (req, res) => {
 
     res.status(200).json(sortedProducts);
   } catch (err) {
-    res.status(500).json({ message: "Error fetching products", error: err });
+    const error = errorMsg(err);
+    res.status(500).json({ message: error, error: error });
   }
 });
 
@@ -25,7 +27,8 @@ productController.get("/:id", async (req, res) => {
 
     res.status(200).json(product);
   } catch (err) {
-    res.status(500).json({ message: "Error fetching product", error: err });
+    const error = errorMsg(err);
+    res.status(500).json({ message: error.message, error: error });
   }
 });
 productController.delete("/delete/:id", authMiddleware, async (req, res) => {
@@ -35,13 +38,14 @@ productController.delete("/delete/:id", authMiddleware, async (req, res) => {
   try {
     const product = await productService.getOne(id);
 
-    if (product.owner.includes(userId)) {
+    if (String(product.owner) !== userId) {
       throw new Error("Could not remove product!");
     } else {
       await productService.remove(id);
     }
   } catch (err) {
-    res.status(404).json({ message: "Could not delete Product", error: err });
+    const error = errorMsg(err);
+    res.status(404).json({ message: error, error: error });
   }
 });
 
@@ -64,7 +68,8 @@ productController.put("/edit/:id", authMiddleware, async (req, res) => {
     }
     res.status(200).json(product);
   } catch (err) {
-    res.status(500).json({ message: "Error fetching product", error: err });
+    const error = errorMsg(err);
+    res.status(500).json({ message: error, error: error });
   }
 });
 
@@ -110,7 +115,8 @@ productController.delete("/like/:id", authMiddleware, async (req, res) => {
 
     res.json({ message: "Unlike success!" });
   } catch (err) {
-    res.status(404).json({ message: "Could not unlike Product!", error: err });
+    const error = errorMsg(err);
+    res.status(404).json({ message: error, error: error });
   }
 });
 
