@@ -81,7 +81,7 @@ export class SignUpComponent {
       this.authService.login(email, password).subscribe({
         next: (res) => {
           if (res.user && res.token) {
-            this.router.navigate(["/home"]);
+            this.router.navigate(["/products"]);
           }
         },
         error: (error) => {
