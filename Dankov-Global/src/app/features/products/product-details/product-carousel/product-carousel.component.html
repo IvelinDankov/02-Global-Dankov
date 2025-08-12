@@ -1,0 +1,46 @@
+<section class="section section-product-carousel">
+  <div class="container product-carousel-container">
+    <div class="product-carousel">
+      <h2 class="heading-2 product-carousel-heading">You May Also Like</h2>
+
+      <ul class="product-carousel-list">
+        <!-- <ion-icon name="chevron-back-outline"></ion-icon> -->
+        @for (nextProduct of nextProducts; track nextProduct._id) {
+
+        <li class="home-product-item">
+          <img src="{{nextProduct.imageUrl}}" alt="{{nextProduct.name}}" class="home-product-image" />
+
+          <div class="home-product-content">
+            <p class="product-title">{{nextProduct.name}} {{nextProduct.weight }}gm </p>
+            <p class="product-price">{{nextProduct.price | currency}}</p>
+          </div>
+        </li>
+
+
+        }
+        <!-- <ion-icon name="chevron-forward-outline"></ion-icon> -->
+      </ul>
+    </div>
+    <div class="product-carousel">
+      <h2 class="heading-2 product-carousel-heading">Most Popular</h2>
+
+      <ul class="product-carousel-list">
+        <!-- <ion-icon name="chevron-back-outline"></ion-icon> -->
+        @for (product of products; track product._id) {
+
+        <li class="home-product-item">
+          <img src="{{product.imageUrl}}" alt="{{product.name}}" class="home-product-image" />
+
+          <div class="home-product-content">
+            <p class="product-title">{{product.name}} {{product.weight }}gm </p>
+            <p class="product-price">{{product.price | currency}}</p>
+          </div>
+        </li>
+        }
+
+
+        <!-- <ion-icon name="chevron-forward-outline"></ion-icon> -->
+      </ul>
+    </div>
+  </div>
+</section>

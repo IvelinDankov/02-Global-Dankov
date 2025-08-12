@@ -18,10 +18,16 @@ import {
   Validators,
 } from "@angular/forms";
 import { AuthService } from "../../../core/services/auth.service.js";
+import { ProductCarouselComponent } from "./product-carousel/product-carousel.component";
 
 @Component({
   selector: "app-product-details",
-  imports: [CurrencyPipe, PriceDirective, ReactiveFormsModule],
+  imports: [
+    CurrencyPipe,
+    PriceDirective,
+    ReactiveFormsModule,
+    ProductCarouselComponent,
+  ],
   templateUrl: "./product-details.component.html",
   styleUrl: "./product-details.component.scss",
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
