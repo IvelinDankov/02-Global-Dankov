@@ -37,13 +37,13 @@
 
       <li class="home-product-item">
         <button (click)="toggleLike(product)" class="product-like-icon" type="button">
-          <span> {{product.likes.length}} </span>
+          <span [class.isLiked]="product.isLiked"> {{product.likes.length}} </span>
           @if(product.isLiked) {
           <ion-icon name="heart"></ion-icon>
-          <span>Liked!</span>
+          <sup class="liked">Liked</sup>
           } @else {
           <ion-icon name="heart-outline"></ion-icon>
-          <span> like </span> }
+          <sup class="like">like. </sup> }
 
         </button>
         <img src="{{product.imageUrl}}" alt="{{product.name}}" class="home-product-image" />

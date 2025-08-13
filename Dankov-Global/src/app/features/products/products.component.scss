@@ -137,7 +137,20 @@ select {
   cursor: pointer;
   transition: all 0.3s;
 
-  & span:last-child {
+  & span {
+    position: absolute;
+    left: 50%;
+    top: 23%;
+    z-index: 1000;
+    transform: translate(-50%, 0%);
+  }
+
+  & .isLiked {
+    color: var(--white) !important;
+  }
+
+  & .like,
+  & .liked {
     flex: 1 0 100%;
   }
 

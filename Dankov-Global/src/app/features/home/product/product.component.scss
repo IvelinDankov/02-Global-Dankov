@@ -35,6 +35,8 @@
 
 .product-like-icon {
   position: absolute;
+  display: flex;
+
   top: 1rem;
   right: 1rem;
   color: black;
@@ -43,6 +45,19 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+
+  & [name="heart"] {
+    color: crimson;
+  }
+
+  & span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--white);
+    font-weight: bold;
+  }
 }
 
 .home-product-image {

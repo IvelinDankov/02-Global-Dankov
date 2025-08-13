@@ -10,7 +10,8 @@
 
       <li class="home-product-item">
         <button class="product-like-icon" type="button">
-          <ion-icon name="heart-outline"></ion-icon>
+          <ion-icon name="heart"></ion-icon>
+          <span> {{product.likes.length}} </span>
         </button>
         <img src="{{product.imageUrl}}" alt="{{product.name}}" class="home-product-image" />
         <button class="product-button">
