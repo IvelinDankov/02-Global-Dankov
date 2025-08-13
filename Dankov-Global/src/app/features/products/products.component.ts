@@ -12,6 +12,7 @@ import { Router, RouterLink } from "@angular/router";
 import { ProductService } from "../../core/services/product.service.js";
 import { PriceDirective } from "../../directives/price.directive.js";
 import { LikeService } from "../../core/services/like.service.js";
+import { AuthService } from "../../core/services/auth.service.js";
 
 @Component({
   selector: "app-products",
@@ -29,6 +30,7 @@ import { LikeService } from "../../core/services/like.service.js";
 export class ProductsComponent implements OnInit {
   private productService = inject(ProductService);
   private likeService = inject(LikeService);
+  private authService = inject(AuthService);
   private router = inject(Router);
   products: Product[] = [];
   filteredProducts: Product[] = [];
@@ -58,7 +60,9 @@ export class ProductsComponent implements OnInit {
         this.products = allProducts;
 
         this.filteredProducts = [...this.products];
-        this.userLikedThisProduct();
+        if (this.authService._isLoggedIn()) {
+          this.userLikedThisProduct();
+        }
       },
 
       error: (err) => {
