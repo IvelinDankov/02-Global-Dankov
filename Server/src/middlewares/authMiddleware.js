@@ -5,7 +5,7 @@ export const authMiddleware = (req, res, next) => {
   const token = req.cookies["auth"];
 
   if (!token) {
-    return res.status(401).json({ message: "Unauthorized" });
+    return res.status(401).json({ message: "Unauthorized, Login first!" });
   }
 
   try {
@@ -14,7 +14,7 @@ export const authMiddleware = (req, res, next) => {
     req.user = decodedToken;
     next();
   } catch (err) {
-    return res.status(401).json({ message: "Unauthorized" });
+    return res.status(401).json({ message: "Unauthorized, Login first!" });
   }
 };
 

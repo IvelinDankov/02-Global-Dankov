@@ -11,7 +11,6 @@ import { CurrencyPipe } from "@angular/common";
 import { Router, RouterLink } from "@angular/router";
 import { ProductService } from "../../core/services/product.service.js";
 import { PriceDirective } from "../../directives/price.directive.js";
-import { AuthService } from "../../core/services/auth.service.js";
 import { LikeService } from "../../core/services/like.service.js";
 
 @Component({

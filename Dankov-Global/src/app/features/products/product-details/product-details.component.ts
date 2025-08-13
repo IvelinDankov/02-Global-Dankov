@@ -325,8 +325,6 @@ export class ProductDetailsComponent implements OnInit {
       .update(product)
       .subscribe((response) => {
         this.product = response;
-
-        console.log(response);
       });
 
     this.isEditing = false;

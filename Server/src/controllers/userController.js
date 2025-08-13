@@ -13,11 +13,11 @@ userController.post("/register", isAuth, async (req, res) => {
       throw new Error("Password Mismatch!");
     }
 
-    const user = await userService.register(username, email, password);
+    await userService.register(username, email, password);
 
-    const token = await userService.login(email, password);
+    const { token, user } = await userService.login(email, password);
 
-    res.user = res.cookie("auth", token, { httpOnly: true, sameSite: "lax" });
+    res.cookie("auth", token, { httpOnly: true, sameSite: "lax" });
 
     res.status(200).json({
       token,
