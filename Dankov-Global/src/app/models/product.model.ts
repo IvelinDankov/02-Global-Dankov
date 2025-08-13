@@ -12,6 +12,6 @@ export interface Product {
   weight: number;
   owner: string;
   likes: string[];
-  isLiked?: boolean;
+  isLiked?: boolean | null;
   likeCount: number;
 }

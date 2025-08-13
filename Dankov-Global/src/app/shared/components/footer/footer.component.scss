@@ -44,6 +44,9 @@ ion-icon {
   text-transform: capitalize;
   color: var(--light-green) !important;
   font-size: 3rem;
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
 }
 .footer-logo:hover {
   color: var(--primary-dark-green) !important;

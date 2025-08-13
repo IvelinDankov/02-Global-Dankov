@@ -16,7 +16,12 @@ likeController.get("/isLiked/:id", authMiddleware, async (req, res) => {
     if (isLiked) {
       return res.status(200).json({ isLiked: true });
     }
-    return res.status(200).json({ isLiked: false });
+
+    if (userId) {
+      return res.status(200).json({ isLiked: false });
+    } else {
+      return res.status(200).json({ isLiked: null });
+    }
   } catch (err) {
     const error = errorMsg(err);
     res.status(500).json({ message: error, error: error });
