@@ -91,6 +91,7 @@
 
 .welcome-content {
   width: 70rem;
+  align-self: start;
 }
 /* .heading-2 {
 }
@@ -123,4 +124,8 @@
   object-fit: cover;
   height: 100%;
   display: block;
+}
+
+.hide-text {
+  display: none;
 }

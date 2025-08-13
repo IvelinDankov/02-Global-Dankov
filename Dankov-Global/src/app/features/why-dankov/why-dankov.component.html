@@ -84,13 +84,16 @@
       ever since the 1500s, when an unknown printer took a galley of type
       and scrambled it to make a type specimen book.
     </p>
+    @if (cssClassP) {
+
     <p class="welcome-parahraph">
       It was popularised in the 1960s with the release of Letraset sheets
       containing Lorem Ipsum passages, and more recently with desktop
       publishing software like Aldus PageMaker including versions of Lorem
       Ipsum.
     </p>
-    <button class="welcome-link" href="#">Read More...</button>
+    }
+    <button (click)="showTextP()" class="welcome-link">{{ cssClassP ?'Hide Text' :'Read More...'  }}</button>
   </div>
   <div class="welcome-image-box">
     <img class="welcome-image" src="../../images/why/why-image-corb.png" />
@@ -110,12 +113,17 @@
       ever since the 1500s, when an unknown printer took a galley of type
       and scrambled it to make a type specimen book.
     </p>
-    <p class="welcome-parahraph">
+    <p>
+      @if(cssClass) {
       It was popularised in the 1960s with the release of Letraset sheets
       containing Lorem Ipsum passages, and more recently with desktop
       publishing software like Aldus PageMaker including versions of Lorem
       Ipsum.
+      }
+
+
     </p>
-    <a class="welcome-link" href="#">Read More...</a>
+    <button (click)="showText()" class="welcome-parahraph"
+      class="welcome-link">{{cssClass ? 'Hide Text': 'Read More...' }}</button>
   </div>
 </section>
