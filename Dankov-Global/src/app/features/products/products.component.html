@@ -33,7 +33,13 @@
       <span class="loader"></span>
       } @else {
 
+      @if (filteredProducts.length === 0) {
+      <p class="empty-collection">There is not products yet!</p>
+      } @else {
+
+
       @for (product of filteredProducts; track product?._id) {
+
 
       <li class="home-product-item">
         <button (click)="toggleLike(product)" class="product-like-icon" type="button">
@@ -60,7 +66,7 @@
       </li>
       }
       }
-
+      }
     </ul>
   </div>
 </section>
