@@ -7,10 +7,11 @@ import {
 import { Product } from "../../../../models/product.model.js";
 import { ProductService } from "../../../../core/services/product.service.js";
 import { CurrencyPipe } from "@angular/common";
+import { PriceDirective } from "../../../../directives/price.directive.js";
 
 @Component({
   selector: "app-product-carousel",
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe, PriceDirective],
   templateUrl: "./product-carousel.component.html",
   styleUrl: "./product-carousel.component.scss",
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

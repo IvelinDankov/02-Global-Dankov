@@ -9,6 +9,7 @@
         <form class="products-filter-box">
 
           <button class="search-button" type="button">
+
             <span><ion-icon name="search-outline"></ion-icon></span>
 
           </button>
@@ -35,10 +36,15 @@
       @for (product of filteredProducts; track product?._id) {
 
       <li class="home-product-item">
-        <button class="product-like-icon" type="button">
-
-          <span> </span>
+        <button (click)="toggleLike(product)" class="product-like-icon" type="button">
+          <span> {{product.likes.length}} </span>
+          @if(product.isLiked) {
+          <ion-icon name="heart"></ion-icon>
+          <span>Liked!</span>
+          } @else {
           <ion-icon name="heart-outline"></ion-icon>
+          <span> like </span> }
+
         </button>
         <img src="{{product.imageUrl}}" alt="{{product.name}}" class="home-product-image" />
         <button class="product-button">

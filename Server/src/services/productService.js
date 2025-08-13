@@ -26,4 +26,10 @@ export default {
       { new: true }
     );
   },
+
+  unlike(userId, productId) {
+    return Product.findByIdAndUpdate(productId, {
+      $pull: { likes: userId },
+    });
+  },
 };

@@ -1,5 +1,3 @@
-import { User } from "./user.model.js";
-
 export interface Product {
   _id: string;
   name: string;
@@ -13,5 +11,7 @@ export interface Product {
   rating: number;
   weight: number;
   owner: string;
-  likes: string[] | undefined;
+  likes: string[];
+  isLiked?: boolean;
+  likeCount: number;
 }

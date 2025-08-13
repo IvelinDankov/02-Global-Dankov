@@ -36,10 +36,12 @@ const productSchema = new Schema({
     ref: "User",
     required: true,
   },
-  likes: {
-    type: Types.ObjectId,
-    ref: "User",
-  },
+  likes: [
+    {
+      type: Types.ObjectId,
+      ref: "User",
+    },
+  ],
 });
 const Product = model("Product", productSchema);
 

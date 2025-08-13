@@ -12,6 +12,7 @@ import { Router, RouterLink } from "@angular/router";
 import { ProductService } from "../../core/services/product.service.js";
 import { PriceDirective } from "../../directives/price.directive.js";
 import { AuthService } from "../../core/services/auth.service.js";
+import { LikeService } from "../../core/services/like.service.js";
 
 @Component({
   selector: "app-products",
@@ -28,7 +29,7 @@ import { AuthService } from "../../core/services/auth.service.js";
 })
 export class ProductsComponent implements OnInit {
   private productService = inject(ProductService);
-  private authService = inject(AuthService);
+  private likeService = inject(LikeService);
   private router = inject(Router);
   products: Product[] = [];
   filteredProducts: Product[] = [];
@@ -58,6 +59,7 @@ export class ProductsComponent implements OnInit {
         this.products = allProducts;
 
         this.filteredProducts = [...this.products];
+        this.userLikedThisProduct();
       },
 
       error: (err) => {
@@ -111,5 +113,43 @@ export class ProductsComponent implements OnInit {
   showDetails(productId: string) {
     this.router.navigate([`/products/${productId}`]);
     console.log(`CurProductId: ` + productId);
+  }
+
+  userLikedThisProduct() {
+    this.products.forEach((product) => {
+      this.likeService.checkIfUserLiked(product._id).subscribe({
+        next: (res) => {
+          product.isLiked = res.isLiked;
+        },
+        error: (err) => {
+          console.log("Error checking like status", err.message);
+        },
+      });
+    });
+  }
+
+  toggleLike(product: Product): void {
+    if (product.isLiked) {
+      this.likeService.unlike(product._id).subscribe({
+        next: (res) => {
+          product.isLiked = false;
+
+          product.likes = res.likes;
+        },
+        error: (err) => {
+          console.log("Could not unlike product!", err.message);
+        },
+      });
+    } else {
+      this.likeService.like(product._id).subscribe({
+        next: (res) => {
+          product.isLiked = true;
+          product.likes = res.likes;
+        },
+        error: (err) => {
+          console.log("Could not like the product", err.message);
+        },
+      });
+    }
   }
 }

@@ -26,6 +26,9 @@ export const appConfig: ApplicationConfig = {
       withInMemoryScrolling({ scrollPositionRestoration: "top" })
     ),
     provideClientHydration(withEventReplay()),
-    provideHttpClient(withInterceptors([errorInterceptorInterceptor])),
+    provideHttpClient(
+      withInterceptors([errorInterceptorInterceptor]),
+      withFetch()
+    ),
   ],
 };

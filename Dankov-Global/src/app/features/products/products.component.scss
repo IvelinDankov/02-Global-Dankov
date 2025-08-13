@@ -123,6 +123,10 @@ select {
 
 .product-like-icon {
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
   top: 1rem;
   right: 1rem;
   color: black;
@@ -132,6 +136,10 @@ select {
   border: none;
   cursor: pointer;
   transition: all 0.3s;
+
+  & span:last-child {
+    flex: 1 0 100%;
+  }
 
   &:hover {
     transform: scale(1.15);
