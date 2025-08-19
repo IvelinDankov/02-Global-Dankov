@@ -1,9 +1,11 @@
 <div class="form-container">
   <h2 class="heading-2 form-title">Register</h2>
+  <a routerLink="/login" class="login-link" id="switch-mode">You have already an account? Login</a>
   <form [formGroup]="registerForm" class="register-form" (ngSubmit)="onSubmit()">
     <div class="form-group" id="name-group">
       <label for="username">Username</label>
-      <input [class.error-input]="usernameError" type="text" id="username" name="username" formControlName="username" />
+      <input [class.error-input]="usernameError" type="text" id="username" name="username" formControlName="username"
+        placeholder="John Smidt" />
 
       @if (usernameError) {
       <p class="error">
@@ -15,7 +17,8 @@
 
     <div class="form-group">
       <label for="email">Email</label>
-      <input [class.error-input]="emailError" type="email" id="email" name="email" required formControlName="email" />
+      <input [class.error-input]="emailError" type="email" id="email" name="email" required formControlName="email"
+        placeholder="john@gmail.com" />
 
       @if (emailError) {
       <p class="error">
@@ -28,7 +31,7 @@
 
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" id="password" required formControlName="password" />
+        <input type="password" id="password" required formControlName="password" placeholder="*******" />
 
         @if (passwordsError) {
         <p class="error">
@@ -38,7 +41,7 @@
       </div>
       <div class="form-group">
         <label for="rePassword">Re-Password</label>
-        <input type="password" id="rePassword" required formControlName="rePassword" />
+        <input type="password" id="rePassword" required formControlName="rePassword" placeholder="*******" />
         @if (passwordsError) {
         <p class="error">
           {{rePasswordErrorMsg}}
@@ -50,5 +53,5 @@
     <button [disabled]="registerForm.invalid" type="submit" class="btn submit-btn">Register</button>
   </form>
 
-  <a routerLink="/sign-up" class="login-link" id="switch-mode">You have already an account? Login</a>
+
 </div>

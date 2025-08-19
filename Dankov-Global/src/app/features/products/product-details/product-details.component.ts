@@ -19,6 +19,7 @@ import {
 } from "@angular/forms";
 import { AuthService } from "../../../core/services/auth.service.js";
 import { ProductCarouselComponent } from "./product-carousel/product-carousel.component";
+import { HoverDirective } from "../../../directives/hover.directive";
 
 @Component({
   selector: "app-product-details",
@@ -27,6 +28,7 @@ import { ProductCarouselComponent } from "./product-carousel/product-carousel.co
     PriceDirective,
     ReactiveFormsModule,
     ProductCarouselComponent,
+    HoverDirective,
   ],
   templateUrl: "./product-details.component.html",
   styleUrl: "./product-details.component.scss",
@@ -113,12 +115,14 @@ export class ProductDetailsComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get("id");
     // alert("Are you sure? Do you realy want to delete this Product?");
 
-    this.productService.removeItem(id).subscribe({
+    const subscription = this.productService.removeItem(id).subscribe({
       next: () => console.log("Deleted!"),
       error: (err) => {
         console.log("Could not delete Product", err);
       },
     });
+
+    this.destroyRef.onDestroy(() => subscription.unsubscribe());
     this.router.navigate(["/products"]);
   }
 

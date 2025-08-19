@@ -2,7 +2,7 @@
   <div class="container product-description-container">
     <div class="product-description">
       <div class="product-description-image-box">
-        <img class="product-description-image" src="{{product?.imageUrl}}" alt="{{product?.name}}" />
+        <img appHover class="product-description-image" src="{{product?.imageUrl}}" alt="{{product?.name}}" />
         @if (isLoggedIn() && isOwner) {
         @if (!isEditing) {
 

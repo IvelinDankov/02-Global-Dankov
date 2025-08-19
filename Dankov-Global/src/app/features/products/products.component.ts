@@ -13,6 +13,7 @@ import { ProductService } from "../../core/services/product.service.js";
 import { PriceDirective } from "../../directives/price.directive.js";
 import { LikeService } from "../../core/services/like.service.js";
 import { AuthService } from "../../core/services/auth.service.js";
+import { HoverDirective } from "../../directives/hover.directive";
 
 @Component({
   selector: "app-products",
@@ -22,6 +23,7 @@ import { AuthService } from "../../core/services/auth.service.js";
     CurrencyPipe,
     RouterLink,
     PriceDirective,
+    HoverDirective,
   ],
   templateUrl: "./products.component.html",
   styleUrl: "./products.component.scss",

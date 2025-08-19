@@ -1,6 +1,6 @@
 import { Router } from "express";
 import productService from "../services/productService.js";
-import { authMiddleware } from "../middlewares/authMiddleware.js";
+import { authMiddleware, isAuth } from "../middlewares/authMiddleware.js";
 import errorMsg from "../utils/errorMsg.js";
 
 const productController = Router();

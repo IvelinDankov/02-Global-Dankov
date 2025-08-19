@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable, signal } from "@angular/core";
+import { inject, Injectable, OnInit, signal } from "@angular/core";
 import { User } from "../../models/user.model.js";
 import { Observable, tap } from "rxjs";
 
@@ -27,6 +27,7 @@ export class AuthService {
   constructor(private http: HttpClient) {
     if (typeof localStorage !== "undefined") {
       const savedUser = localStorage.getItem("currentUser");
+
       if (savedUser) {
         const user = JSON.parse(savedUser);
         this._currentUser.set(user);

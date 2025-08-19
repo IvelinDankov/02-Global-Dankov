@@ -25,9 +25,8 @@ async function main() {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-// app.use(authMiddleware);
 
-
+app.use(authMiddleware);
 app.use(router);
 
 app.listen(PORT, () =>

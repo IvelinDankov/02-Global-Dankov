@@ -83,6 +83,11 @@
 
 .login-link {
   // background-color: ;
+  justify-content: flex-start;
+  width: 50rem;
+
+  background-color: var(--light-green);
+  padding: 1rem;
   margin-top: 1.4rem;
-  color: var(--light-green);
+  color: var(--white);
 }

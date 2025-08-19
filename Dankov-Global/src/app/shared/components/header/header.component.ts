@@ -77,10 +77,7 @@ export class HeaderComponent implements OnInit {
       this.headerBg = "url(/images/create/create-page-hero.png";
       this.headertitle = "Create your product";
       this.containerClass = "company-hero company-hero-container container";
-    } else if (
-      currRoute.includes("sign-up") ||
-      currRoute.includes("register")
-    ) {
+    } else if (currRoute.includes("login") || currRoute.includes("register")) {
       this.containerClass = "sign-up-container container";
       this.headerBg = "";
       this.headertitle = "";
@@ -89,7 +86,9 @@ export class HeaderComponent implements OnInit {
       this.headerBg = "";
       this.headertitle = "";
     } else {
-      this.containerClass = "hero hero-container container";
+      this.containerClass = "sign-up-container container container";
+      this.headertitle = "";
+      this.headerBg = "";
       // this.headerBg = "url(/images/home/hero-img.png)";
       // this.headertitle = "Your Global Partner. Creating a Better World";
     }
@@ -98,7 +97,7 @@ export class HeaderComponent implements OnInit {
   logout(): void {
     this.authService.logout().subscribe({
       next: (res) => {
-        this.router.navigate(["/sign-up"]);
+        this.router.navigate(["/login"]);
         console.log(res);
       },
       error: (err) => {

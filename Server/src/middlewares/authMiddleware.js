@@ -2,10 +2,11 @@ import jwt from "jsonwebtoken";
 import { JWT_SECRET } from "../services/JWT_SECRET.js";
 
 export const authMiddleware = (req, res, next) => {
-  const token = req.cookies["auth"];
+  const token = req.cookies?.["auth"];
 
   if (!token) {
-    return res.status(401).json({ message: "Unauthorized, Login first!" });
+    req.user = null;
+    return next();
   }
 
   try {
@@ -14,21 +15,22 @@ export const authMiddleware = (req, res, next) => {
     req.user = decodedToken;
     next();
   } catch (err) {
+    req.user = null;
     return res.status(401).json({ message: "Unauthorized, Login first!" });
   }
 };
 
 export function isGuest(req, res, next) {
-  if (!req.user) {
-    return res.redirect("/login");
+  if (req.user) {
+    return res.status(400).json({ message: "Already logged in" });
   }
 
   next();
 }
 
 export function isAuth(req, res, next) {
-  if (req.user) {
-    return res.redirect("/");
+  if (!req.user) {
+    return res.status(401).json({ message: "Unauthorized" });
   }
 
   next();

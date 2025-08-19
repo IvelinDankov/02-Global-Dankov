@@ -10,12 +10,12 @@ import { Router, RouterLink } from "@angular/router";
 import { AuthService } from "../../../core/services/auth.service.js";
 
 @Component({
-  selector: "app-sign-up",
+  selector: "app-login",
   imports: [RouterLink, ReactiveFormsModule],
-  templateUrl: "./sign-up.component.html",
-  styleUrl: "./sign-up.component.scss",
+  templateUrl: "./login.component.html",
+  styleUrl: "./login.component.scss",
 })
-export class SignUpComponent {
+export class LoginComponent {
   private authService = inject(AuthService);
   private router = inject(Router);
 

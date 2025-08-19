@@ -1,11 +1,11 @@
 import { Router } from "express";
 import userService from "../services/userService.js";
-import { isAuth, isGuest } from "../middlewares/authMiddleware.js";
 import errorMsg from "../utils/errorMsg.js";
+import { isAuth, isGuest } from "../middlewares/authMiddleware.js";
 
 const userController = Router();
 
-userController.post("/register", isAuth, async (req, res) => {
+userController.post("/register", isGuest, async (req, res) => {
   const { username, email, password, rePassword } = req.body;
 
   try {
@@ -33,7 +33,7 @@ userController.post("/register", isAuth, async (req, res) => {
   }
 });
 
-userController.post("/login", isAuth, async (req, res) => {
+userController.post("/login", isGuest, async (req, res) => {
   const { email, password } = req.body;
 
   try {

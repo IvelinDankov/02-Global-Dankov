@@ -1,14 +1,16 @@
 <div class="form-container">
   <h2 class="heading-2 form-title">Login</h2>
+
+  <a routerLink="/register" class="register-link" id="switch-mode">Don't have an account? Register</a>
   <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="login-form">
     <div class="form-group" id="name-group" style="display: none;">
       <label for="name">Full Name</label>
-      <input type="text" id="name" name="name" />
+      <input type="text" id="name" name="name" placeholder="John Smidt" />
     </div>
 
     <div class="form-group">
       <label for="email">Email</label>
-      <input type="email" id="email" required formControlName="email" />
+      <input type="email" id="email" required formControlName="email" placeholder="john@gmail.com" />
       @if (emailError) {
       <p class="error">
         {{emailErrorMsg}}
@@ -18,7 +20,7 @@
 
     <div class="form-group">
       <label for="password">Password</label>
-      <input type="password" id="password" required formControlName="password" />
+      <input type="password" id="password" required formControlName="password" placeholder="*******" />
       @if (passwordError) {
       <p class="error">
         {{passwordErrorMsg}}
@@ -29,5 +31,5 @@
     <button [disabled]="loginForm.invalid" type="submit" class="btn submit-btn">Login</button>
   </form>
 
-  <a routerLink="/register" class="register-link" id="switch-mode">Don't have an account? Register</a>
+
 </div>

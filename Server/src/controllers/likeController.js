@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { authMiddleware } from "../middlewares/authMiddleware.js";
+import { isAuth } from "../middlewares/authMiddleware.js";
 import productService from "../services/productService.js";
 
 const likeController = Router();
 
-likeController.get("/isLiked/:id", authMiddleware, async (req, res) => {
+likeController.get("/isLiked/:id", isAuth, async (req, res) => {
   const productId = req.params.id;
   const userId = req.user?.id;
 
@@ -23,12 +23,12 @@ likeController.get("/isLiked/:id", authMiddleware, async (req, res) => {
       return res.status(200).json({ isLiked: null });
     }
   } catch (err) {
-    const error = errorMsg(err);
+    const error = await errorMsg(err);
     res.status(500).json({ message: error, error: error });
   }
 });
 
-likeController.post("/like/:id", authMiddleware, async (req, res) => {
+likeController.post("/like/:id", isAuth, async (req, res) => {
   const id = req.params.id;
   const userId = req.user?.id;
   try {
@@ -49,7 +49,7 @@ likeController.post("/like/:id", authMiddleware, async (req, res) => {
   }
 });
 
-likeController.delete("/like/:id", authMiddleware, async (req, res) => {
+likeController.delete("/like/:id", isAuth, async (req, res) => {
   const id = req.params.id;
   const userId = req.user.id;
 
@@ -66,7 +66,7 @@ likeController.delete("/like/:id", authMiddleware, async (req, res) => {
 
     res.json({ likes: product.likes, message: "Unlike success!" });
   } catch (err) {
-    const error = errorMsg(err);
+    const error = await errorMsg(err);
     res.status(404).json({ message: error, error: error });
   }
 });
