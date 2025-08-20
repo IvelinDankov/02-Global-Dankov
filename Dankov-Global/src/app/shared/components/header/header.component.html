@@ -28,7 +28,7 @@
     </nav>
     <div class="header-icons">
       @if (isLoggedIn()) {
-      <a href="" class="user-profile">
+      <a routerLink="/profile" class="user-profile">
         <ion-icon name="person-circle-outline"></ion-icon>
         {{currentUser()?.username}}
 

@@ -18,6 +18,9 @@ const userSchema = new Schema({
     required: [true, "Password is required"],
     minLength: [6, "Password must be at least 6 charachters long!"],
   },
+  phone: {
+    type: String,
+  },
 });
 
 userSchema.pre("save", async function () {

@@ -9,6 +9,7 @@ export interface AuthResponse {
     _id: string;
     username: string;
     email: string;
+    phone: string;
   };
 }
 
@@ -39,6 +40,7 @@ export class AuthService {
   register(
     username: string,
     email: string,
+    phone: string,
     password: string,
     rePassword: string
   ): Observable<AuthResponse> {
@@ -48,6 +50,7 @@ export class AuthService {
         {
           username,
           email,
+          phone,
           password,
           rePassword,
         },
@@ -87,5 +90,28 @@ export class AuthService {
           localStorage.removeItem("currentUser");
         })
       );
+  }
+
+  updateUser(user: User): Observable<User> {
+    return this.http
+      .put<User>(
+        `${this.apiUrl}/update`,
+
+        user,
+
+        { withCredentials: true }
+      )
+      .pipe(
+        tap((updatedUser) => {
+          this._currentUser.set(updatedUser);
+          localStorage.setItem("currentUser", JSON.stringify(updatedUser));
+        })
+      );
+  }
+
+  private handleAuthSuccess(res: AuthResponse) {
+    this._currentUser.set(res.user);
+    this._isLoggedIn.set(true);
+    localStorage.setItem("currentUser", JSON.stringify(res.user));
   }
 }

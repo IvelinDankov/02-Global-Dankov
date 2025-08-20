@@ -5,14 +5,14 @@ import jwt from "jsonwebtoken";
 import { JWT_SECRET } from "./JWT_SECRET.js";
 
 export default {
-  async register(username, email, password) {
+  async register(username, email, phone, password) {
     const userExist = await User.exists({ email: email });
 
     if (userExist) {
       throw new Error("User already exist. Please try with another!");
     }
 
-    const user = { username, email, password };
+    const user = { username, email, phone, password };
 
     return User.create(user);
   },
@@ -39,5 +39,9 @@ export default {
     const token = jwt.sign(payload, JWT_SECRET, { expiresIn: "1h" });
 
     return { token, user };
+  },
+
+  updateUser(id, user) {
+    return User.findByIdAndUpdate(id, user, { new: true, runValidators: true });
   },
 };

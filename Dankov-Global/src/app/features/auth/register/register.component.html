@@ -26,6 +26,17 @@
       </p>
       }
     </div>
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input [class.error-input]="phoneError" type="phone" id="phone" name="phone" formControlName="phone"
+        placeholder="089123456888" />
+
+      @if (phoneError) {
+      <p class="error">
+        {{phoneErrorMsg}}
+      </p>
+      }
+    </div>
 
     <div [formGroup]="passwords">
 

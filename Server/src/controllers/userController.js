@@ -6,14 +6,14 @@ import { isAuth, isGuest } from "../middlewares/authMiddleware.js";
 const userController = Router();
 
 userController.post("/register", isGuest, async (req, res) => {
-  const { username, email, password, rePassword } = req.body;
+  const { username, email, phone, password, rePassword } = req.body;
 
   try {
     if (password !== rePassword) {
       throw new Error("Password Mismatch!");
     }
 
-    await userService.register(username, email, password);
+    await userService.register(username, email, phone, password);
 
     const { token, user } = await userService.login(email, password);
 
@@ -25,6 +25,7 @@ userController.post("/register", isGuest, async (req, res) => {
         _id: String(user._id),
         username: user.username,
         email: user.email,
+        phone: user.phone,
       },
     });
   } catch (err) {
@@ -47,6 +48,7 @@ userController.post("/login", isGuest, async (req, res) => {
         _id: String(user._id),
         username: user.username,
         email: user.email,
+        phone: user.phone,
       },
     });
   } catch (err) {
@@ -57,6 +59,33 @@ userController.post("/login", isGuest, async (req, res) => {
 
 userController.post("/logout", isAuth, (req, res) => {
   res.clearCookie("auth").status(200).json({ message: "Logged out" });
+});
+
+userController.put("/update", async (req, res) => {
+  const userId = req.body._id;
+  const { username, email, phone } = req.body;
+
+  try {
+    const updatedUser = await userService.updateUser(userId, {
+      username,
+      email,
+      phone,
+    });
+
+    if (!updatedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.status(200).json({
+      _id: String(updatedUser._id),
+      username: updatedUser.username,
+      email: updatedUser.email,
+      phone: updatedUser.phone,
+    });
+  } catch (err) {
+    const error = await errorMsg(err);
+    res.status(500).json({ message: error });
+  }
 });
 
 export default userController;

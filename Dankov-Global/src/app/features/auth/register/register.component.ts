@@ -27,6 +27,7 @@ export class RegisterComponent {
     this.registerForm = this.formBuilder.group({
       username: ["", [Validators.required, Validators.minLength(5)]],
       email: ["", [Validators.required, Validators.email]],
+      phone: ["", [Validators.minLength(14)]],
       passwords: this.formBuilder.group(
         {
           password: ["", [Validators.required, Validators.minLength(6)]],
@@ -44,6 +45,9 @@ export class RegisterComponent {
   }
   get email(): AbstractControl<any, any> | null {
     return this.registerForm.get("email");
+  }
+  get phone(): AbstractControl<any, any> | null {
+    return this.registerForm.get("phone");
   }
   get passwords(): FormGroup {
     return this.registerForm.get("passwords") as FormGroup;
@@ -70,6 +74,11 @@ export class RegisterComponent {
   get emailError(): boolean {
     return (
       (this.email?.invalid && (this.email.touched || this.email.dirty)) || false
+    );
+  }
+  get phoneError(): boolean {
+    return (
+      (this.phone?.invalid && (this.phone.touched || this.phone.dirty)) || false
     );
   }
   get passwordsError(): boolean {
@@ -101,6 +110,13 @@ export class RegisterComponent {
 
     return "";
   }
+  get phoneErrorMsg(): string {
+    if (this.phone?.errors?.["minlength"]) {
+      return "Phone must be at least 14 characters long!";
+    }
+
+    return "";
+  }
   get passwordErrorMsg(): string {
     if (this.password?.errors?.["required"]) {
       return "Password is required!";
@@ -124,11 +140,11 @@ export class RegisterComponent {
 
   onSubmit() {
     if (this.registerForm.valid) {
-      const { username, email } = this.registerForm.value;
+      const { username, email, phone } = this.registerForm.value;
       const { password, rePassword } = this.registerForm.value.passwords;
 
       this.authService
-        .register(username, email, password, rePassword)
+        .register(username, email, phone, password, rePassword)
         .subscribe({
           next: (res) => {
             if (res) {

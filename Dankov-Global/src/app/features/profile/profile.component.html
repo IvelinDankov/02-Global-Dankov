@@ -1,0 +1,86 @@
+<div class="profile">
+
+  @if (!isEditing) {
+
+
+
+
+  <div class="profile__box">
+    <header class="profile__header">
+
+      <img src="/images/profile/user-profile-image.jpg" alt="profile image" class="profile__image">
+    </header>
+    <div class="profile__body">
+
+      <p class="profile__name"><span>Username:</span> {{authService._currentUser()?.username}} </p>
+      <p class="profile__email"><span>Email:</span> {{authService._currentUser()?.email}} </p>
+      <p class="profile__phone"><span>Phone:</span> {{authService._currentUser()?.phone}} </p><button (click)="onEdit()"
+        class="profile__edit-btn">
+        Edit
+      </button>
+    </div>
+  </div>
+
+
+  } @else {
+  <form [formGroup]="profileForm" (ngSubmit)="onSave()">
+    <div class="profile__box">
+      <header class="profile__header">
+        <h4 class="profile__title">
+          Editing your Profile...
+        </h4>
+        <div class="form-group">
+          <label for="profile-image">Profile Image</label>
+          <input type="text" name="imageUrl" placeholder="imageUrl" formControlName="imageUrl">
+        </div>
+
+      </header>
+      <div class="profile__body">
+
+        <div class="form-group">
+          <label for="username">Profile Name</label>
+          <input id="username" type="text" name="username" placeholder="Your name" formControlName="username">
+        </div>
+        <div class="form-group">
+          <label for="email">Profile Email</label>
+          <input type="email" id="email" name="email" placeholder="Your name" formControlName="email">
+        </div>
+        <div class="form-group">
+          <label for="phone">Profile Phone</label>
+          <input type="phone" id="phone" name="phone" placeholder="Your Phone" formControlName="phone">
+        </div>
+
+
+        <div class="cta-btns">
+
+          <button (click)="onCancel()" type="button">Cancel</button>
+          <button type="submit" class="profile__edit-btn">
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+  }
+
+
+</div>
+
+<!-- 
+<div class="profile"><img src="/profile.png" alt="default user">
+  <h3>User Info:</h3>
+  <div class="flex">
+    <p>Username: </p>
+    <p> {{currentUser()?.username}} </p>
+  </div>
+  <div class="flex">
+    <p>Email: </p>
+    <p> {{currentUser()?.email}} </p>
+  </div>
+  <div class="flex">
+    <p>Phone: </p>
+    <p> {{currentUser()?.phone}} </p>
+  </div>
+  <button class="edit-button">Edit</button>
+</div>
+-->
