@@ -32,6 +32,7 @@ export default {
 
     const payload = {
       id: user._id,
+      imageUrl: user.imageUrl,
       email: user.email,
       username: user.username,
     };

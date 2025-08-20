@@ -30,12 +30,10 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    effect(() => {
-      const user = this.authService.currentUser();
-      if (user && this.isEditing) {
-        this.profileForm.patchValue(user);
-      }
-    });
+    const user = this.authService.currentUser();
+    if (user && this.isEditing) {
+      this.profileForm.patchValue(user);
+    }
   }
 
   onEdit() {
@@ -44,6 +42,7 @@ export class ProfileComponent implements OnInit {
     const user = this.authService.currentUser();
 
     this.profileForm.patchValue({
+      imageUrl: user?.imageUrl,
       username: user?.username,
       email: user?.email,
       phone: user?.phone,
@@ -58,10 +57,11 @@ export class ProfileComponent implements OnInit {
   onSave(): void {
     if (this.profileForm.valid) {
       const user = this.authService._currentUser();
-      const { username, email, phone } = this.profileForm.value;
+      const { username, imageUrl, email, phone } = this.profileForm.value;
 
       const newUser = <User>{
         _id: user?._id,
+        imageUrl,
         username,
         email,
         phone,

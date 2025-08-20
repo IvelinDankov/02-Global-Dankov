@@ -9,6 +9,9 @@ const userSchema = new Schema({
     required: true,
     minLength: [5, "Username must be at least 5 charachters long"],
   },
+  imageUrl: {
+    type: String,
+  },
   email: {
     type: String,
     required: [true, "Email is required!"],

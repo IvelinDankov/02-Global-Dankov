@@ -63,11 +63,12 @@ userController.post("/logout", isAuth, (req, res) => {
 
 userController.put("/update", async (req, res) => {
   const userId = req.body._id;
-  const { username, email, phone } = req.body;
+  const { username, imageUrl, email, phone } = req.body;
 
   try {
     const updatedUser = await userService.updateUser(userId, {
       username,
+      imageUrl,
       email,
       phone,
     });
@@ -78,6 +79,7 @@ userController.put("/update", async (req, res) => {
 
     res.status(200).json({
       _id: String(updatedUser._id),
+      imageUrl: updatedUser.imageUrl,
       username: updatedUser.username,
       email: updatedUser.email,
       phone: updatedUser.phone,

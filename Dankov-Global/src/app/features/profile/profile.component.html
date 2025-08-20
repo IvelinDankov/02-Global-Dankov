@@ -8,7 +8,8 @@
   <div class="profile__box">
     <header class="profile__header">
 
-      <img src="/images/profile/user-profile-image.jpg" alt="profile image" class="profile__image">
+      <img src="{{authService._currentUser()?.imageUrl || `/images/profile/user-profile-image.jpg`}}"
+        alt="profile image" class="profile__image">
     </header>
     <div class="profile__body">
 
@@ -30,8 +31,8 @@
           Editing your Profile...
         </h4>
         <div class="form-group">
-          <label for="profile-image">Profile Image</label>
-          <input type="text" name="imageUrl" placeholder="imageUrl" formControlName="imageUrl">
+          <label for="imageUrl">Profile Image</label>
+          <input id="imageUrl" type="text" name="imageUrl" placeholder="imageUrl" formControlName="imageUrl">
         </div>
 
       </header>

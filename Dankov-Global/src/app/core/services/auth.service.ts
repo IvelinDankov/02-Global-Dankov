@@ -7,6 +7,7 @@ export interface AuthResponse {
   token: string;
   user: {
     _id: string;
+    imageUrl: string;
     username: string;
     email: string;
     phone: string;
@@ -109,9 +110,9 @@ export class AuthService {
       );
   }
 
-  private handleAuthSuccess(res: AuthResponse) {
+/*   private handleAuthSuccess(res: AuthResponse) {
     this._currentUser.set(res.user);
     this._isLoggedIn.set(true);
     localStorage.setItem("currentUser", JSON.stringify(res.user));
-  }
+  } */
 }
