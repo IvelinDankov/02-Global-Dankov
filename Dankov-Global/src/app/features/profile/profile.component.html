@@ -33,6 +33,11 @@
         <div class="form-group">
           <label for="imageUrl">Profile Image</label>
           <input id="imageUrl" type="text" name="imageUrl" placeholder="imageUrl" formControlName="imageUrl">
+          @if (imageUrlError) {
+          <p class="error">
+            {{imageUrlErrorMsg}}
+          </p>
+          }
         </div>
 
       </header>
@@ -41,14 +46,30 @@
         <div class="form-group">
           <label for="username">Profile Name</label>
           <input id="username" type="text" name="username" placeholder="Your name" formControlName="username">
+          @if (usernameError) {
+          <p class="error">
+            {{usernameErrorMsg}}
+          </p>
+          }
         </div>
         <div class="form-group">
           <label for="email">Profile Email</label>
           <input type="email" id="email" name="email" placeholder="Your name" formControlName="email">
+          @if (emailError) {
+          <p class="error">
+            {{emailErrorMsg}}
+          </p>
+          }
+
         </div>
         <div class="form-group">
           <label for="phone">Profile Phone</label>
           <input type="phone" id="phone" name="phone" placeholder="Your Phone" formControlName="phone">
+          @if (phoneError) {
+          <p class="error">
+            {{phoneErrorMsg}}
+          </p>
+          }
         </div>
 
 

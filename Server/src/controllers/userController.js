@@ -23,6 +23,7 @@ userController.post("/register", isGuest, async (req, res) => {
       token,
       user: {
         _id: String(user._id),
+        imageUrl: user.imageUrl,
         username: user.username,
         email: user.email,
         phone: user.phone,
@@ -46,6 +47,7 @@ userController.post("/login", isGuest, async (req, res) => {
       token,
       user: {
         _id: String(user._id),
+        imageUrl: user.imageUrl,
         username: user.username,
         email: user.email,
         phone: user.phone,
