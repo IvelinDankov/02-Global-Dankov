@@ -9,6 +9,7 @@ export const routes: Routes = [
     path: "home",
     loadComponent: () =>
       import("./features/home/home.component").then((c) => c.HomeComponent),
+    title: "Home Page",
   },
   {
     path: "why-dankov",
@@ -16,6 +17,7 @@ export const routes: Routes = [
       import("./features/why-dankov/why-dankov.component").then(
         (c) => c.WhyDankovComponent
       ),
+    title: "Why Dankov",
   },
   {
     path: "industries",
@@ -23,6 +25,7 @@ export const routes: Routes = [
       import("./features/industries/industries.component").then(
         (c) => c.IndustriesComponent
       ),
+    title: "Industries",
   },
   {
     path: "products",
@@ -30,6 +33,7 @@ export const routes: Routes = [
       import("./features/products/products.component").then(
         (c) => c.ProductsComponent
       ),
+    title: "Product Page",
   },
   {
     path: "products/:id",
@@ -37,6 +41,7 @@ export const routes: Routes = [
       import(
         "./features/products/product-details/product-details.component"
       ).then((c) => c.ProductDetailsComponent),
+    title: "Product Details",
   },
   {
     path: "create",
@@ -45,6 +50,7 @@ export const routes: Routes = [
         "./features/products/create-product/create-product.component"
       ).then((c) => c.CreateProductComponent),
     canActivate: [authGuard],
+    title: "Create New Product",
   },
   {
     path: "global-facilities",
@@ -52,6 +58,7 @@ export const routes: Routes = [
       import("./features/facilities/facilities.component").then(
         (c) => c.FacilitiesComponent
       ),
+    title: "Facilities",
   },
   {
     path: "company",
@@ -59,6 +66,7 @@ export const routes: Routes = [
       import("./features/company/company.component").then(
         (c) => c.CompanyComponent
       ),
+    title: "Company",
   },
   {
     path: "login",
@@ -66,7 +74,7 @@ export const routes: Routes = [
       import("./features/auth/login/login.component").then(
         (c) => c.LoginComponent
       ),
-    canActivate: [guestGuard],
+    title: "Login",
   },
   {
     path: "register",
@@ -75,6 +83,7 @@ export const routes: Routes = [
         (c) => c.RegisterComponent
       ),
     canActivate: [guestGuard],
+    title: "Register",
   },
 
   {
@@ -84,6 +93,7 @@ export const routes: Routes = [
         (c) => c.ProfileComponent
       ),
     canActivate: [authGuard],
+    title: "Profile",
   },
   {
     path: "contact",
@@ -91,6 +101,7 @@ export const routes: Routes = [
       import("./features/contact/contact.component").then(
         (c) => c.ContactComponent
       ),
+    title: "Contact",
   },
 
   {
@@ -99,12 +110,14 @@ export const routes: Routes = [
       import("./shared/components/unauthorized/unauthorized.component").then(
         (c) => c.UnauthorizedComponent
       ),
+    title: "Unauthorized",
   },
 
   {
     path: "not-found",
 
     component: NotFoundComponent,
+    title: "Not Found",
   },
   {
     path: "**",

@@ -24,7 +24,6 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(
       routes,
-      withEnabledBlockingInitialNavigation(),
       withComponentInputBinding(),
       withInMemoryScrolling({ scrollPositionRestoration: "top" })
     ),
