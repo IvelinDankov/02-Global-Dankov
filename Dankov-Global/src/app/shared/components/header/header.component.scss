@@ -90,7 +90,7 @@
 .header-icons {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .user-profile {
@@ -112,7 +112,7 @@
   width: max-content;
   transition: all 0.3s;
 
-  & ion-icon {
+  & > * {
     height: 3rem;
     width: 3rem;
   }

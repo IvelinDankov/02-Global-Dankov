@@ -1,89 +1,67 @@
-# Table of contents.
+# 🍎 Dankov Global
 
-- Installation.
-- Setup.
-- Usage.
-- Features.
-- Technologies.
-- Contributing.
+**Dankov Global** is a global food delivery service app that connects companies producing vegetables and fruits with customers worldwide.  
+The project is built with **Angular (frontend)** and **Express + MongoDB/Mongoose (backend)**.
 
-# Installation
+---
 
-Steps
+## 📌 Description
 
-1. Clone the repository
+Dankov Global allows companies to register and showcase their fruit and vegetable products.  
+Users can browse a catalog, register/login, like products, and manage their profile.
 
-`git clone https://github.com/IvelinDankov/02-Global-Dankov.git`
+Target audience: **Companies producing vegetables and fruits**.
 
-2. Install dependecies.
-   `cd Dankov-Global npm install`
-   `cd Server npm install`
+---
 
-3. Start the server.
-   `npm start`
+## 🚀 Tech Stack
 
-4. Start Angular.
-   `ng serve -o`
+- **Frontend:** Angular + SCSS
+- **Backend:** Node.js + Express
+- **Database:** MongoDB (with Mongoose ODM)
+- **Authentication:** Custom JWT-based auth
+- **Hosting:** _(not yet deployed)_
 
-# Setup
+---
 
-1. The frondend is build with Angular. It provides the user interface where users can view products editing own products, creating and deleting own products.
+## ✨ Features
 
-2. Services: The ProductService can communicates with the backend to fetch products, apply creating new Product, updating Product and Deleting existing one.
-   We provide UserService - the Users can register, login, logout, interact with products catalog.
+- 🔑 User Authentication (register/login/logout)
+- 👤 Profile management (update personal details)
+- 📖 Static pages for general information
+- ❤️ Users can like products
+- 🥦 Browse catalog with fruits and vegetables
+- 🚫 No admin role yet (planned for future)
 
-3. Components: We provide different components inside our Page.. like Home, Register, SignUp, Comany, Contacts, Facilities, Industries, Products, Why-dankov
+---
 
-# Backend (Node.js with MongoDB)
+## 📡 API Endpoints
 
-1. Product Schema: The backend uses Mongoose to define Product schema, including fields like name, price, description, and likes.
+Base URL: `http://localhost:3000`
 
-# Usage
+### Authentication
 
-Once everything is set up:
+- `POST /register` → Register new user
+- `POST /login` → Login user
+- `POST /logout` → Logout current user
 
-Browse Products: Users can view a list of products on the product page.
+### User
 
-Search and Sort: Products can be filtered based on search terms or sorted by price or creation date.
+- `PUT /update` → Update user profile
 
-# Features
+---
 
-Search Products: Search products by name.
-Sort Products: Sort products by:
-Newest
-Oldest
-Price: Low to High
-Price: High to Low
+## 🛠️ Installation & Setup
 
-# Techologies Used
+### Prerequisites
 
-Frontend:
+- Node.js (v18+ recommended)
+- npm or yarn
+- MongoDB running locally or in the cloud
 
-- Angular
-- Angular Material (Optional)
-- RxJS for reactive programming
-- HTTP Client for API calls
+### 1. Clone the repository
 
-Backend:
-
-- Node.js
-- Express.js
-- MongoDB & Mongoose
-
-Authentication:
-
-- JWT (JSON Web Token) for user authentication (if implemented)
-
-# Contributing
-
-We welcome contributions to this project. Please follow the steps below to contribute:
-
-    Fork the repository.
-
-    Create a new branch for your feature (git checkout -b feature-name).
-
-    Make your changes and commit them (git commit -m 'Add feature-name').
-
-    Push to your forked repository (git push origin feature-name).
-
-    Open a pull request.
+```bash
+git clone https://github.com/IvelinDankov/02-Global-Dankov.git
+cd dankov-global
+```

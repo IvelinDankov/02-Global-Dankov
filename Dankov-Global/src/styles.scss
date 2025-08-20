@@ -111,8 +111,30 @@ ion-icon {
 }
 
 /* media queries */
+/* 1200px */
+@media (max-width: 75em) {
+  .header {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  html {
+    font-size: 60%;
+  }
+
+  ion-icon {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+/* media queries */
 /* 1000px */
 @media (max-width: 62.5em) {
+  html {
+    font-size: 58%;
+  }
+
   .review-content {
     flex: 1 0 50%;
     padding: 0 !important;
@@ -127,7 +149,7 @@ ion-icon {
 /* 940px */
 @media (max-width: 58.75em) {
   html {
-    font-size: 50%;
+    font-size: 48%;
   }
 
   .review-container {
@@ -145,6 +167,11 @@ ion-icon {
 
 /* 850px */
 @media (max-width: 53.125em) {
+  .header {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   .heading-1 {
     font-size: 4.8rem;
   }
