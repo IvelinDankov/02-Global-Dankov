@@ -1,8 +1,9 @@
-import { CommonModule, NgStyle } from "@angular/common";
+import { NgStyle } from "@angular/common";
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   inject,
+  OnDestroy,
   OnInit,
 } from "@angular/core";
 import {
@@ -11,17 +12,17 @@ import {
   RouterLink,
   RouterLinkActive,
 } from "@angular/router";
-import { filter } from "rxjs";
+import { filter, Subscription } from "rxjs";
 import { AuthService } from "../../../core/services/auth.service.js";
 
 @Component({
   selector: "app-header",
-  imports: [RouterLink, RouterLinkActive, CommonModule, NgStyle],
+  imports: [RouterLink, RouterLinkActive, NgStyle],
   templateUrl: "./header.component.html",
   styleUrl: "./header.component.scss",
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   headerBg: string = "";
   headertitle: string = "";
   containerClass: string = "hero hero-container container";
@@ -30,6 +31,7 @@ export class HeaderComponent implements OnInit {
   private router = inject(Router);
   readonly isLoggedIn = this.authService._isLoggedIn;
   readonly currentUser = this.authService._currentUser;
+  private sub = new Subscription();
 
   ngOnInit(): void {
     const currRoute = this.router.url;
@@ -95,7 +97,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(): void {
-    this.authService.logout().subscribe({
+    this.sub = this.authService.logout().subscribe({
       next: (res) => {
         this.router.navigate(["/login"]);
         console.log(res);
@@ -104,5 +106,9 @@ export class HeaderComponent implements OnInit {
         console.log("Error loggin out", err.message);
       },
     });
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 }

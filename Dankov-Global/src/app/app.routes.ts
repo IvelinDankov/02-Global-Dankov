@@ -2,8 +2,6 @@ import { Routes } from "@angular/router";
 import { NotFoundComponent } from "./shared/components/not-found/not-found.component.js";
 import { guestGuard } from "./core/guards/guest.guard.js";
 import { authGuard } from "./core/guards/authGuard.guard.js";
-import { UnauthorizedComponent } from "./shared/components/unauthorized/unauthorized.component.js";
-// import { PageNotFound } from "./shared/components/not-found/not-found.component.js";
 
 export const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
@@ -97,7 +95,10 @@ export const routes: Routes = [
 
   {
     path: "unauthorized",
-    component: UnauthorizedComponent,
+    loadComponent: () =>
+      import("./shared/components/unauthorized/unauthorized.component").then(
+        (c) => c.UnauthorizedComponent
+      ),
   },
 
   {

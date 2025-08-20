@@ -2,6 +2,7 @@ import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   inject,
+  OnDestroy,
   OnInit,
 } from "@angular/core";
 
@@ -14,6 +15,7 @@ import { PriceDirective } from "../../directives/price.directive.js";
 import { LikeService } from "../../core/services/like.service.js";
 import { AuthService } from "../../core/services/auth.service.js";
 import { HoverDirective } from "../../directives/hover.directive";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-products",
@@ -29,11 +31,14 @@ import { HoverDirective } from "../../directives/hover.directive";
   styleUrl: "./products.component.scss",
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit, OnDestroy {
   private productService = inject(ProductService);
   private likeService = inject(LikeService);
   private authService = inject(AuthService);
   private router = inject(Router);
+
+  private subs: Subscription[] = [];
+
   products: Product[] = [];
   filteredProducts: Product[] = [];
   isLoading: boolean = false;
@@ -56,7 +61,7 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
     this.isLoading = true;
 
-    this.productService.getAllProducts().subscribe({
+    const sub1 = this.productService.getAllProducts().subscribe({
       next: (allProducts: Product[]) => {
         this.isLoading = false;
         this.products = allProducts;
@@ -73,13 +78,15 @@ export class ProductsComponent implements OnInit {
         this.errorMsg = "Feild to load Products!";
       },
     });
+
+    this.subs.push(sub1);
   }
 
   onSortChange(event: any): void {
     const selectEl = (event.target as HTMLSelectElement).value;
 
     if (selectEl === "all") {
-      this.productService.getAllProducts().subscribe({
+      const sub2 = this.productService.getAllProducts().subscribe({
         next: (products) => {
           this.products = products;
           this.filteredProducts = [...this.products];
@@ -90,12 +97,13 @@ export class ProductsComponent implements OnInit {
           console.error("Error fetching all products", err);
         },
       });
+      this.subs.push(sub2);
       return;
     }
 
     const [sortBy, order] = selectEl.split("_");
 
-    this.productService
+    const sub3 = this.productService
       .getSortedProducts(sortBy, order as "asc" | "desc")
       .subscribe({
         next: (products) => {
@@ -106,6 +114,8 @@ export class ProductsComponent implements OnInit {
           console.error("Error fetching sorted products", err);
         },
       });
+
+    this.subs.push(sub3);
   }
 
   onSearch() {
@@ -122,7 +132,7 @@ export class ProductsComponent implements OnInit {
 
   userLikedThisProduct() {
     this.products.forEach((product) => {
-      this.likeService.checkIfUserLiked(product._id).subscribe({
+      const sub4 = this.likeService.checkIfUserLiked(product._id).subscribe({
         next: (res) => {
           product.isLiked = res.isLiked;
         },
@@ -130,12 +140,14 @@ export class ProductsComponent implements OnInit {
           console.log("Error checking like status", err.message);
         },
       });
+
+      this.subs.push(sub4);
     });
   }
 
   toggleLike(product: Product): void {
     if (product.isLiked) {
-      this.likeService.unlike(product._id).subscribe({
+      const sub5 = this.likeService.unlike(product._id).subscribe({
         next: (res) => {
           product.isLiked = false;
 
@@ -145,8 +157,9 @@ export class ProductsComponent implements OnInit {
           console.log("Could not unlike product!", err.message);
         },
       });
+      this.subs.push(sub5);
     } else {
-      this.likeService.like(product._id).subscribe({
+      const sub6 = this.likeService.like(product._id).subscribe({
         next: (res) => {
           product.isLiked = true;
           product.likes = res.likes;
@@ -155,6 +168,12 @@ export class ProductsComponent implements OnInit {
           console.log("Could not like the product", err.message);
         },
       });
+
+      this.subs.push(sub6);
     }
+  }
+
+  ngOnDestroy(): void {
+    this.subs.forEach((s) => s.unsubscribe());
   }
 }

@@ -2,12 +2,14 @@ import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   inject,
+  OnDestroy,
   OnInit,
 } from "@angular/core";
 
 import { RouterLink } from "@angular/router";
 import { Product } from "../../../models/product.model.js";
 import { ProductService } from "../../../core/services/product.service.js";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-product",
@@ -16,16 +18,18 @@ import { ProductService } from "../../../core/services/product.service.js";
   styleUrl: "./product.component.scss",
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class ProductComponent implements OnInit {
+export class ProductComponent implements OnInit, OnDestroy {
   products: Product[] = [];
   errMsg: string = "";
   loading: boolean = false;
+
+  private subs = new Subscription();
 
   private productService = inject(ProductService);
 
   ngOnInit(): void {
     this.loading = true;
-    this.productService.getAllProducts().subscribe({
+    this.subs = this.productService.getAllProducts().subscribe({
       next: (products: Product[]) => {
         this.loading = false;
         this.products = products.slice(0, 8);
@@ -36,6 +40,10 @@ export class ProductComponent implements OnInit {
         this.errMsg = "Failed to load Products!!!";
       },
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
   }
 }
 function next(value: Product[]): void {

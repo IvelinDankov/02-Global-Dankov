@@ -1,4 +1,4 @@
-import { Component, inject } from "@angular/core";
+import { Component, inject, OnDestroy } from "@angular/core";
 import {
   AbstractControl,
   FormBuilder,
@@ -9,6 +9,7 @@ import {
 import { Product } from "../../../models/product.model.js";
 import { ProductService } from "../../../core/services/product.service.js";
 import { Router } from "@angular/router";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-create-product",
@@ -16,9 +17,11 @@ import { Router } from "@angular/router";
   templateUrl: "./create-product.component.html",
   styleUrl: "./create-product.component.scss",
 })
-export class CreateProductComponent {
+export class CreateProductComponent implements OnDestroy {
   private productService = inject(ProductService);
   private router = inject(Router);
+
+  private subs = new Subscription();
 
   productCategory: string[] = ["vegetables", "fruits"];
 
@@ -217,7 +220,7 @@ export class CreateProductComponent {
       weight,
     };
 
-    this.productService.create(newProduct).subscribe({
+    this.subs = this.productService.create(newProduct).subscribe({
       next: (res) => console.log(res),
       error: (err) => {
         console.log("Could not create Product", err);
@@ -225,5 +228,9 @@ export class CreateProductComponent {
     });
 
     this.router.navigate(["/products"]);
+  }
+
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
   }
 }

@@ -1,4 +1,4 @@
-import { Component, inject } from "@angular/core";
+import { Component, inject, OnDestroy } from "@angular/core";
 import {
   AbstractControl,
   FormBuilder,
@@ -9,6 +9,7 @@ import {
 } from "@angular/forms";
 import { Router, RouterLink } from "@angular/router";
 import { AuthService } from "../../../core/services/auth.service.js";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-register",
@@ -16,10 +17,11 @@ import { AuthService } from "../../../core/services/auth.service.js";
   templateUrl: "./register.component.html",
   styleUrl: "./register.component.scss",
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnDestroy {
   private authService = inject(AuthService);
   private formBuilder = inject(FormBuilder);
   private router = inject(Router);
+  private subs = new Subscription();
 
   registerForm: FormGroup;
 
@@ -143,7 +145,7 @@ export class RegisterComponent {
       const { username, email, phone } = this.registerForm.value;
       const { password, rePassword } = this.registerForm.value.passwords;
 
-      this.authService
+      this.subs = this.authService
         .register(username, email, phone, password, rePassword)
         .subscribe({
           next: (res) => {
@@ -168,5 +170,9 @@ export class RegisterComponent {
     } else {
       return null;
     }
+  }
+
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
   }
 }

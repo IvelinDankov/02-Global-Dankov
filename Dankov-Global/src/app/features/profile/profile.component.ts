@@ -1,4 +1,4 @@
-import { Component, effect, inject, OnInit } from "@angular/core";
+import { Component, effect, inject, OnDestroy, OnInit } from "@angular/core";
 import { AuthService } from "../../core/services/auth.service.js";
 import {
   AbstractControl,
@@ -8,7 +8,7 @@ import {
   Validators,
 } from "@angular/forms";
 import { User } from "../../models/user.model.js";
-import { Router } from "@angular/router";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-profile",
@@ -16,11 +16,11 @@ import { Router } from "@angular/router";
   templateUrl: "./profile.component.html",
   styleUrl: "./profile.component.scss",
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
   public authService = inject(AuthService);
-  // private router = inject(Router);
 
   isEditing: boolean = false;
+  private subscriptions: Subscription[] = [];
 
   private formBuilder = inject(FormBuilder);
 
@@ -157,7 +157,7 @@ export class ProfileComponent implements OnInit {
         phone,
       };
 
-      this.authService.updateUser(newUser).subscribe({
+      const subscribe = this.authService.updateUser(newUser).subscribe({
         next: (response) => {
           this.profileForm.patchValue(response);
           this.isEditing = false;
@@ -167,7 +167,13 @@ export class ProfileComponent implements OnInit {
         },
       });
 
+      this.subscriptions.push(subscribe);
+
       this.isEditing = false;
     }
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((s) => s.unsubscribe());
   }
 }

@@ -1,4 +1,4 @@
-import { Component, inject } from "@angular/core";
+import { Component, inject, OnDestroy } from "@angular/core";
 import {
   AbstractControl,
   FormBuilder,
@@ -8,6 +8,7 @@ import {
 } from "@angular/forms";
 import { Router, RouterLink } from "@angular/router";
 import { AuthService } from "../../../core/services/auth.service.js";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-login",
@@ -15,11 +16,13 @@ import { AuthService } from "../../../core/services/auth.service.js";
   templateUrl: "./login.component.html",
   styleUrl: "./login.component.scss",
 })
-export class LoginComponent {
+export class LoginComponent implements OnDestroy {
   private authService = inject(AuthService);
   private router = inject(Router);
 
   private formBuilder = inject(FormBuilder);
+
+  private subs = new Subscription();
 
   loginForm: FormGroup;
 
@@ -78,7 +81,7 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
 
-      this.authService.login(email, password).subscribe({
+      const subs = this.authService.login(email, password).subscribe({
         next: (res) => {
           if (res.user && res.token) {
             this.router.navigate(["/products"]);
@@ -89,5 +92,9 @@ export class LoginComponent {
         },
       });
     }
+  }
+
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
   }
 }
